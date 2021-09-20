@@ -6,6 +6,7 @@
 [sub_resource type="CapsuleShape2D" id=1]
 
 [node name="Bullet" type="Area2D"]
+scale = Vector2( 0.5, 1 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true

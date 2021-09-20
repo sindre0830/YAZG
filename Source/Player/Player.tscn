@@ -23,3 +23,7 @@ shape = SubResource( 1 )
 
 [node name="PositionMuzzle" type="Position2D" parent="."]
 position = Vector2( 33.5749, 9.49615 )
+
+[node name="AttackCooldown" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true

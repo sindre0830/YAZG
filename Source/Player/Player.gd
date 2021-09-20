@@ -6,6 +6,7 @@ const FRICTION = 4000
 
 var velocity = Vector2.ZERO
 export var Bullet = preload("res://Projectiles/Bullet.tscn")
+onready var attackCooldown = $AttackCooldown
 
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
@@ -22,7 +23,8 @@ func _physics_process(delta):
 	
 	velocity = move_and_slide(velocity)
 	
-	if Input.is_action_just_pressed("ui_shoot"):
+	if Input.is_action_pressed("ui_shoot") and attackCooldown.is_stopped():
 		var bullet = Bullet.instance()
 		owner.add_child(bullet)
 		bullet.transform = $PositionMuzzle.global_transform
+		attackCooldown.start()

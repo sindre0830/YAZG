@@ -21,3 +21,6 @@ func _physics_process(delta):
 	
 	velocity = move_and_slide(velocity)
 	
+	if Input.is_action_just_pressed("ui_shoot"):
+		print("pew pew")
+	

@@ -20,3 +20,6 @@ vframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="PositionMuzzle" type="Position2D" parent="."]
+position = Vector2( 33.5749, 9.49615 )

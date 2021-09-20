@@ -26,4 +26,3 @@ func _physics_process(delta):
 		var bullet = Bullet.instance()
 		owner.add_child(bullet)
 		bullet.transform = $PositionMuzzle.global_transform
-		print("pew pew")

@@ -15,7 +15,9 @@ tile_data = PoolIntArray( 0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 2, 0, 4, 2, 0, 5, 2, 0, 
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 265.348, 92.9581 )
-collision_mask = 1
+collision_mask = 5
 
 [node name="Zombie" parent="." instance=ExtResource( 3 )]
 position = Vector2( 479, 362 )
+collision_layer = 4
+collision_mask = 3

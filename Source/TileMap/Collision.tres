@@ -1,7 +1,6 @@
-[gd_resource type="TileSet" load_steps=23 format=2]
+[gd_resource type="TileSet" load_steps=22 format=2]
 
 [ext_resource path="res://Assets/Tilesheet/tilesheet_complete.png" type="Texture" id=1]
-[ext_resource path="res://Assets/Spritesheet/roguelikeCity_magenta.png" type="Texture" id=2]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -1226,66 +1225,3 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 75/shape_one_way_margin = 0.0
 75/shapes = [  ]
 75/z_index = 0
-76/name = "roguelikeCity_magenta.png 76"
-76/texture = ExtResource( 2 )
-76/tex_offset = Vector2( 0, 0 )
-76/modulate = Color( 1, 1, 1, 1 )
-76/region = Rect2( 17, 0, 16, 16 )
-76/tile_mode = 2
-76/autotile/icon_coordinate = Vector2( 0, 0 )
-76/autotile/tile_size = Vector2( 32, 32 )
-76/autotile/spacing = 0
-76/autotile/occluder_map = [  ]
-76/autotile/navpoly_map = [  ]
-76/autotile/priority_map = [  ]
-76/autotile/z_index_map = [  ]
-76/occluder_offset = Vector2( 0, 0 )
-76/navigation_offset = Vector2( 0, 0 )
-76/shape_offset = Vector2( 0, 0 )
-76/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-76/shape_one_way = false
-76/shape_one_way_margin = 0.0
-76/shapes = [  ]
-76/z_index = 0
-77/name = "roguelikeCity_magenta.png 77"
-77/texture = ExtResource( 2 )
-77/tex_offset = Vector2( 0, 0 )
-77/modulate = Color( 1, 1, 1, 1 )
-77/region = Rect2( 0, 0, 16, 16 )
-77/tile_mode = 0
-77/occluder_offset = Vector2( 0, 0 )
-77/navigation_offset = Vector2( 0, 0 )
-77/shape_offset = Vector2( 0, 0 )
-77/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-77/shape_one_way = false
-77/shape_one_way_margin = 0.0
-77/shapes = [  ]
-77/z_index = 0
-78/name = "roguelikeCity_magenta.png 78"
-78/texture = ExtResource( 2 )
-78/tex_offset = Vector2( 0, 0 )
-78/modulate = Color( 1, 1, 1, 1 )
-78/region = Rect2( 34, 0, 16, 16 )
-78/tile_mode = 0
-78/occluder_offset = Vector2( 0, 0 )
-78/navigation_offset = Vector2( 0, 0 )
-78/shape_offset = Vector2( 0, 0 )
-78/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-78/shape_one_way = false
-78/shape_one_way_margin = 0.0
-78/shapes = [  ]
-78/z_index = 0
-79/name = "roguelikeCity_magenta.png 79"
-79/texture = ExtResource( 2 )
-79/tex_offset = Vector2( 0, 0 )
-79/modulate = Color( 1, 1, 1, 1 )
-79/region = Rect2( 51, 0, 16, 16 )
-79/tile_mode = 0
-79/occluder_offset = Vector2( 0, 0 )
-79/navigation_offset = Vector2( 0, 0 )
-79/shape_offset = Vector2( 0, 0 )
-79/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-79/shape_one_way = false
-79/shape_one_way_margin = 0.0
-79/shapes = [  ]
-79/z_index = 0

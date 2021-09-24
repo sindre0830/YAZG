@@ -1,5 +1,8 @@
 extends "res://Actor/Actor.gd"
 
+var HEALTHBAR = "UI/Healthbar"
+var GUNDISPLAY = "UI/GunDisplay"
+
 var velocity = Vector2.ZERO
 var gun = default_gun.new()
 onready var attackCooldown = $AttackCooldown
@@ -10,8 +13,8 @@ func _init():
 	FRICTION = 4000
 
 func _ready():
-	self.get_parent().get_node("Healthbar").max_value = max_health
-	self.get_parent().get_node("Healthbar").value = health
+	self.get_node(HEALTHBAR).max_value = max_health
+	self.get_node(HEALTHBAR).value = health
 
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
@@ -21,6 +24,7 @@ func _physics_process(delta):
 	input_vector = input_vector.normalized()
 	
 	look_at(mpos)
+
 	if input_vector != Vector2.ZERO:
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
@@ -32,8 +36,8 @@ func _physics_process(delta):
 		gun._on_click($PositionMuzzle, attackCooldown, self)
 	
 	if Input.is_action_just_pressed("ui_switchWeapon"):
-		self.get_parent().get_node("GunDisplay").switchGunDisplayed()
+		self.get_node(GUNDISPLAY).switchGunDisplayed()
 
 func take_damage(amount):
 	.take_damage(amount)
-	self.get_parent().get_node("Healthbar").value = health
+	self.get_node(HEALTHBAR).value = health

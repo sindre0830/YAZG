@@ -16,6 +16,7 @@ enum {
 var velocity = Vector2.ZERO
 var state = CHASE
 
+onready var TweenNode = get_node("Tween")
 onready var sprite = $Sprite
 onready var zoneDetect = $ZoneDetect
 
@@ -28,17 +29,23 @@ func _physics_process(delta):
 		CHASE:
 			var player = zoneDetect.player
 			if player != null:
-				var dir = (player.global_position - global_position).normalized()
-				velocity = velocity.move_toward(dir * MAX_SPEED, ACCELERATION * delta)
-			else:
-				state = DAZE
-			# How to make it smoothly turn to player?
-			sprite.rotation = lerp(rotation,velocity.angle(),1)
+				turn(player)
 	velocity = move_and_slide(velocity)
 
 func seek_player():
 	if zoneDetect.can_see_player():
 		state = CHASE
+
+# source: https://old.reddit.com/r/godot/comments/8tlwdt/2d_rotate_towards_point_with_specfic_speed/e1e182w/
+func _set_rotation(new_trans):
+	self.transform.x = new_trans
+	self.transform = self.transform.orthonormalized()
+
+func turn(player):
+	var start = self.transform.x
+	var dir = (player.global_position - global_position).normalized()
+	TweenNode.interpolate_method(self, '_set_rotation', start, dir, 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	TweenNode.start()
 
 func die():
 	# Delete Zombie instance

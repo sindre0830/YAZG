@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id=1]
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 49.7378
+radius = 67.6872
 
 [node name="Zombie" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -25,7 +25,10 @@ shape = SubResource( 1 )
 
 [node name="CollisionShape2D" parent="ZoneDetect" index="0"]
 modulate = Color( 0.054902, 0.956863, 0.831373, 0.282353 )
+position = Vector2( 83, 0 )
 scale = Vector2( 3, 3 )
 shape = SubResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]
 
 [editable path="ZoneDetect"]

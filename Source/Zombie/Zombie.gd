@@ -30,7 +30,7 @@ func _physics_process(delta):
 			var player = zoneDetect.player
 			if player != null:
 				turn(player)
-				velocity = global_position.direction_to(player.global_position)
+				velocity = Vector2(1, 0).rotated(rotation)
 				move_and_collide(velocity * MAX_SPEED * delta)
 
 func seek_player():

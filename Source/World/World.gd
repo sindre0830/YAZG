@@ -7,10 +7,8 @@ var boxes
 var pos = [200, 200, 500, 600]
 var collision
 var boxcollision
-var tex = ImageTexture.new()
 var image = preload("res://Assets/Spritesheet/BreakableObj/broken_box.png")
 var whole_box = preload("res://Assets/Spritesheet/BreakableObj/box.png")
-
 
 var listboxes = []
 
@@ -33,16 +31,9 @@ func createboxes():
 		boxes.position = Vector2(pos[i],pos[i+1]) # Just some shit placement code
 
 func _unhandled_input(event):
-	
-	
-
 	if event is InputEventKey:
 		if event.pressed and event.scancode == KEY_S:
-			
-			
-			
-			tex.create_from_image(image)
-			print("HEYOOO")
+			#tex.create_from_image(image)
 			for list in listboxes:
 				list.get_node("Sprite").set_texture(image)
 				

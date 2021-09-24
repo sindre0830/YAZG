@@ -7,17 +7,18 @@ flags = 0
 flags = 0
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 27.6786, 26.5134 )
+extents = Vector2( 30, 30 )
 
 [node name="Box" type="Area2D"]
-position = Vector2( 50, 50 )
+position = Vector2( -0.860626, 1.03716 )
+collision_layer = 9
+collision_mask = 7
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.519812, 0.842079 )
 shape = SubResource( 2 )
 
 [node name="Position2D" type="Position2D" parent="."]

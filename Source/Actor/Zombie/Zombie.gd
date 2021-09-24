@@ -1,12 +1,5 @@
-extends KinematicBody2D
+extends "res://Actor/Actor.gd"
 # Source: https://www.youtube.com/watch?v=R0XvL3_t840
-
-export var ACCELERATION = 300
-export var MAX_SPEED = 50
-export var FRICTION = 200
-
-export (float) var max_health = 100
-onready var health = max_health
 
 enum {
 	DAZE,
@@ -19,6 +12,10 @@ var state = CHASE
 onready var TweenNode = get_node("Tween")
 onready var sprite = $Sprite
 onready var zoneDetect = $ZoneDetect
+
+func _init():
+	# TODO: Init values
+	pass
 
 func _physics_process(delta):
 	match state:
@@ -47,16 +44,4 @@ func turn(player):
 	var dir = (player.global_position - global_position).normalized()
 	TweenNode.interpolate_method(self, '_set_rotation', start, dir, 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	TweenNode.start()
-
-func die():
-	# Delete Zombie instance
-	queue_free()
-
-func take_damage(amount):
-	# Reduce health by given amount
-	health = clamp(health - amount, 0, max_health)
-	
-	# Kill zombie if it's health is 0
-	if health == 0:
-		die()
 	

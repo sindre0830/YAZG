@@ -1,12 +1,13 @@
-extends KinematicBody2D
-
-const ACCELERATION = 2000
-const MAX_SPEED = 400
-const FRICTION = 4000
+extends "res://Actor/Actor.gd"
 
 var velocity = Vector2.ZERO
 var gun = default_gun.new()
 onready var attackCooldown = $AttackCooldown
+
+func _init():
+	ACCELERATION = 2000
+	MAX_SPEED = 400
+	FRICTION = 4000
 
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO

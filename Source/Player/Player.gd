@@ -6,7 +6,6 @@ const FRICTION = 4000
 
 var velocity = Vector2.ZERO
 onready var gun = $Guns/HandGun
-onready var attackCooldown = $AttackCooldown
 	
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO

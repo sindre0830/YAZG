@@ -25,3 +25,6 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("ui_shoot") and attackCooldown.is_stopped():
 		gun._on_click($PositionMuzzle, attackCooldown, self)
+	
+	if Input.is_action_just_pressed("ui_switchWeapon"):
+		self.get_parent().get_child(4).switchGunDisplayed()

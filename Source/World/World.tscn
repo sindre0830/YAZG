@@ -27,3 +27,5 @@ collision_mask = 3
 [node name="Healthbar" parent="." instance=ExtResource( 5 )]
 
 [node name="GunDisplay" parent="." instance=ExtResource( 6 )]
+margin_top = 640.0
+margin_bottom = 768.0

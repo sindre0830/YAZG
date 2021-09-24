@@ -5,9 +5,9 @@ const MAX_SPEED = 400
 const FRICTION = 4000
 
 var velocity = Vector2.ZERO
-var gun = default_gun.new()
+onready var gun = $Guns/HandGun
 onready var attackCooldown = $AttackCooldown
-
+	
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
 	var mpos = get_global_mouse_position()
@@ -23,8 +23,10 @@ func _physics_process(delta):
 	
 	velocity = move_and_slide(velocity)
 	
-	if Input.is_action_pressed("ui_shoot") and attackCooldown.is_stopped():
-		gun._on_click($PositionMuzzle, attackCooldown, self)
-	
+	if Input.is_action_pressed("ui_shoot") and gun.get_child(0).is_stopped():
+		gun.shoot($PositionMuzzle, self)
+
 	if Input.is_action_just_pressed("ui_switchWeapon"):
 		self.get_parent().get_node("GunDisplay").switchGunDisplayed()
+	
+	

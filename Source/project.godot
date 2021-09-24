@@ -8,22 +8,6 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "gun",
-"class": "default_gun",
-"language": "GDScript",
-"path": "res://Guns/default_gun.gd"
-}, {
-"base": "Reference",
-"class": "gun",
-"language": "GDScript",
-"path": "res://Guns/gun.gd"
-} ]
-_global_script_class_icons={
-"default_gun": "",
-"gun": ""
-}
-
 [application]
 
 config/name="Source"

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://TileMap/Collision.tres" type="TileSet" id=2]
 [ext_resource path="res://Zombie/Zombie.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World/World.gd" type="Script" id=4]
 [ext_resource path="res://UI/Healthbar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UI/GunDisplay.tscn" type="PackedScene" id=6]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 4 )
@@ -24,3 +25,7 @@ collision_layer = 4
 collision_mask = 3
 
 [node name="Healthbar" parent="." instance=ExtResource( 5 )]
+
+[node name="GunDisplay" parent="." instance=ExtResource( 6 )]
+margin_top = 640.0
+margin_bottom = 768.0

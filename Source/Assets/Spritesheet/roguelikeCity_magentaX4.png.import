@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/roguelikeCity_magentaX2.png-89182048b54c6886a53e6178db5bca97.stex"
+path="res://.import/roguelikeCity_magentaX4.png-1d26eac831b9a4532a59187f1ec13f33.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Spritesheet/roguelikeCity_magentaX2.png"
-dest_files=[ "res://.import/roguelikeCity_magentaX2.png-89182048b54c6886a53e6178db5bca97.stex" ]
+source_file="res://Assets/Spritesheet/roguelikeCity_magentaX4.png"
+dest_files=[ "res://.import/roguelikeCity_magentaX4.png-1d26eac831b9a4532a59187f1ec13f33.stex" ]
 
 [params]
 

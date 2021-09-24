@@ -9,6 +9,10 @@ func _init():
 	MAX_SPEED = 400
 	FRICTION = 4000
 
+func _ready():
+	self.get_parent().get_node("Healthbar").max_value = max_health
+	self.get_parent().get_node("Healthbar").value = health
+
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
 	var mpos = get_global_mouse_position()
@@ -29,3 +33,7 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("ui_switchWeapon"):
 		self.get_parent().get_node("GunDisplay").switchGunDisplayed()
+
+func take_damage(amount):
+	.take_damage(amount)
+	self.get_parent().get_node("Healthbar").value = health

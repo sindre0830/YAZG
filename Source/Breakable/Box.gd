@@ -7,7 +7,7 @@ onready var health = max_health
 func destroybox():
 	get_node("Sprite").set_texture(whole_box)
 	$CollisionShape2D.set_deferred("disabled", true)
-	print("Destroybox")
+
 
 func take_damage(amount):
 	# Reduce health by given amount

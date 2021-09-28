@@ -1,6 +1,13 @@
 extends "res://Actor/Actor.gd"
 # Source: https://www.youtube.com/watch?v=R0XvL3_t840
 
+#var ACCELERATION = 300
+#export var MAX_SPEED = 50
+#export var FRICTION = 200
+
+# get stats as its own thing
+onready var stats = get_node("Stats")
+
 enum {
 	DAZE,
 	CHASE	
@@ -44,4 +51,16 @@ func turn(player):
 	var dir = (player.global_position - global_position).normalized()
 	TweenNode.interpolate_method(self, '_set_rotation', start, dir, 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	TweenNode.start()
+
+func die():
+	# Delete Zombie instance
+	queue_free()
+
+# previous func - who implemented?
+func take_damage(amount):
+	# Reduce health by given amount
+	stats.health = clamp(stats.health - amount, 0, stats.max_health)
 	
+	# Kill zombie if it's health is 0
+	if stats.health == 0:
+		die()

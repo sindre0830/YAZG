@@ -8,7 +8,7 @@ func init(var new_speed) -> void:
 	speed = new_speed
 	
 func _physics_process(delta):
-	global_position += transform.x * speed * delta
+	global_position += transform.x.normalized() * speed * delta
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()

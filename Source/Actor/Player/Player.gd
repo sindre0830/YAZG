@@ -4,7 +4,9 @@ var HEALTHBAR = "UI/Healthbar"
 var GUNDISPLAY = "UI/GunDisplay"
 
 var velocity = Vector2.ZERO
-onready var gun = $Guns/HandGun
+onready var guns = [$Guns/Shotgun, $Guns/Handgun]
+onready var gun_index = 0
+onready var gun = guns[gun_index]
 onready var attackCooldown = $AttackCooldown
 
 func _init():
@@ -37,6 +39,10 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("ui_switchWeapon"):
 		self.get_node(GUNDISPLAY).switchGunDisplayed()
+		gun_index += 1
+		if gun_index >= guns.size():
+			gun_index = 0
+		gun = guns[gun_index]
 
 func take_damage(amount):
 	.take_damage(amount)

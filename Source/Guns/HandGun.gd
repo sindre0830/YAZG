@@ -6,6 +6,6 @@ func _init().(700) -> void:
 func shoot(muzzle: Position2D, player: Node):
 	var bullet = Bullet.instance()
 	bullet.init(speed)
-	bullet.transform = muzzle.global_transform
+	bullet.transform =  muzzle.global_transform 
 	player.owner.add_child(bullet)
 	$Timer.start()

@@ -3,6 +3,7 @@ extends KinematicBody2D
 export var ACCELERATION = 300
 export var MAX_SPEED = 50
 export var FRICTION = 200
+export var velocity = Vector2.ZERO
 
 export (float) var max_health = 100
 onready var health = max_health

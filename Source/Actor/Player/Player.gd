@@ -3,7 +3,7 @@ extends "res://Actor/Actor.gd"
 var HEALTHBAR = "UI/Healthbar"
 var GUNDISPLAY = "UI/GunDisplay"
 
-var velocity = Vector2.ZERO
+
 var gun = default_gun.new()
 onready var attackCooldown = $AttackCooldown
 

@@ -22,5 +22,3 @@ scale = Vector2( 3.2, 3.2 )
 shape = SubResource( 1 )
 
 [node name="Tween" type="Tween" parent="."]
-
-[node name="Timer" type="Timer" parent="."]

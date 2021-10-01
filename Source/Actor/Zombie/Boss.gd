@@ -1,21 +1,18 @@
 extends "res://Actor/Actor.gd"
 
+
 var velocity = Vector2.ZERO
+var path
+onready var player = get_parent().get_node("Player")
+onready var navigation = get_parent().get_node("Navigation2D")
 
-onready var TweenNode = get_node("Tween")
+func _physics_process(delta) -> void:
+	var new_path = navigation.get_simple_path(global_position, player.global_position, false)
+	#new_path.remove(0)
+	if new_path.size() > 1:
+		path = new_path
 
-func _physics_process(delta):
-	var player = get_parent().get_node("Player")
-	turn(player)
-	velocity = Vector2(1, 0).rotated(rotation)
-	move_and_collide(velocity * MAX_SPEED * delta)
-
-func _set_rotation(new_trans):
-	self.transform.x = new_trans
-	self.transform = self.transform.orthonormalized()
-
-func turn(player):
-	var start = self.transform.x
-	var dir = (player.global_position - global_position).normalized()
-	TweenNode.interpolate_method(self, '_set_rotation', start, dir, 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN)
-	TweenNode.start()
+		var distance = path[1] - global_position
+		var direction = distance.normalized()
+		#print(direction)
+		velocity = move_and_collide(direction * MAX_SPEED * delta)

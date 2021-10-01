@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://TileMap/64xTileset.tres" type="TileSet" id=2]
 [ext_resource path="res://TileMap/16xTileset.tres" type="TileSet" id=3]
 [ext_resource path="res://Actor/Zombie/Zombie.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Breakable/Box.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Breakable/Chest.tscn" type="PackedScene" id=6]
 
 [node name="World" type="Node2D"]
 
@@ -24,12 +23,6 @@ tile_data = PoolIntArray( 0, 9, 0, 1, 10, 0, 2, 10, 0, 3, 11, 0, 4, 9, 0, 5, 10,
 position = Vector2( 157.787, 341.213 )
 collision_layer = 4
 collision_mask = 23
-
-[node name="Chest" parent="." instance=ExtResource( 6 )]
-position = Vector2( 233.345, 463.862 )
-collision_layer = 8
-collision_mask = 23
-max_health = 100.0
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 285.393, 225.702 )

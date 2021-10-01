@@ -1,8 +1,11 @@
-extends Area2D
+extends StaticBody2D
 
 var whole_box = preload("res://Assets/Spritesheet/BreakableObj/broken_box.png")
 export (float) var max_health = 100
 onready var health = max_health
+
+func _ready():
+	connect("body_entered", self, "_on_Box_body_entered") # Connecting the box and the player
 
 func destroybox():
 	get_node("Sprite").set_texture(whole_box)
@@ -22,9 +25,4 @@ func is_broken():
 	if $CollisionShape2D.disabled == true:
 		return true
 	return false
-	
-	
-	
-
-
 

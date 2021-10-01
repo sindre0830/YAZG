@@ -5,6 +5,12 @@ onready var player = get_parent().get_node("Player")
 onready var tween = get_node("Tween")
 var path
 
+var state
+enum {
+	DAZE,
+	CHASE	
+}
+
 func _set_rotation(new_trans):
 	self.transform.x = new_trans
 	self.transform = self.transform.orthonormalized()
@@ -24,3 +30,8 @@ func move(delta, position, navigation):
 		velocity = Vector2(1, 0).rotated(rotation)
 
 		velocity = move_and_collide(velocity * MAX_SPEED * delta)
+		
+
+func seek_player(zoneDetect):
+	if zoneDetect.can_see_player():
+		state = CHASE

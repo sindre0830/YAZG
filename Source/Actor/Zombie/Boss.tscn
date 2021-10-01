@@ -20,3 +20,7 @@ region_rect = Rect2( 424, 0, 37, 45 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2( 3.2, 3.2 )
 shape = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Timer" type="Timer" parent="."]

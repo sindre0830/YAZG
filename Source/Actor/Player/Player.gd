@@ -3,7 +3,7 @@ extends "res://Actor/Actor.gd"
 var HEALTHBAR = "UI/Healthbar"
 var GUNDISPLAY = "UI/GunDisplay"
 
-var velocity = Vector2.ZERO
+
 onready var guns = [$Guns/Shotgun, $Guns/Handgun]
 onready var gun_index = 0
 onready var gun = guns[gun_index]

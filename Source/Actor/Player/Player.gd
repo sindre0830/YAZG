@@ -4,7 +4,7 @@ var HEALTHBAR = "UI/Healthbar"
 var GUNDISPLAY = "UI/GunDisplay"
 
 
-onready var guns = [$Guns/Shotgun, $Guns/Handgun]
+onready var guns = [$"Guns/Mini-Gun", $Guns/Handgun]
 onready var gun_index = 0
 onready var gun = guns[gun_index]
 onready var attackCooldown = $AttackCooldown

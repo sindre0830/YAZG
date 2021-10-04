@@ -1,6 +1,6 @@
 extends "res://Guns/Guns.gd"
 onready var damage = 12
-var n_bullets = 3
+onready var n_bullets = 3
 
 func _init().(500) -> void:
 	pass

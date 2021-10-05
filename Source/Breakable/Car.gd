@@ -1,13 +1,11 @@
 extends StaticBody2D
 
-var whole_box = preload("res://Assets/Spritesheet/BreakableObj/broken_box.png")
 export (float) var max_health = 100
 onready var health = max_health
 
 
 func destroybox():
-	get_node("Sprite").set_texture(whole_box)
-	$CollisionShape2D.set_deferred("disabled", true)
+	queue_free()
 
 
 func take_damage(amount):

@@ -45,7 +45,5 @@ shape = SubResource( 3 )
 
 [node name="Stats" parent="." instance=ExtResource( 5 )]
 
-[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
-
 [editable path="ZoneDetect"]
 [editable path="Hurtbox"]

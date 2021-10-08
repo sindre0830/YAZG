@@ -25,13 +25,3 @@ func _physics_process(delta):
 			var player = zoneDetect.player
 			if player != null:
 				move(delta, global_position, navigation)
-
-func _on_Hurtbox_body_entered(player):
-	if player.name == "Player":
-		reachPlayer = true
-		player.take_damage(damage)
-		timer.start()
-	
-func _on_Hurtbox_body_exited(body):
-	if player.name == "Player":
-		reachPlayer = false

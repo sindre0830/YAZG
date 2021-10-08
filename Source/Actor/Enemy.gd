@@ -41,5 +41,16 @@ func seek_player(zoneDetect):
 
 
 func _on_timer_timeout():
-	if player.has_method("take_damage") && reachPlayer:
+	if player != null:
+		if player.has_method("take_damage") && reachPlayer:
+			player.take_damage(damage)
+
+func _on_Hurtbox_body_entered(player):
+	if player.name == "Player":
+		reachPlayer = true
 		player.take_damage(damage)
+		timer.start()
+	
+func _on_Hurtbox_body_exited(body):
+	if player.name == "Player":
+		reachPlayer = false

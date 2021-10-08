@@ -4,8 +4,9 @@ var HEALTHBAR = "UI/Healthbar"
 var GUNDISPLAY = "UI/GunDisplay"
 
 
-var gun = default_gun.new()
-onready var attackCooldown = $AttackCooldown
+onready var guns = [$"Guns/Mini-Gun", $Guns/Handgun]
+onready var gun_index = 0
+onready var gun = guns[gun_index]
 
 func _init():
 	ACCELERATION = 2000
@@ -32,11 +33,15 @@ func _physics_process(delta):
 	
 	velocity = move_and_slide(velocity)
 	
-	if Input.is_action_pressed("ui_shoot") and attackCooldown.is_stopped():
-		gun._on_click($PositionMuzzle, attackCooldown, self)
-	
+	if Input.is_action_pressed("ui_shoot") and gun.get_child(0).is_stopped():
+		gun.shoot($PositionMuzzle, self)
+
 	if Input.is_action_just_pressed("ui_switchWeapon"):
 		self.get_node(GUNDISPLAY).switchGunDisplayed()
+		gun_index += 1
+		if gun_index >= guns.size():
+			gun_index = 0
+		gun = guns[gun_index]
 
 func take_damage(amount):
 	.take_damage(amount)

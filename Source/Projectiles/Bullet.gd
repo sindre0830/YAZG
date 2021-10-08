@@ -1,14 +1,13 @@
 extends Area2D
-
-onready var damage = 24
-
+var damage
 var speed
 
-func init(var new_speed) -> void:
+func init(var new_speed, new_damage: int = 24) -> void:
 	speed = new_speed
+	damage = new_damage
 	
 func _physics_process(delta):
-	global_position += transform.x * speed * delta
+	global_position += transform.x.normalized() * speed * delta
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()

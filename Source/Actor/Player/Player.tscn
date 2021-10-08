@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Actor/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Spritesheet/spritesheet_characters.png" type="Texture" id=2]
-[ext_resource path="res://UI/UserInterface.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Guns/Guns.gd" type="Script" id=3]
+[ext_resource path="res://Guns/HandGun.gd" type="Script" id=4]
+[ext_resource path="res://UI/UserInterface.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Guns/Shotgun.gd" type="Script" id=6]
+[ext_resource path="res://Guns/Mini-gun.gd" type="Script" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 16.0
@@ -27,11 +31,31 @@ shape = SubResource( 1 )
 [node name="PositionMuzzle" type="Position2D" parent="."]
 position = Vector2( 33.5749, 9.49615 )
 
-[node name="AttackCooldown" type="Timer" parent="."]
+[node name="Guns" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="Handgun" type="Node" parent="Guns"]
+script = ExtResource( 4 )
+
+[node name="Timer" type="Timer" parent="Guns/Handgun"]
 wait_time = 0.3
+one_shot = true
+
+[node name="Shotgun" type="Node" parent="Guns"]
+script = ExtResource( 6 )
+
+[node name="Timer" type="Timer" parent="Guns/Shotgun"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Mini-Gun" type="Node" parent="Guns"]
+script = ExtResource( 7 )
+
+[node name="Timer" type="Timer" parent="Guns/Mini-Gun"]
+wait_time = 0.05
 one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
-[node name="UI" parent="." instance=ExtResource( 3 )]
+[node name="UI" parent="." instance=ExtResource( 5 )]

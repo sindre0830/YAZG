@@ -7,6 +7,13 @@ onready var zoneDetect = $ZoneDetect
 func _init():
 	state = DAZE
 	pass
+	
+func _ready():
+	timer = Timer.new()
+	timer.set_wait_time(1.0)
+	timer.set_one_shot(false)
+	add_child(timer)	
+	timer.connect("timeout", self, "_on_timer_timeout")
 
 func _physics_process(delta):
 	match state:

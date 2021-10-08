@@ -15,9 +15,3 @@ func take_damage(amount):
 	#Destroys the box
 	if health == 0:
 		destroybox()
-		
-# Checks if the box is already broken
-func is_broken():
-	if $CollisionShape2D.disabled == true:
-		return true
-	return false

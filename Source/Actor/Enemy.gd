@@ -4,6 +4,9 @@ onready var player = get_parent().get_node("Player")
 
 onready var tween = get_node("Tween")
 var path
+var damage = 10
+var reachPlayer = false
+var timer
 
 var state
 enum {
@@ -35,3 +38,8 @@ func move(delta, position, navigation):
 func seek_player(zoneDetect):
 	if zoneDetect.can_see_player():
 		state = CHASE
+
+
+func _on_timer_timeout():
+	if player.has_method("take_damage") && reachPlayer:
+		player.take_damage(damage)

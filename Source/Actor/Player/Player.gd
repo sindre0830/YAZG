@@ -7,7 +7,6 @@ var GUNDISPLAY = "UI/GunDisplay"
 onready var guns = [$"Guns/Mini-Gun", $Guns/Handgun]
 onready var gun_index = 0
 onready var gun = guns[gun_index]
-onready var attackCooldown = $AttackCooldown
 
 func _init():
 	ACCELERATION = 2000

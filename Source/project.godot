@@ -24,6 +24,10 @@ window/stretch/aspect="keep"
 
 layer=false
 
+[gui]
+
+theme/use_hidpi=true
+
 [input]
 
 ui_left={
@@ -75,6 +79,8 @@ ui_switchWeapon={
 2d_physics/layer_3="Zombie"
 2d_render/layer_4="Breakable"
 2d_physics/layer_4="Breakable"
+2d_render/layer_5="Projectiles"
+2d_physics/layer_5="Projectiles"
 
 [physics]
 

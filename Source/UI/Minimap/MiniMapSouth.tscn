@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/UI/roomTemp.png" type="Texture" id=1]
+
+[node name="MiniMapSouth" type="MarginContainer"]
+margin_left = 877.0
+margin_right = 1023.0
+margin_bottom = 146.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Room" type="Sprite" parent="."]
+position = Vector2( 73, 130.9 )
+rotation = 1.5708
+scale = Vector2( 0.35836, 1.5 )
+texture = ExtResource( 1 )
+offset = Vector2( 20, 0 )
+
+[node name="Hallway" type="Sprite" parent="."]
+position = Vector2( 70, 116.4 )
+scale = Vector2( 0.152344, 0.451182 )
+texture = ExtResource( 1 )
+offset = Vector2( 20, 0 )

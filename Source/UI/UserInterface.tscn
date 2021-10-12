@@ -1,11 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://UI/Healthbar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/GunDisplay.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/UI/pattern_blueprintPaper.png" type="Texture" id=3]
 [ext_resource path="res://Assets/UI/heart.svg" type="Texture" id=4]
 [ext_resource path="res://Assets/UI/roomTemp.png" type="Texture" id=5]
-[ext_resource path="res://UI/MiniMap.gd" type="Script" id=6]
+[ext_resource path="res://UI/Minimap/MiniMap.gd" type="Script" id=6]
+[ext_resource path="res://UI/Minimap/MiniMapWest.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/Minimap/MiniMapEast.tscn" type="PackedScene" id=8]
+[ext_resource path="res://UI/Minimap/MiniMapNorth.tscn" type="PackedScene" id=9]
+[ext_resource path="res://UI/Minimap/MiniMapSouth.tscn" type="PackedScene" id=10]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -18,8 +22,8 @@ margin_bottom = 768.0
 [node name="Healthbar" parent="." instance=ExtResource( 1 )]
 
 [node name="MiniMap" type="MarginContainer" parent="."]
-margin_left = 877.0
-margin_right = 1023.0
+margin_left = 877.25
+margin_right = 1023.25
 margin_bottom = 146.0
 script = ExtResource( 6 )
 __meta__ = {
@@ -41,3 +45,19 @@ texture = ExtResource( 5 )
 [node name="Player" type="Sprite" parent="MiniMap/NinePatchRect/Room"]
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 4 )
+
+[node name="MiniMapEast" parent="MiniMap" instance=ExtResource( 8 )]
+margin_left = 0.0
+margin_right = 146.0
+
+[node name="MiniMapNorth" parent="MiniMap" instance=ExtResource( 9 )]
+margin_left = 0.0
+margin_right = 146.0
+
+[node name="MiniMapSouth" parent="MiniMap" instance=ExtResource( 10 )]
+margin_left = 0.0
+margin_right = 146.0
+
+[node name="MiniMapWest" parent="MiniMap" instance=ExtResource( 7 )]
+margin_left = 0.0
+margin_right = 146.0

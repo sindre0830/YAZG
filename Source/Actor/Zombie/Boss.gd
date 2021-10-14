@@ -8,6 +8,9 @@ func _ready():
 	timer.set_one_shot(false)
 	add_child(timer)	
 	timer.connect("timeout", self, "_on_timer_timeout")
+	#change stats
+	damage = 20
+	#health = 1000 #doesn't work atm
 
 func _physics_process(delta) -> void:
 	move(delta, global_position, navigation)

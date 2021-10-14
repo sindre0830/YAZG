@@ -1,7 +1,8 @@
 extends "res://Actor/Enemy.gd"
 
 onready var navigation = get_parent().get_node("Navigation2D")
-	
+var flagDamageModified = false
+
 func _ready():
 	timer = Timer.new()
 	timer.set_wait_time(1.0)
@@ -14,3 +15,5 @@ func _ready():
 
 func _physics_process(delta) -> void:
 	move(delta, global_position, navigation)
+	if !flagDamageModified && health < max_health / 2:
+		damage = 30

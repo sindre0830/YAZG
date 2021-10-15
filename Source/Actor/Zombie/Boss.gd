@@ -11,7 +11,9 @@ func _ready():
 	timer.connect("timeout", self, "_on_timer_timeout")
 	#change stats
 	damage = 20
-	#health = 1000 #doesn't work atm
+	max_health = get_node("Stats").max_health
+	health = get_node("Stats").max_health
+	MAX_SPEED = 150
 
 func _physics_process(delta) -> void:
 	move(delta, global_position, navigation)

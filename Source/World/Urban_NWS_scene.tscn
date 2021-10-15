@@ -6,7 +6,7 @@
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 
-[node name="16xTileMap" type="TileMap" parent="Navigation2D"]
+[node name="64xTileMap" type="TileMap" parent="Navigation2D"]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1

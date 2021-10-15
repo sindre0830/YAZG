@@ -2,11 +2,13 @@ extends "res://Actor/Actor.gd"
 
 var HEALTHBAR = "UI/Healthbar"
 var GUNDISPLAY = "UI/GunDisplay"
+var DIFFICULTY = "UI/Difficulty/Label2"
 
 
 onready var guns = [$"Guns/Mini-Gun", $Guns/Handgun]
 onready var gun_index = 0
 onready var gun = guns[gun_index]
+var diff = 1
 
 func _init():
 	ACCELERATION = 2000
@@ -49,3 +51,9 @@ func take_damage(amount):
 
 func die():
 	assert(get_tree().change_scene("res://Menu/DeathScreen.tscn") == OK)
+	
+func increase_diff():
+	diff += 1
+	
+	self.get_node(DIFFICULTY).text = str(diff) + "%"
+	

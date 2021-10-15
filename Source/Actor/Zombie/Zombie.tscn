@@ -42,10 +42,15 @@ shape = SubResource( 2 )
 [node name="Hurtbox" parent="." instance=ExtResource( 6 )]
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
-position = Vector2( -2, 0 )
+position = Vector2( 8.8627, -1.52588e-05 )
 shape = SubResource( 3 )
 
 [node name="Stats" parent="." instance=ExtResource( 5 )]
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_Hurtbox_body_entered"]
+[connection signal="body_exited" from="Hurtbox" to="." method="_on_Hurtbox_body_exited"]
 
 [editable path="ZoneDetect"]
 [editable path="Hurtbox"]

@@ -1,17 +1,10 @@
-extends StaticBody2D
+extends "res://Breakable/BreakableObject.gd"
 
-export (float) var max_health = 100
-onready var health = max_health
+func _init():
+	max_health = 100
+	health = max_health
 
 
-func destroybox():
+func destroy_object():
+	# Remove car
 	queue_free()
-
-
-func take_damage(amount):
-	# Reduce health by given amount
-	health = clamp(health - amount, 0, max_health)
-	
-	#Destroys the box
-	if health == 0:
-		destroybox()

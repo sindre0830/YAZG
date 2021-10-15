@@ -46,3 +46,6 @@ func _physics_process(delta):
 func take_damage(amount):
 	.take_damage(amount)
 	self.get_node(HEALTHBAR).value = health
+
+func die():
+	assert(get_tree().change_scene("res://Menu/DeathScreen.tscn") == OK)

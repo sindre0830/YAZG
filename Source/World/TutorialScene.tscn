@@ -27,7 +27,6 @@ collision_mask = 5
 
 [node name="Zombie" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1074.35, 365.364 )
-collision_layer = 4
 collision_mask = 3
 
 [node name="Box" parent="." instance=ExtResource( 3 )]
@@ -35,30 +34,24 @@ position = Vector2( 217.778, 321.88 )
 
 [node name="Zombie2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 3533.14, 156.821 )
-collision_layer = 4
 collision_mask = 3
 
 [node name="Zombie3" parent="." instance=ExtResource( 2 )]
 position = Vector2( 3149.69, 298.092 )
-collision_layer = 4
 collision_mask = 3
 
 [node name="Zombie4" parent="." instance=ExtResource( 2 )]
 position = Vector2( 2746.06, 351.909 )
-collision_layer = 4
 collision_mask = 3
 
 [node name="Zombie5" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1834.52, 452.817 )
-collision_layer = 4
 collision_mask = 3
 
 [node name="Zombie6" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1649.53, 314.91 )
-collision_layer = 4
 collision_mask = 3
 
 [node name="Zombie7" parent="." instance=ExtResource( 2 )]
 position = Vector2( 2234.79, 321.637 )
-collision_layer = 4
 collision_mask = 3

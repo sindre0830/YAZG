@@ -15,8 +15,9 @@ func _init():
 
 func _ready():
 	self.get_node(HEALTHBAR).max_value = max_health
-	self.get_node(HEALTHBAR).value = health
-
+	self.get_node(HEALTHBAR).value = PlayerValues.current_health
+	health = PlayerValues.current_health
+	
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
 	var mpos = get_global_mouse_position()
@@ -45,6 +46,7 @@ func _physics_process(delta):
 
 func take_damage(amount):
 	.take_damage(amount)
+	PlayerValues.current_health = health
 	self.get_node(HEALTHBAR).value = health
 
 func die():

@@ -3,7 +3,6 @@ extends "res://Actor/Actor.gd"
 var HEALTHBAR = "UI/Healthbar"
 var GUNDISPLAY = "UI/GunDisplay"
 
-
 onready var guns = [$"Guns/Mini-Gun", $Guns/Handgun]
 onready var gun_index = 0
 onready var gun = guns[gun_index]
@@ -16,6 +15,7 @@ func _init():
 func _ready():
 	self.get_node(HEALTHBAR).max_value = max_health
 	self.get_node(HEALTHBAR).value = health
+	get_node("UI/MiniMap").updateMinimap()		# Get current minimap
 
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO

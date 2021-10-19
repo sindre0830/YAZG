@@ -6,8 +6,23 @@ extends MarginContainer
 
 # Then add correct map-scene to world-scene, and update it when scene changes
 
-# temp values for idea
-var map_index = 0
-var world2 = 4		# binary 0100, north, east, south, west - our exit is east
-var map = [world2]
-var mapPos = map[map_index]
+# Store minimap as array of bools - north, west, south, east
+export var map = [false,false,false,false]
+
+# called onReady player
+func updateMinimap():
+	getMinimap()
+	setMinimap()
+
+
+# Gets the minimap for current scene from world's mapStatus node
+func getMinimap():
+	map = self.get_parent().get_parent().get_parent().get_node("mapStatus").map	
+	print(map)
+	
+# Sets visibility for minimap-cardinals based on current minimap
+func setMinimap():
+	get_node("MiniMapNorth").visible = map[0]
+	get_node("MiniMapWest").visible = map[1]
+	get_node("MiniMapSouth").visible = map[2]
+	get_node("MiniMapEast").visible = map[3]

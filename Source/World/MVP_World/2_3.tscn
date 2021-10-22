@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://TileMap/16xTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Portals/Portalto2.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Portals/PortalTo2_2.gd" type="Script" id=4]
-[ext_resource path="res://Portals/PortalTo1_3.gd" type="Script" id=5]
+[ext_resource path="res://Portals/Portal.tscn" type="PackedScene" id=3]
 
 [node name="Node2D" type="Node2D"]
 
@@ -27,9 +25,9 @@ position = Vector2( 626.572, 977.973 )
 collision_mask = 29
 
 [node name="Fence1" parent="." instance=ExtResource( 3 )]
-position = Vector2( 957.37, -47.281 )
-script = ExtResource( 4 )
+position = Vector2( -46.63, 960.719 )
+path = "res://World/MVP_World/1_3.tscn"
 
 [node name="Fence2" parent="." instance=ExtResource( 3 )]
-position = Vector2( -46.6295, 960.719 )
-script = ExtResource( 5 )
+position = Vector2( 959.37, -49.281 )
+path = "res://World/MVP_World/2_2.tscn"

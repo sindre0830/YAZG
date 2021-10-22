@@ -17,6 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 PlayerValues="*res://Actor/Player/Player_values.gd"
+PreviousWorld="*res://World/previous_world.gd"
 
 [display]
 

@@ -60,7 +60,6 @@ func _on_Explosion_animation_finished():
 			if damage < min_grenade_damage:
 				damage = min_grenade_damage
 
-			print(damage)
 			# Deal damage to the body
 			body.take_damage(damage)
 	

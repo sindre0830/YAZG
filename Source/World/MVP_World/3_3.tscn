@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://TileMap/16xTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Portals/Portal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Actor/Zombie/Zombie.tscn" type="PackedScene" id=4]
 
 [node name="Node2D" type="Node2D"]
 
@@ -27,3 +28,18 @@ collision_mask = 29
 [node name="Fence1" parent="." instance=ExtResource( 3 )]
 position = Vector2( 576.22, 16.5488 )
 path = "res://World/MVP_World/3_2.tscn"
+
+[node name="Zombie" parent="." instance=ExtResource( 4 )]
+position = Vector2( 443.954, 1484.89 )
+
+[node name="Zombie2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 608.003, 1250.13 )
+
+[node name="Zombie3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 418.498, 1221.85 )
+
+[node name="Zombie4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 466.581, 845.667 )
+
+[node name="Zombie5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 571.233, 511.913 )

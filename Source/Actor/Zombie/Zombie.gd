@@ -45,3 +45,9 @@ func _on_Vision_body_exited(body):
 
 func _on_ChaseTimer_timeout():
 	state = IDLE
+
+func take_damage(amount):
+	.take_damage(amount)
+	if state != CHASE:
+		state = CHASE
+		get_node("ChaseTimer").start(5)

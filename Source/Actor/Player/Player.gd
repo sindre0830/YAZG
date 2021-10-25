@@ -9,7 +9,6 @@ export var FragGrenade = preload("res://Throwables/FragGrenade.tscn")
 onready var guns = [$"Guns/Mini-Gun", $Guns/Handgun]
 onready var gun_index = 0
 onready var gun = guns[gun_index]
-var diff = 1
 
 func _init():
 	ACCELERATION = 2000
@@ -20,6 +19,7 @@ func _ready():
 	self.get_node(HEALTHBAR).max_value = max_health
 	self.get_node(HEALTHBAR).value = PlayerValues.current_health
 	health = PlayerValues.current_health
+	self.get_node(DIFFICULTY).text = str(floor(PlayerValues.current_difficulty))
 	
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
@@ -63,7 +63,6 @@ func die():
 	assert(get_tree().change_scene("res://Menu/DeathScreen.tscn") == OK)
 	
 func increase_diff():
-	diff += 1
-	
-	self.get_node(DIFFICULTY).text = str(diff) + "%"
-	
+	PlayerValues.current_difficulty += 0.5
+	self.get_node(DIFFICULTY).text = str(floor(PlayerValues.current_difficulty))
+	print(PlayerValues.current_difficulty)

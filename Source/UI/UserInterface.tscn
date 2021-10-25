@@ -62,7 +62,7 @@ margin_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 0
 rect_scale = Vector2( 2, 2 )
-text = "1%"
+text = "1"
 __meta__ = {
 "_edit_use_anchors_": false
 }

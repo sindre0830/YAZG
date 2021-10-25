@@ -4,8 +4,12 @@ extends "res://Actor/Enemy.gd"
 onready var navigation = get_parent().get_node("Navigation2D")
 onready var zoneDetect = $ZoneDetect
 
+var target_position = Vector2.ZERO
+const TOLERANCE = 8.0
+const WANDER_RADIUS = 16
+
 func _init():
-	state = DAZE
+	state = IDLE
 	pass
 	
 func _ready():
@@ -17,11 +21,27 @@ func _ready():
 
 func _physics_process(delta):
 	match state:
-		# Currently just standing still - probably want to make them wander back and forth eventually
-		DAZE:
-			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-			seek_player(zoneDetect)
+		IDLE:
+			MAX_SPEED = 5
+			state = WANDER
+			var target_vector = Vector2(rand_range(-WANDER_RADIUS, WANDER_RADIUS), rand_range(-WANDER_RADIUS, WANDER_RADIUS))
+			target_position = global_position + target_vector
+		WANDER:
+			move_to_target(delta, global_position, target_position, navigation)
+			if (target_position - global_position).length() < TOLERANCE:
+				state = IDLE
 		CHASE:
-			var player = zoneDetect.player
-			if player != null:
-				move(delta, global_position, navigation)
+			MAX_SPEED = 50
+			move(delta, global_position, navigation)
+
+func _on_Vision_body_entered(body):
+	if body.name == "Player":
+		state = CHASE
+		get_node("ChaseTimer").stop()
+
+func _on_Vision_body_exited(body):
+	if body.name == "Player":
+		get_node("ChaseTimer").start(5)
+
+func _on_ChaseTimer_timeout():
+	state = IDLE

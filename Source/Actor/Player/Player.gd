@@ -63,6 +63,5 @@ func die():
 	assert(get_tree().change_scene("res://Menu/DeathScreen.tscn") == OK)
 	
 func increase_diff():
-	PlayerValues.current_difficulty += 0.5
+	PlayerValues.current_difficulty += 0.2
 	self.get_node(DIFFICULTY).text = str(floor(PlayerValues.current_difficulty))
-	print(PlayerValues.current_difficulty)

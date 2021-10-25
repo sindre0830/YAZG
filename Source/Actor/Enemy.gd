@@ -48,9 +48,16 @@ func _on_timer_timeout():
 func _on_Hurtbox_body_entered(player):
 	if player.name == "Player":
 		reachPlayer = true
-		player.take_damage(damage)
+		player.take_damage(getDamageValue())
 		timer.start()
 	
 func _on_Hurtbox_body_exited(body):
 	if player.name == "Player":
 		reachPlayer = false
+
+func getDamageValue():
+	var diff = PlayerValues.current_difficulty
+	diff -= 1
+	diff /= 10
+	diff += 1
+	return damage * (diff)

@@ -1,13 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://TileMap/16xTileset.tres" type="TileSet" id=1]
-[ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Portals/Portal.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Actor/Zombie/Zombie.tscn" type="PackedScene" id=4]
-[ext_resource path="res://World/Scripts/2_3.gd" type="Script" id=5]
+[ext_resource path="res://Actor/Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Throwables/FragGrenade.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Portals/Portal.gd" type="Script" id=4]
+[ext_resource path="res://Portals/Portal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://World/Scripts/2_3.gd" type="Script" id=7]
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 
@@ -23,25 +25,55 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( -262100, 71, 0, -262099, 72, 0, -262098, 72, 0, -262097, 72, 0, -262096, 72, 0, -262095, 72, 0, -262094, 72, 0, -262093, 72, 0, -262092, 72, 0, -262091, 72, 0, -262090, 72, 0, -262089, 72, 0, -262088, 72, 0, -262087, 75, 0, -262082, 71, 0, -262081, 72, 0, -262080, 72, 0, -262079, 72, 0, -262078, 72, 0, -262077, 72, 0, -262076, 72, 0, -262075, 72, 0, -262074, 72, 0, -262073, 72, 0, -262072, 72, 0, -262071, 72, 0, -262070, 72, 0, -262069, 75, 0, -196564, 73, 0, -196563, 74, 0, -196562, 74, 0, -196561, 74, 0, -196560, 74, 0, -196559, 74, 0, -196558, 74, 0, -196557, 74, 0, -196556, 74, 0, -196555, 74, 0, -196554, 74, 0, -196553, 74, 0, -196552, 74, 0, -196551, 76, 0, -196546, 73, 0, -196545, 74, 0, -196544, 74, 0, -196543, 74, 0, -196542, 74, 0, -196541, 74, 0, -196540, 74, 0, -196539, 74, 0, -196538, 74, 0, -196537, 74, 0, -196536, 74, 0, -196535, 74, 0, -196534, 74, 0, -196533, 76, 0, 2752508, 71, 0, 2752509, 75, 0, 2818044, 73, 0, 2818045, 76, 0, 2883580, 73, 0, 2883581, 76, 0, 2949116, 73, 0, 2949117, 76, 0, 3014652, 73, 0, 3014653, 76, 0, 3080188, 73, 0, 3080189, 76, 0, 3145724, 73, 0, 3145725, 76, 0, 3211260, 73, 0, 3211261, 76, 0, 3276796, 73, 0, 3276797, 76, 0, 3342332, 73, 0, 3342333, 76, 0, 3407868, 73, 0, 3407869, 76, 0, 3473404, 73, 0, 3473405, 76, 0, 3538940, 73, 0, 3538941, 76, 0, 3604476, 73, 0, 3604477, 76, 0, 3670012, 73, 0, 3670013, 76, 0, 3735548, 73, 0, 3735549, 76, 0, 3801084, 73, 0, 3801085, 76, 0, 4128764, 71, 0, 4128765, 75, 0, 4194300, 73, 0, 4194301, 76, 0, 4259836, 73, 0, 4259837, 76, 0, 4325372, 73, 0, 4325373, 76, 0, 4390908, 73, 0, 4390909, 76, 0, 4456444, 73, 0, 4456445, 76, 0, 4521980, 73, 0, 4521981, 76, 0, 4587516, 73, 0, 4587517, 76, 0, 4653052, 73, 0, 4653053, 76, 0, 4718588, 73, 0, 4718589, 76, 0, 4784124, 73, 0, 4784125, 76, 0, 4849660, 73, 0, 4849661, 76, 0, 4915196, 73, 0, 4915197, 76, 0, 4980732, 73, 0, 4980733, 76, 0 )
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 626.572, 977.973 )
+[node name="Player" type="KinematicBody2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 33.37, 960.719 )
+rotation = -3.01189
+scale = Vector2( 0.999997, 0.999997 )
+z_index = 1
+collision_layer = 2
 collision_mask = 29
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+ACCELERATION = 2000
+MAX_SPEED = 400
+FRICTION = 4000
+velocity = Vector2( 0, 0 )
+max_health = 100.0
+FragGrenade = ExtResource( 3 )
 
-[node name="Fence1" parent="." instance=ExtResource( 3 )]
+[node name="Fence1" type="Area2D" parent="." instance=ExtResource( 5 )]
 position = Vector2( -46.63, 960.719 )
 rotation = 3.14159
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 4 )
 path = "res://World/MVP_World/1_3.tscn"
+destination_position = Vector2( 0, 0 )
 
-[node name="Fence2" parent="." instance=ExtResource( 3 )]
+[node name="Fence2" type="Area2D" parent="." instance=ExtResource( 5 )]
 position = Vector2( 959.37, -47.1788 )
 rotation = 4.71239
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 4 )
 path = "res://World/MVP_World/2_2.tscn"
+destination_position = Vector2( 0, 0 )
 
-[node name="Zombie" parent="." instance=ExtResource( 4 )]
-position = Vector2( 488.281, 1035.68 )
-
-[node name="Zombie2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 830.773, 866.815 )
-
-[node name="Zombie3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 778.448, 1068.98 )
+[connection signal="body_entered" from="Fence1" to="Fence1" method="_on_body_entered"]
+[connection signal="body_entered" from="Fence2" to="Fence2" method="_on_body_entered"]
+[connection signal="body_entered" from="@Bullet@539" to="@Bullet@539" method="_on_Bullet_body_entered"]
+[connection signal="body_entered" from="@Bullet@540" to="@Bullet@540" method="_on_Bullet_body_entered"]
+[connection signal="body_entered" from="@Bullet@541" to="@Bullet@541" method="_on_Bullet_body_entered"]
+[connection signal="body_entered" from="@Bullet@542" to="@Bullet@542" method="_on_Bullet_body_entered"]
+[connection signal="body_entered" from="@Bullet@543" to="@Bullet@543" method="_on_Bullet_body_entered"]
+[connection signal="body_entered" from="@Bullet@544" to="@Bullet@544" method="_on_Bullet_body_entered"]
+[connection signal="body_entered" from="Bullet" to="Bullet" method="_on_Bullet_body_entered"]
+[connection signal="body_entered" from="@Bullet@547" to="@Bullet@547" method="_on_Bullet_body_entered"]
+[connection signal="body_entered" from="@Bullet@548" to="@Bullet@548" method="_on_Bullet_body_entered"]
+[connection signal="body_entered" from="@Bullet@549" to="@Bullet@549" method="_on_Bullet_body_entered"]
+[connection signal="body_entered" from="@Bullet@550" to="@Bullet@550" method="_on_Bullet_body_entered"]
+[connection signal="body_entered" from="@Bullet@551" to="@Bullet@551" method="_on_Bullet_body_entered"]
+[connection signal="body_entered" from="@Bullet@552" to="@Bullet@552" method="_on_Bullet_body_entered"]
+[connection signal="body_entered" from="@Bullet@553" to="@Bullet@553" method="_on_Bullet_body_entered"]

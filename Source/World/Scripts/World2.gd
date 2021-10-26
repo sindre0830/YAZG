@@ -1,6 +1,6 @@
 extends Node
 
-var path_from = "res://World/World3.tscn"
+var path_from = "res://World//World3.tscn"
 
 
 # Called when the node enters the scene tree for the first time.

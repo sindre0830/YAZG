@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://TileMap/16xTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=2]
@@ -6,8 +6,10 @@
 [ext_resource path="res://Actor/Zombie/Zombie.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Breakable/WoodDoor.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Breakable/Box.tscn" type="PackedScene" id=6]
+[ext_resource path="res://World/Scripts/4_2.gd" type="Script" id=7]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 7 )
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 
@@ -32,7 +34,8 @@ position = Vector2( 2033, 576.716 )
 path = "res://World/MVP_World/5_2_BOSS.tscn"
 
 [node name="Fence2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 14.8523, 575.035 )
+position = Vector2( 14.8523, 573.913 )
+rotation = 3.14159
 path = "res://World/MVP_World/3_2.tscn"
 
 [node name="Zombie2" parent="." instance=ExtResource( 4 )]

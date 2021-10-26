@@ -1,13 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://TileMap/16xTileset.tres" type="TileSet" id=1]
-[ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Portals/Portal.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Actor/Zombie/Zombie.tscn" type="PackedScene" id=4]
-[ext_resource path="res://World/Scripts/3_2.gd" type="Script" id=5]
+[ext_resource path="res://Actor/Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Throwables/FragGrenade.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Actor/Zombie/Zombie.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Portals/Portal.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Portals/Portal.gd" type="Script" id=7]
+[ext_resource path="res://Actor/Zombie/Zombie.gd" type="Script" id=8]
+[ext_resource path="res://World/Scripts/2_1.gd" type="Script" id=9]
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource( 5 )
+script = ExtResource( 9 )
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 
@@ -23,35 +27,76 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 1179620, 71, 0, 1179621, 75, 0, 1114226, 71, 0, 1114227, 75, 0, 1245156, 73, 0, 1245157, 76, 0, 1179762, 73, 0, 1179763, 76, 0, 1310692, 73, 0, 1310693, 76, 0, 1245298, 73, 0, 1245299, 76, 0, 1376228, 73, 0, 1376229, 76, 0, 1310834, 73, 0, 1310835, 76, 0, 1441764, 73, 0, 1441765, 76, 0, 1376370, 73, 0, 1376371, 76, 0, 1507300, 73, 0, 1507301, 76, 0, 1441906, 73, 0, 1441907, 76, 0, 1572836, 73, 0, 1572837, 76, 0, 1507442, 73, 0, 1507443, 76, 0, 1638372, 73, 0, 1638373, 76, 0, 1572978, 73, 0, 1572979, 76, 0, 1703908, 73, 0, 1703909, 76, 0, 1638514, 73, 0, 1638515, 76, 0, 1769444, 73, 0, 1769445, 76, 0, 1704050, 73, 0, 1704051, 76, 0, 1834980, 73, 0, 1834981, 76, 0, 1769586, 73, 0, 1769587, 76, 0, 1900516, 73, 0, 1900517, 76, 0, 1835122, 73, 0, 1835123, 76, 0, 1966052, 73, 0, 1966053, 76, 0, 1900658, 73, 0, 1900659, 76, 0, 2031588, 73, 0, 2031589, 76, 0, 1966194, 73, 0, 1966195, 76, 0, 2097124, 73, 0, 2097125, 76, 0, 2031730, 73, 0, 2031731, 76, 0, 2162660, 73, 0, 2162661, 76, 0, 2097266, 73, 0, 2097267, 76, 0, 2228196, 73, 0, 2228197, 76, 0, 2162802, 73, 0, 2162803, 76, 0, 2555876, 71, 0, 2555877, 75, 0, 2490482, 71, 0, 2490483, 75, 0, 2621412, 73, 0, 2621413, 76, 0, 2556018, 73, 0, 2556019, 76, 0, 2686948, 73, 0, 2686949, 76, 0, 2621554, 73, 0, 2621555, 76, 0, 2752484, 73, 0, 2752485, 76, 0, 2687090, 73, 0, 2687091, 76, 0, 2818020, 73, 0, 2818021, 76, 0, 2752626, 73, 0, 2752627, 76, 0, 2883556, 73, 0, 2883557, 76, 0, 2818162, 73, 0, 2818163, 76, 0, 2949092, 73, 0, 2949093, 76, 0, 2883698, 73, 0, 2883699, 76, 0, 3014628, 73, 0, 3014629, 76, 0, 2949234, 73, 0, 2949235, 76, 0, 3080164, 73, 0, 3080165, 76, 0, 3014770, 73, 0, 3014771, 76, 0, 3145700, 73, 0, 3145701, 76, 0, 3080306, 73, 0, 3080307, 76, 0, 3211236, 73, 0, 3211237, 76, 0, 3145842, 73, 0, 3145843, 76, 0, 3276772, 73, 0, 3276773, 76, 0, 3211378, 73, 0, 3211379, 76, 0, 3342308, 73, 0, 3342309, 76, 0, 3276914, 73, 0, 3276915, 76, 0, 3407844, 73, 0, 3407845, 76, 0, 3342450, 73, 0, 3342451, 76, 0, 7471124, 71, 0, 7471125, 72, 0, 7471126, 72, 0, 7471127, 72, 0, 7471128, 72, 0, 7471129, 72, 0, 7471130, 72, 0, 7471131, 72, 0, 7471132, 72, 0, 7471133, 72, 0, 7471134, 72, 0, 7471135, 72, 0, 7471136, 72, 0, 7471137, 75, 0, 7471142, 71, 0, 7471143, 72, 0, 7471144, 72, 0, 7471145, 72, 0, 7471146, 72, 0, 7471147, 72, 0, 7471148, 72, 0, 7471149, 72, 0, 7471150, 72, 0, 7471151, 72, 0, 7471152, 72, 0, 7471153, 72, 0, 7471154, 72, 0, 7471155, 75, 0, 7536660, 73, 0, 7536661, 74, 0, 7536662, 74, 0, 7536663, 74, 0, 7536664, 74, 0, 7536665, 74, 0, 7536666, 74, 0, 7536667, 74, 0, 7536668, 74, 0, 7536669, 74, 0, 7536670, 74, 0, 7536671, 74, 0, 7536672, 74, 0, 7536673, 76, 0, 7536678, 73, 0, 7536679, 74, 0, 7536680, 74, 0, 7536681, 74, 0, 7536682, 74, 0, 7536683, 74, 0, 7536684, 74, 0, 7536685, 74, 0, 7536686, 74, 0, 7536687, 74, 0, 7536688, 74, 0, 7536689, 74, 0, 7536690, 74, 0, 7536691, 76, 0 )
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 626.572, 977.973 )
+[node name="Player" type="KinematicBody2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( -356.241, 576.6 )
+rotation = 1.69892
+scale = Vector2( 0.999995, 0.999995 )
+z_index = 1
+collision_layer = 2
 collision_mask = 29
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+ACCELERATION = 2000
+MAX_SPEED = 400
+FRICTION = 4000
+velocity = Vector2( 0, 0 )
+max_health = 100.0
+FragGrenade = ExtResource( 3 )
 
-[node name="Fence1" parent="." instance=ExtResource( 3 )]
-position = Vector2( -433.157, 573.493 )
+[node name="Fence1" type="Area2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( -436.241, 576.6 )
 rotation = 3.14159
-path = "res://World/MVP_World/3_2.tscn"
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 7 )
+path = "res://World/MVP_World/1_1.tscn"
+destination_position = Vector2( 0, 0 )
 
-[node name="Fence2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 575.34, 1842.13 )
+[node name="Fence2" type="Area2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1837.76, 574.6 )
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 7 )
+path = "res://World/MVP_World/3_1.tscn"
+destination_position = Vector2( 0, 0 )
+
+[node name="Fence3" type="Area2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 575.759, 1842.6 )
 rotation = 1.5708
-path = "res://World/MVP_World/3_3.tscn"
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 7 )
+path = "res://World/MVP_World/2_2.tscn"
+destination_position = Vector2( 0, 0 )
 
-[node name="Fence3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1840.42, 577.057 )
-path = "res://World/MVP_World/4_2.tscn"
+[node name="Zombie" type="KinematicBody2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( 204.427, 722.816 )
+rotation = 0.368017
+scale = Vector2( 1, 1 )
+collision_layer = 4
+collision_mask = 30
+script = ExtResource( 8 )
+ACCELERATION = 300
+MAX_SPEED = 5
+FRICTION = 200
+velocity = null
+max_health = 100.0
 
-[node name="Zombie" parent="." instance=ExtResource( 4 )]
-position = Vector2( 0.306824, 542.723 )
+[node name="Zombie4" type="KinematicBody2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1317.56, 497.944 )
+rotation = -0.0825723
+scale = Vector2( 1, 1 )
+collision_layer = 4
+collision_mask = 30
+script = ExtResource( 8 )
+ACCELERATION = 300
+MAX_SPEED = 5
+FRICTION = 200
+velocity = null
+max_health = 100.0
 
-[node name="Zombie2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 496.435, 1213.95 )
-
-[node name="Zombie3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 505.415, 589.866 )
-
-[node name="Zombie4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1098.07, 538.233 )
-
-[node name="Zombie5" parent="." instance=ExtResource( 4 )]
-position = Vector2( 577.252, 1550.69 )
+[connection signal="body_entered" from="Fence1" to="Fence1" method="_on_body_entered"]
+[connection signal="body_entered" from="Fence2" to="Fence2" method="_on_body_entered"]
+[connection signal="body_entered" from="Fence3" to="Fence3" method="_on_body_entered"]

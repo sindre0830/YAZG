@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://TileMap/16xTileset.tres" type="TileSet" id=1]
-[ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Portals/Portal.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Actor/Zombie/Zombie.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Actor/Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Throwables/FragGrenade.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Portals/Portal.gd" type="Script" id=4]
 [ext_resource path="res://World/Scripts/1_3.gd" type="Script" id=5]
+[ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Portals/Portal.tscn" type="PackedScene" id=7]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 5 )
@@ -23,33 +25,40 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 20, 71, 0, 21, 72, 0, 22, 72, 0, 23, 72, 0, 24, 72, 0, 25, 72, 0, 26, 72, 0, 27, 72, 0, 28, 72, 0, 29, 72, 0, 30, 72, 0, 31, 72, 0, 32, 72, 0, 33, 75, 0, 38, 71, 0, 39, 72, 0, 40, 72, 0, 41, 72, 0, 42, 72, 0, 43, 72, 0, 44, 72, 0, 45, 72, 0, 46, 72, 0, 47, 72, 0, 48, 72, 0, 49, 72, 0, 50, 72, 0, 51, 75, 0, 65556, 73, 0, 65557, 74, 0, 65558, 74, 0, 65559, 74, 0, 65560, 74, 0, 65561, 74, 0, 65562, 74, 0, 65563, 74, 0, 65564, 74, 0, 65565, 74, 0, 65566, 74, 0, 65567, 74, 0, 65568, 74, 0, 65569, 76, 0, 65574, 73, 0, 65575, 74, 0, 65576, 74, 0, 65577, 74, 0, 65578, 74, 0, 65579, 74, 0, 65580, 74, 0, 65581, 74, 0, 65582, 74, 0, 65583, 74, 0, 65584, 74, 0, 65585, 74, 0, 65586, 74, 0, 65587, 76, 0, 4259970, 71, 0, 4259971, 75, 0, 4325506, 73, 0, 4325507, 76, 0, 4391042, 73, 0, 4391043, 76, 0, 4456578, 73, 0, 4456579, 76, 0, 4522114, 73, 0, 4522115, 76, 0, 4587650, 73, 0, 4587651, 76, 0, 4653186, 73, 0, 4653187, 76, 0, 4718722, 73, 0, 4718723, 76, 0, 4784258, 73, 0, 4784259, 76, 0, 4849794, 73, 0, 4849795, 76, 0, 4915330, 73, 0, 4915331, 76, 0, 4980866, 73, 0, 4980867, 76, 0, 5046402, 73, 0, 5046403, 76, 0, 5111938, 73, 0, 5111939, 76, 0, 5177474, 73, 0, 5177475, 76, 0, 5243010, 73, 0, 5243011, 76, 0, 5308546, 73, 0, 5308547, 76, 0, 5636226, 71, 0, 5636227, 75, 0, 5701762, 73, 0, 5701763, 76, 0, 5767298, 73, 0, 5767299, 76, 0, 5832834, 73, 0, 5832835, 76, 0, 5898370, 73, 0, 5898371, 76, 0, 5963906, 73, 0, 5963907, 76, 0, 6029442, 73, 0, 6029443, 76, 0, 6094978, 73, 0, 6094979, 76, 0, 6160514, 73, 0, 6160515, 76, 0, 6226050, 73, 0, 6226051, 76, 0, 6291586, 73, 0, 6291587, 76, 0, 6357122, 73, 0, 6357123, 76, 0, 6422658, 73, 0, 6422659, 76, 0, 6488194, 73, 0, 6488195, 76, 0 )
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 490.572, 329.973 )
+[node name="Player" type="KinematicBody2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 576.067, 99.46 )
+rotation = -1.52302
+scale = Vector2( 0.999983, 0.999983 )
+z_index = 1
+collision_layer = 2
 collision_mask = 29
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+ACCELERATION = 2000
+MAX_SPEED = 400
+FRICTION = 4000
+velocity = Vector2( 0, 0 )
+max_health = 100.0
+FragGrenade = ExtResource( 3 )
 
-[node name="Fence1" parent="." instance=ExtResource( 3 )]
+[node name="Fence1" type="Area2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 576.067, 19.46 )
 rotation = 4.71239
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 4 )
 path = "res://World/MVP_World/1_2.tscn"
+destination_position = Vector2( 0, 0 )
 
-[node name="Fence2" parent="." instance=ExtResource( 3 )]
+[node name="Fence2" type="Area2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 2097.38, 1339.48 )
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 4 )
 path = "res://World/MVP_World/2_3.tscn"
+destination_position = Vector2( 0, 0 )
 
-[node name="Zombie" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1692.01, 1239.71 )
-
-[node name="Zombie2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1633.64, 1477.68 )
-
-[node name="Zombie3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1005.06, 1466.45 )
-
-[node name="Zombie4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 576.283, 1327.27 )
-
-[node name="Zombie5" parent="." instance=ExtResource( 4 )]
-position = Vector2( 607.712, 597.665 )
-
-[node name="Zombie6" parent="." instance=ExtResource( 4 )]
-position = Vector2( 470.771, 878.281 )
+[connection signal="body_entered" from="Fence1" to="Fence1" method="_on_body_entered"]
+[connection signal="body_entered" from="Fence2" to="Fence2" method="_on_body_entered"]

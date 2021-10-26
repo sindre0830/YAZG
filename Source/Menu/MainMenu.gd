@@ -10,7 +10,7 @@ func _on_Play_pressed():
 		if(path == ""):
 			break
 		dir.remove(path)
-	assert(get_tree().change_scene("res://World/World2.tscn") == OK)
+	assert(get_tree().change_scene("res://World/MVP_World/1_1.tscn") == OK)
 
 func _on_ExitGame_pressed():
 	# Quit the game

@@ -14,6 +14,7 @@ func _ready():
 	timer.set_one_shot(false)
 	add_child(timer)	
 	timer.connect("timeout", self, "_on_timer_timeout")
+	velocity = Vector2.ZERO
 
 func _physics_process(delta):
 	match state:

@@ -31,7 +31,7 @@ position = Vector2( 479, 362 )
 collision_mask = 3
 
 [node name="Box" parent="." instance=ExtResource( 3 )]
-position = Vector2( 217.778, 321.88 )
+position = Vector2( 530.591, 182.291 )
 
 [node name="Fence1" parent="." instance=ExtResource( 4 )]
 position = Vector2( -112.369, 481.425 )

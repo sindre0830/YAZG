@@ -2,6 +2,9 @@ extends "res://Actor/Actor.gd"
 
 var HEALTHBAR = "UI/Healthbar"
 var GUNDISPLAY = "UI/GunDisplay"
+var DIFFICULTY = "UI/Difficulty/Label2"
+
+export var FragGrenade = preload("res://Throwables/FragGrenade.tscn")
 
 onready var guns = [$"Guns/Mini-Gun", $Guns/Handgun]
 onready var gun_index = 0
@@ -14,9 +17,12 @@ func _init():
 
 func _ready():
 	self.get_node(HEALTHBAR).max_value = max_health
-	self.get_node(HEALTHBAR).value = health
-	get_node("UI/MiniMap").updateMinimap()		# Get current minimap
+	self.get_node(HEALTHBAR).value = PlayerValues.current_health
+	health = PlayerValues.current_health
+	self.get_node(DIFFICULTY).text = str(floor(PlayerValues.current_difficulty))
 
+	get_node("UI/MiniMap").updateMinimap()		# Get current minimap
+	
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
 	var mpos = get_global_mouse_position()
@@ -35,6 +41,13 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("ui_shoot") and gun.get_child(0).is_stopped():
 		gun.shoot($PositionMuzzle, self)
+		
+	if Input.is_action_pressed("ui_special_attack") and self.get_node("Throwables/GrenadeCooldown").is_stopped():
+			var grenade = FragGrenade.instance()
+			grenade.init(self.position, get_global_mouse_position(), self.rotation)
+			grenade.transform =  self.global_transform 
+			self.owner.add_child(grenade)
+			self.get_node("Throwables/GrenadeCooldown").start()
 
 	if Input.is_action_just_pressed("ui_switchWeapon"):
 		self.get_node(GUNDISPLAY).switchGunDisplayed()
@@ -45,7 +58,12 @@ func _physics_process(delta):
 
 func take_damage(amount):
 	.take_damage(amount)
+	PlayerValues.current_health = health
 	self.get_node(HEALTHBAR).value = health
 
 func die():
 	assert(get_tree().change_scene("res://Menu/DeathScreen.tscn") == OK)
+	
+func increase_diff():
+	PlayerValues.current_difficulty += 0.2
+	self.get_node(DIFFICULTY).text = str(floor(PlayerValues.current_difficulty))

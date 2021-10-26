@@ -1,12 +1,16 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Actor/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://TileMap/64xTileset.tres" type="TileSet" id=2]
 [ext_resource path="res://TileMap/16xTileset.tres" type="TileSet" id=3]
-[ext_resource path="res://Actor/Zombie/Zombie.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Breakable/Box.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Portals/Portal.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Actor/Zombie/Zombie.gd" type="Script" id=4]
+[ext_resource path="res://Breakable/Box.gd" type="Script" id=5]
+[ext_resource path="res://Portals/Portal.gd" type="Script" id=6]
 [ext_resource path="res://World/Scripts/World2.gd" type="Script" id=7]
+[ext_resource path="res://Actor/Zombie/Zombie.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Breakable/Box.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Portals/Portal.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=11]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 7 )
@@ -31,48 +35,60 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 1114116, 71, 0, 1114117, 75, 0, 1114242, 71, 0, 1114243, 75, 0, 1179652, 73, 0, 1179653, 76, 0, 1179778, 73, 0, 1179779, 76, 0, 1245188, 73, 0, 1245189, 76, 0, 1245314, 73, 0, 1245315, 76, 0, 1310724, 73, 0, 1310725, 76, 0, 1310850, 73, 0, 1310851, 76, 0, 1376260, 73, 0, 1376261, 76, 0, 1376386, 73, 0, 1376387, 76, 0, 1441796, 73, 0, 1441797, 76, 0, 1441922, 73, 0, 1441923, 76, 0, 1507332, 73, 0, 1507333, 76, 0, 1507458, 73, 0, 1507459, 76, 0, 1572868, 73, 0, 1572869, 76, 0, 1572994, 73, 0, 1572995, 76, 0, 1638404, 73, 0, 1638405, 76, 0, 1638530, 73, 0, 1638531, 76, 0, 1703940, 73, 0, 1703941, 76, 0, 1704066, 73, 0, 1704067, 76, 0, 1769476, 73, 0, 1769477, 76, 0, 1769602, 73, 0, 1769603, 76, 0, 1835012, 73, 0, 1835013, 76, 0, 1835138, 73, 0, 1835139, 76, 0, 1900548, 73, 0, 1900549, 76, 0, 1900674, 73, 0, 1900675, 76, 0, 1966084, 73, 0, 1966085, 76, 0, 1966210, 73, 0, 1966211, 76, 0, 2031620, 73, 0, 2031621, 76, 0, 2031746, 73, 0, 2031747, 76, 0, 2097156, 73, 0, 2097157, 76, 0, 2097282, 73, 0, 2097283, 76, 0, 2162692, 73, 0, 2162693, 76, 0, 2162818, 73, 0, 2162819, 76, 0, 2228228, 73, 0, 2228229, 76, 0, 2228354, 73, 0, 2228355, 76, 0, 2293764, 73, 0, 2293765, 76, 0, 2293890, 73, 0, 2293891, 76, 0, 2359300, 73, 0, 2359301, 76, 0, 2359426, 73, 0, 2359427, 76, 0, 2424836, 73, 0, 2424837, 76, 0, 2424962, 73, 0, 2424963, 76, 0, 2490372, 73, 0, 2490373, 76, 0, 2490498, 73, 0, 2490499, 76, 0, 2555908, 73, 0, 2555909, 76, 0, 2556034, 73, 0, 2556035, 76, 0, 2621444, 73, 0, 2621445, 76, 0, 2621570, 73, 0, 2621571, 76, 0, 2686980, 73, 0, 2686981, 76, 0, 2687106, 73, 0, 2687107, 76, 0, 2752516, 73, 0, 2752517, 76, 0, 2752642, 73, 0, 2752643, 76, 0, 2818052, 73, 0, 2818053, 76, 0, 2818178, 73, 0, 2818179, 76, 0, 2883588, 73, 0, 2883589, 76, 0, 2883714, 73, 0, 2883715, 76, 0, 2949124, 73, 0, 2949125, 76, 0, 2949250, 73, 0, 2949251, 76, 0, 3014660, 73, 0, 3014661, 76, 0, 3014786, 73, 0, 3014787, 76, 0, 3080196, 73, 0, 3080197, 76, 0, 3080322, 73, 0, 3080323, 76, 0, 3145732, 73, 0, 3145733, 76, 0, 3145858, 73, 0, 3145859, 76, 0, 3211268, 73, 0, 3211269, 76, 0, 3211394, 73, 0, 3211395, 76, 0, 3276804, 73, 0, 3276805, 76, 0, 3276930, 73, 0, 3276931, 76, 0, 3342340, 73, 0, 3342341, 76, 0, 3342466, 73, 0, 3342467, 76, 0 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 527.845, 562.441 )
+[node name="Player" type="KinematicBody2D" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1992.66, 575.711 )
+rotation = -0.0393497
+scale = Vector2( 0.999989, 0.999989 )
+z_index = 1
+collision_layer = 2
 collision_mask = 5
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+ACCELERATION = 2000
+MAX_SPEED = 400
+FRICTION = 4000
+velocity = Vector2( 0, 0 )
+max_health = 100.0
 
-[node name="Zombie" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1330.47, 421.46 )
-collision_mask = 3
-
-[node name="Box" parent="." instance=ExtResource( 5 )]
+[node name="Box" type="StaticBody2D" parent="." instance=ExtResource( 9 )]
 position = Vector2( 239.184, 381.34 )
+collision_layer = 8
+collision_mask = 7
+script = ExtResource( 5 )
 
-[node name="Zombie2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1206.79, 417.082 )
+[node name="Zombie5" type="KinematicBody2D" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1440.82, 381.148 )
+rotation = -1.37847
+collision_layer = 4
 collision_mask = 3
+script = ExtResource( 4 )
+ACCELERATION = 300
+MAX_SPEED = 50
+FRICTION = 200
+velocity = Vector2( 0, 0 )
+max_health = 100.0
 
-[node name="Zombie3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1853.72, 587.949 )
+[node name="Zombie6" type="KinematicBody2D" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1714.9, 442.295 )
+rotation = -2.25406
+collision_layer = 4
 collision_mask = 3
+script = ExtResource( 4 )
+ACCELERATION = 300
+MAX_SPEED = 50
+FRICTION = 200
+velocity = null
+max_health = 100.0
 
-[node name="Zombie4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1263.88, 633.139 )
-collision_mask = 3
-
-[node name="Zombie5" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1437.5, 381.027 )
-collision_mask = 3
-
-[node name="Zombie6" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1670.59, 397.676 )
-collision_mask = 3
-
-[node name="Zombie7" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1558.8, 626.004 )
-collision_mask = 3
-
-[node name="Fence1" parent="." instance=ExtResource( 6 )]
-position = Vector2( 2070.01, 576.064 )
-path = "res://World/World3.tscn"
-
-[node name="Zombie8" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1108, 572 )
-
-[node name="Fence1" parent="." instance=ExtResource( 6 )]
+[node name="Fence1" type="Area2D" parent="." instance=ExtResource( 10 )]
 position = Vector2( 2072.66, 575.711 )
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 6 )
 path = "res://World/World3.tscn"
+destination_position = Vector2( 0, 0 )
+direction = 0
+
+[connection signal="body_entered" from="Fence1" to="Fence1" method="_on_body_entered"]

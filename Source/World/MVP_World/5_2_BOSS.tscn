@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://TileMap/16xTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Breakable/Box.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Portals/Portal.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Actor/Zombie/Zombie.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Actor/Zombie/Boss.tscn" type="PackedScene" id=6]
 
 [node name="World" type="Node2D"]
 
@@ -29,9 +28,6 @@ collision_mask = 5
 
 [node name="Zombie4" parent="." instance=ExtResource( 5 )]
 position = Vector2( 276.165, 470.465 )
-
-[node name="Boss" parent="Zombie4" instance=ExtResource( 6 )]
-position = Vector2( 456.984, 35.9594 )
 
 [node name="Zombie2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 536.87, 861.523 )

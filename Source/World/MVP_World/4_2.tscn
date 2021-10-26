@@ -4,7 +4,7 @@
 [ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Portals/Portal.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Actor/Zombie/Zombie.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Breakable/IronDoor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Breakable/WoodDoor.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Breakable/Box.tscn" type="PackedScene" id=6]
 
 [node name="Node2D" type="Node2D"]
@@ -62,11 +62,11 @@ position = Vector2( 776.339, 569.854 )
 [node name="Zombie" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1726.04, 466.51 )
 
-[node name="StaticBody2D" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1631.22, 69.9897 )
-
 [node name="Box" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1706.74, -141.438 )
 
 [node name="Box2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1421.69, -107.459 )
+
+[node name="Door" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1632.95, 68.5021 )

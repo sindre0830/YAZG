@@ -1,6 +1,5 @@
 extends "res://Actor/Enemy.gd"
 
-onready var navigation = get_parent().get_node("Navigation2D")
 var flagDamageModified = false
 
 func _ready():
@@ -18,7 +17,8 @@ func _ready():
 	self.get_node("CanvasLayer/ProgressBar").value = health
 
 func _physics_process(delta) -> void:
-	move(delta, global_position, navigation)
+	var path = getNextPosition(global_position, player.global_position)
+	move(delta, path, 0.2)
 	if !flagDamageModified && health < max_health / 2:
 		damage = 30
 

@@ -27,7 +27,7 @@ func _physics_process(delta):
 			var target_vector = Vector2(rand_range(-WANDER_RADIUS, WANDER_RADIUS), rand_range(-WANDER_RADIUS, WANDER_RADIUS))
 			target_position = global_position + target_vector
 		WANDER:
-			var path = getNextPosition(global_position, target_position, 0.8)
+			var path = getNextPosition(global_position, target_position)
 			collided = move(delta, path, 0.8)
 			if collided || (target_position - global_position).length() < WANDER_TOLERANCE:
 				state = IDLE
@@ -36,7 +36,7 @@ func _physics_process(delta):
 			var path = player.global_position
 			if (collided && collided.collider != null) && !("Zombie" in collided.collider.name) && (path - global_position).length() > CHASE_TOLERANCE:
 				print("oh shit")
-				path = getNextPosition(global_position, path, 0.4)
+				path = getNextPosition(global_position, path)
 			collided = move(delta, path, 0.4)
 
 func _on_Vision_body_entered(body):

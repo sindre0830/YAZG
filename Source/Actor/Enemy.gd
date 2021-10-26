@@ -32,7 +32,7 @@ func move(delta, path, turningSpeed):
 	# move
 	return move_and_collide(velocity * MAX_SPEED * delta)
 
-func getNextPosition(position, target, optimize):
+func getNextPosition(position, target):
 	# get list of paths to get from A to B
 	var arrPaths = navigation.get_simple_path(position, target, false)
 	# return next position

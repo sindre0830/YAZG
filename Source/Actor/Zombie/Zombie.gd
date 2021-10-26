@@ -2,7 +2,6 @@ extends "res://Actor/Enemy.gd"
 # Source: https://www.youtube.com/watch?v=R0XvL3_t840
 
 onready var navigation = get_parent().get_node("Navigation2D")
-onready var zoneDetect = $ZoneDetect
 
 var target_position = Vector2.ZERO
 const TOLERANCE = 8.0
@@ -18,6 +17,8 @@ func _ready():
 	timer.set_one_shot(false)
 	add_child(timer)	
 	timer.connect("timeout", self, "_on_timer_timeout")
+	
+	$VisionBuffer/ChaseCollision.set_deferred("disabled", true)
 
 func _physics_process(delta):
 	match state:
@@ -37,17 +38,19 @@ func _physics_process(delta):
 func _on_Vision_body_entered(body):
 	if body.name == "Player":
 		state = CHASE
-		get_node("ChaseTimer").stop()
-
-func _on_Vision_body_exited(body):
-	if body.name == "Player":
-		get_node("ChaseTimer").start(5)
-
-func _on_ChaseTimer_timeout():
-	state = IDLE
+		$VisionBuffer/ChaseCollision.set_deferred("disabled", false)
+		$Vision/WanderCollision.set_deferred("disabled", true)
 
 func take_damage(amount):
 	.take_damage(amount)
 	if state != CHASE:
 		state = CHASE
-		get_node("ChaseTimer").start(5)
+		$VisionBuffer/ChaseCollision.set_deferred("disabled", false)
+		$Vision/WanderCollision.set_deferred("disabled", true)
+
+func _on_VisionBuffer_body_exited(body):
+	if body.name == "Player":
+		state = WANDER
+		$VisionBuffer/ChaseCollision.set_deferred("disabled", true)
+		$Vision/WanderCollision.set_deferred("disabled", false)
+		

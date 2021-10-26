@@ -1,3 +1,3 @@
 extends Node
 
-export var map = [false, false, false, true]
+export var map = [false, false, false, false]

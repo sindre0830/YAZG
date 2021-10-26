@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://TileMap/16xTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Portals/Portal.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Actor/Zombie/Zombie.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/Minimap/mapStatus.tscn" type="PackedScene" id=5]
 
 [node name="Node2D" type="Node2D"]
 
@@ -50,3 +51,6 @@ position = Vector2( 607.712, 597.665 )
 
 [node name="Zombie6" parent="." instance=ExtResource( 4 )]
 position = Vector2( 470.771, 878.281 )
+
+[node name="mapStatus" parent="." instance=ExtResource( 5 )]
+map = [ true, false, false, true ]

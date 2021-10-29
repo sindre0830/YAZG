@@ -29,7 +29,7 @@ tile_data = PoolIntArray( 1179620, 71, 0, 1179621, 75, 0, 1114226, 71, 0, 111422
 
 [node name="Player" type="KinematicBody2D" parent="." instance=ExtResource( 4 )]
 position = Vector2( -356.241, 576.6 )
-rotation = 1.69892
+rotation = -0.229232
 scale = Vector2( 0.999995, 0.999995 )
 z_index = 1
 collision_layer = 2
@@ -72,21 +72,21 @@ path = "res://World/MVP_World/2_2.tscn"
 destination_position = Vector2( 0, 0 )
 
 [node name="Zombie" type="KinematicBody2D" parent="." instance=ExtResource( 5 )]
-position = Vector2( 204.427, 722.816 )
-rotation = 0.368017
-scale = Vector2( 1, 1 )
+position = Vector2( 212.053, 739.078 )
+rotation = 1.6248
+scale = Vector2( 1, -1 )
 collision_layer = 4
 collision_mask = 30
 script = ExtResource( 8 )
 ACCELERATION = 300
 MAX_SPEED = 5
 FRICTION = 200
-velocity = null
+velocity = Vector2( -0.0415091, 0.999138 )
 max_health = 100.0
 
 [node name="Zombie4" type="KinematicBody2D" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1317.56, 497.944 )
-rotation = -0.0825723
+position = Vector2( 1314.98, 488.911 )
+rotation = 2.31395
 scale = Vector2( 1, 1 )
 collision_layer = 4
 collision_mask = 30
@@ -94,7 +94,7 @@ script = ExtResource( 8 )
 ACCELERATION = 300
 MAX_SPEED = 5
 FRICTION = 200
-velocity = null
+velocity = Vector2( -0.70724, 0.706974 )
 max_health = 100.0
 
 [connection signal="body_entered" from="Fence1" to="Fence1" method="_on_body_entered"]

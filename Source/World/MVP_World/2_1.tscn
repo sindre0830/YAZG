@@ -7,7 +7,6 @@
 [ext_resource path="res://World/Scripts/2_1.gd" type="Script" id=5]
 [ext_resource path="res://UI/Minimap/mapStatus.tscn" type="PackedScene" id=6]
 
-
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 5 )
 

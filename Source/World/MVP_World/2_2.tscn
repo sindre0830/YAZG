@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://TileMap/16xTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Actor/Zombie/Zombie.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/Scripts/2_2.gd" type="Script" id=5]
 [ext_resource path="res://Breakable/Box.tscn" type="PackedScene" id=6]
+[ext_resource path="res://UI/Minimap/mapStatus.tscn" type="PackedScene" id=7]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 5 )
@@ -59,3 +60,6 @@ position = Vector2( 480.348, 1141.95 )
 
 [node name="Box" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1490.63, 804.48 )
+
+[node name="mapStatus" parent="." instance=ExtResource( 7 )]
+map = [ true, false, true, true ]

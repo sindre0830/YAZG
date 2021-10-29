@@ -24,7 +24,9 @@ func _ready():
 	self.get_node(HEALTHBAR).value = PlayerValues.current_health
 	health = PlayerValues.current_health
 	self.get_node(DIFFICULTY).text = str(floor(PlayerValues.current_difficulty))
+
 	time_start = OS.get_unix_time()
+	get_node("UI/MiniMap").updateMinimap()		# Get current minimap
 	
 	
 func _physics_process(delta):

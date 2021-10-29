@@ -1,11 +1,13 @@
 extends "res://Actor/Enemy.gd"
-# Source: https://www.youtube.com/watch?v=R0XvL3_t840
 
-onready var navigation = get_parent().get_node("Navigation2D")
-onready var zoneDetect = $ZoneDetect
+var collided
+var target_position = Vector2.ZERO
+const WANDER_TOLERANCE = 8.0
+const WANDER_RADIUS = 16
+const CHASE_TOLERANCE = 50.0
 
 func _init():
-	state = DAZE
+	state = IDLE
 	pass
 	
 func _ready():
@@ -14,14 +16,45 @@ func _ready():
 	timer.set_one_shot(false)
 	add_child(timer)	
 	timer.connect("timeout", self, "_on_timer_timeout")
+	velocity = Vector2.ZERO
+	
+	$VisionBuffer/ChaseCollision.set_deferred("disabled", true)
 
 func _physics_process(delta):
 	match state:
-		# Currently just standing still - probably want to make them wander back and forth eventually
-		DAZE:
-			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-			seek_player(zoneDetect)
+		IDLE:
+			MAX_SPEED = 5
+			state = WANDER
+			var target_vector = Vector2(rand_range(-WANDER_RADIUS, WANDER_RADIUS), rand_range(-WANDER_RADIUS, WANDER_RADIUS))
+			target_position = global_position + target_vector
+		WANDER:
+			var path = getNextPosition(global_position, target_position)
+			collided = move(delta, path, 0.8)
+			if collided || (target_position - global_position).length() < WANDER_TOLERANCE:
+				state = IDLE
 		CHASE:
-			var player = zoneDetect.player
-			if player != null:
-				move(delta, global_position, navigation)
+			MAX_SPEED = 50
+			var path = player.global_position
+			if (collided && collided.collider != null) && !("Zombie" in collided.collider.name) && (path - global_position).length() > CHASE_TOLERANCE:
+				path = getNextPosition(global_position, path)
+			collided = move(delta, path, 0.4)
+
+func _on_Vision_body_entered(body):
+	if body.name == "Player":
+		state = CHASE
+		$VisionBuffer/ChaseCollision.set_deferred("disabled", false)
+		$Vision/WanderCollision.set_deferred("disabled", true)
+
+func _on_VisionBuffer_body_exited(body):
+	if body.name == "Player":
+		state = WANDER
+		$VisionBuffer/ChaseCollision.set_deferred("disabled", true)
+		$Vision/WanderCollision.set_deferred("disabled", false)
+
+func take_damage(amount):
+	.take_damage(amount)
+	if state != CHASE:
+		state = CHASE
+		$VisionBuffer/ChaseCollision.set_deferred("disabled", true)
+		$Vision/WanderCollision.set_deferred("disabled", true)
+		

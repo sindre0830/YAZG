@@ -1,3 +1,5 @@
 .vs
 Source/.import
 Source/World/Testing.*
+Source/Temp/*
+!Source/Temp/.gitignore

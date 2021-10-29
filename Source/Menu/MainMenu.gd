@@ -7,9 +7,11 @@ func _on_Play_pressed():
 	dir.list_dir_begin(true)
 	while(true):
 		var path = dir.get_next()
-		if(path == ""):
-			break
-		dir.remove(path)
+		print(path)
+		if path != ".gitignore":
+			if(path == ""):
+				break
+			dir.remove(path)
 	assert(get_tree().change_scene("res://World/MVP_World/1_1.tscn") == OK)
 
 func _on_ExitGame_pressed():

@@ -11,9 +11,18 @@ func _ready():
 	get_node(label).set_text(get_node("Label").get_text() + " with time: " + str(timer))
 
 func _on_Respawn_pressed():
-	# TODO: Load game state
-	# Switch scene back to the game
-	assert(get_tree().change_scene("res://World/World.tscn") == OK)
+	# Start the game by switching to the World scene
+	var dir = Directory.new()
+	dir.open("res://Temp")
+	dir.list_dir_begin(true)
+	while(true):
+		var path = dir.get_next()
+		print(path)
+		if path != ".gitignore":
+			if(path == ""):
+				break
+			dir.remove(path)
+	assert(get_tree().change_scene("res://World/MVP_World/1_1.tscn") == OK)
 	
 
 

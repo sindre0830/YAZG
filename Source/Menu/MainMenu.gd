@@ -7,7 +7,6 @@ func _on_Play_pressed():
 	dir.list_dir_begin(true)
 	while(true):
 		var path = dir.get_next()
-		print(path)
 		if path != ".gitignore":
 			if(path == ""):
 				break

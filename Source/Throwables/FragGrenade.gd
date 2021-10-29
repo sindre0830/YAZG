@@ -46,8 +46,7 @@ func _on_Timer_timeout():
 func _on_Explosion_animation_finished():
 	# Get all bodies hit by the explosion
 	var bodies_hit = self.explosion_area.get_overlapping_bodies()
-	
-	print(bodies_hit)
+
 	for body in bodies_hit:
 		# If the body can take damage
 		if body.has_method("take_damage"):

@@ -48,5 +48,5 @@ position = Vector2( 830.773, 866.815 )
 [node name="Zombie3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 778.448, 1068.98 )
 
-[node name="mapStatus" parent="." instance=ExtResource( 5 )]
+[node name="mapStatus" parent="." instance=ExtResource( 6 )]
 map = [ true, true, false, false ]

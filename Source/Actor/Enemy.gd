@@ -36,6 +36,8 @@ func getNextPosition(position, target):
 	# get list of paths to get from A to B
 	var arrPaths = navigation.get_simple_path(position, target, false)
 	# return next position
+	if arrPaths.size() < 2:
+		return Vector2.ZERO
 	return arrPaths[1]
  
 func seek_player(zoneDetect):

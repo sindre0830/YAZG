@@ -31,6 +31,7 @@ collision_mask = 29
 
 [node name="Fence1" parent="." instance=ExtResource( 3 )]
 position = Vector2( 576.693, -46.3833 )
+rotation = 4.71239
 path = "res://World/MVP_World/2_1.tscn"
 
 [node name="Fence2" parent="." instance=ExtResource( 3 )]
@@ -39,6 +40,7 @@ path = "res://World/MVP_World/3_2.tscn"
 
 [node name="Fence3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 576.693, 1968.4 )
+rotation = 1.5708
 path = "res://World/MVP_World/2_3.tscn"
 
 [node name="Zombie" parent="." instance=ExtResource( 4 )]

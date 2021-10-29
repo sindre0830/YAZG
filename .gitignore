@@ -2,3 +2,5 @@
 Source/.import
 Source/World/Testing.*
 Source/World/Testing2.*
+Source/Temp/*
+!Source/Temp/.gitignore

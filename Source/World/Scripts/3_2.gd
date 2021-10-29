@@ -1,6 +1,6 @@
 extends Node
 
-var path_from1 = "res://World/MVP_World/3_2.tscn"
+var path_from1 = "res://World/MVP_World/2_2.tscn"
 var path_from2 = "res://World/MVP_World/3_3.tscn"
 var path_from3 = "res://World/MVP_World/4_2.tscn"
 

@@ -18,7 +18,7 @@ func updateMinimap():
 # Gets the minimap for current scene from world's mapStatus node
 func getMinimap():
 	map = self.get_parent().get_parent().get_parent().get_node("mapStatus").map	
-	print(map)
+
 	
 # Sets visibility for minimap-cardinals based on current minimap
 func setMinimap():

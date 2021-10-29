@@ -54,5 +54,6 @@ path = "res://World/MVP_World/1_3.tscn"
 
 [node name="mapStatus" parent="." instance=ExtResource( 7 )]
 map = [ false, false, true, false ]
+
 [node name="Box" parent="." instance=ExtResource( 5 )]
 position = Vector2( 563.303, 116.07 )

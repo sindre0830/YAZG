@@ -1,12 +1,16 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://TileMap/16xTileset.tres" type="TileSet" id=1]
-[ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Portals/Portal.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Actor/Zombie/Zombie.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Actor/Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Throwables/FragGrenade.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Portals/Portal.gd" type="Script" id=4]
 [ext_resource path="res://World/Scripts/2_2.gd" type="Script" id=5]
-[ext_resource path="res://Breakable/Box.tscn" type="PackedScene" id=6]
-[ext_resource path="res://UI/Minimap/mapStatus.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Actor/Zombie/Zombie.gd" type="Script" id=6]
+[ext_resource path="res://Breakable/Box.gd" type="Script" id=7]
+[ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Portals/Portal.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Breakable/Box.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Actor/Zombie/Zombie.tscn" type="PackedScene" id=11]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 5 )
@@ -25,39 +29,77 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( -262124, 71, 0, -262123, 72, 0, -262122, 72, 0, -262121, 72, 0, -262120, 72, 0, -262119, 72, 0, -262118, 72, 0, -262117, 72, 0, -262116, 72, 0, -262115, 72, 0, -262114, 72, 0, -262113, 72, 0, -262112, 72, 0, -262111, 75, 0, -262106, 71, 0, -262105, 72, 0, -262104, 72, 0, -262103, 72, 0, -262102, 72, 0, -262101, 72, 0, -262100, 72, 0, -262099, 72, 0, -262098, 72, 0, -262097, 72, 0, -262096, 72, 0, -262095, 72, 0, -262094, 72, 0, -262093, 75, 0, -196588, 73, 0, -196587, 74, 0, -196586, 74, 0, -196585, 74, 0, -196584, 74, 0, -196583, 74, 0, -196582, 74, 0, -196581, 74, 0, -196580, 74, 0, -196579, 74, 0, -196578, 74, 0, -196577, 74, 0, -196576, 74, 0, -196575, 76, 0, -196570, 73, 0, -196569, 74, 0, -196568, 74, 0, -196567, 74, 0, -196566, 74, 0, -196565, 74, 0, -196564, 74, 0, -196563, 74, 0, -196562, 74, 0, -196561, 74, 0, -196560, 74, 0, -196559, 74, 0, -196558, 74, 0, -196557, 76, 0, 2687090, 71, 0, 2687091, 75, 0, 2752626, 73, 0, 2752627, 76, 0, 2818162, 73, 0, 2818163, 76, 0, 2883698, 73, 0, 2883699, 76, 0, 2949234, 73, 0, 2949235, 76, 0, 3014770, 73, 0, 3014771, 76, 0, 3080306, 73, 0, 3080307, 76, 0, 3145842, 73, 0, 3145843, 76, 0, 3211378, 73, 0, 3211379, 76, 0, 3276914, 73, 0, 3276915, 76, 0, 3342450, 73, 0, 3342451, 76, 0, 3407986, 73, 0, 3407987, 76, 0, 3473522, 73, 0, 3473523, 76, 0, 3539058, 73, 0, 3539059, 76, 0, 3604594, 73, 0, 3604595, 76, 0, 3670130, 73, 0, 3670131, 76, 0, 3735666, 73, 0, 3735667, 76, 0, 4063346, 71, 0, 4063347, 75, 0, 4128882, 73, 0, 4128883, 76, 0, 4194418, 73, 0, 4194419, 76, 0, 4259954, 73, 0, 4259955, 76, 0, 4325490, 73, 0, 4325491, 76, 0, 4391026, 73, 0, 4391027, 76, 0, 4456562, 73, 0, 4456563, 76, 0, 4522098, 73, 0, 4522099, 76, 0, 4587634, 73, 0, 4587635, 76, 0, 4653170, 73, 0, 4653171, 76, 0, 4718706, 73, 0, 4718707, 76, 0, 4784242, 73, 0, 4784243, 76, 0, 4849778, 73, 0, 4849779, 76, 0, 4915314, 73, 0, 4915315, 76, 0, 7995412, 71, 0, 7995413, 72, 0, 7995414, 72, 0, 7995415, 72, 0, 7995416, 72, 0, 7995417, 72, 0, 7995418, 72, 0, 7995419, 72, 0, 7995420, 72, 0, 7995421, 72, 0, 7995422, 72, 0, 7995423, 72, 0, 7995424, 72, 0, 7995425, 75, 0, 7995430, 71, 0, 7995431, 72, 0, 7995432, 72, 0, 7995433, 72, 0, 7995434, 72, 0, 7995435, 72, 0, 7995436, 72, 0, 7995437, 72, 0, 7995438, 72, 0, 7995439, 72, 0, 7995440, 72, 0, 7995441, 72, 0, 7995442, 72, 0, 7995443, 75, 0, 8060948, 73, 0, 8060949, 74, 0, 8060950, 74, 0, 8060951, 74, 0, 8060952, 74, 0, 8060953, 74, 0, 8060954, 74, 0, 8060955, 74, 0, 8060956, 74, 0, 8060957, 74, 0, 8060958, 74, 0, 8060959, 74, 0, 8060960, 74, 0, 8060961, 76, 0, 8060966, 73, 0, 8060967, 74, 0, 8060968, 74, 0, 8060969, 74, 0, 8060970, 74, 0, 8060971, 74, 0, 8060972, 74, 0, 8060973, 74, 0, 8060974, 74, 0, 8060975, 74, 0, 8060976, 74, 0, 8060977, 74, 0, 8060978, 74, 0, 8060979, 76, 0 )
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 490.572, 329.973 )
+[node name="Player" type="KinematicBody2D" parent="." instance=ExtResource( 8 )]
+position = Vector2( 496.693, -46.3833 )
+rotation = 1.64237
+scale = Vector2( 0.999994, 0.999994 )
+z_index = 1
+collision_layer = 2
 collision_mask = 29
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+ACCELERATION = 2000
+MAX_SPEED = 400
+FRICTION = 4000
+velocity = Vector2( 0, 0 )
+max_health = 100.0
+FragGrenade = ExtResource( 3 )
 
-[node name="Fence1" parent="." instance=ExtResource( 3 )]
+[node name="Fence1" type="Area2D" parent="." instance=ExtResource( 9 )]
 position = Vector2( 576.693, -46.3833 )
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 4 )
 path = "res://World/MVP_World/2_1.tscn"
+destination_position = Vector2( 0, 0 )
 
-[node name="Fence2" parent="." instance=ExtResource( 3 )]
+[node name="Fence2" type="Area2D" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1839.72, 957.646 )
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 4 )
 path = "res://World/MVP_World/3_2.tscn"
+destination_position = Vector2( 0, 0 )
 
-[node name="Fence3" parent="." instance=ExtResource( 3 )]
+[node name="Fence3" type="Area2D" parent="." instance=ExtResource( 9 )]
 position = Vector2( 576.693, 1968.4 )
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 4 )
 path = "res://World/MVP_World/2_3.tscn"
+destination_position = Vector2( 0, 0 )
 
-[node name="Zombie" parent="." instance=ExtResource( 4 )]
-position = Vector2( 508.664, 1483.63 )
+[node name="Zombie2" type="KinematicBody2D" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1153.41, 1096.39 )
+rotation = 1.4982
+scale = Vector2( 1, 1 )
+collision_layer = 4
+collision_mask = 30
+script = ExtResource( 6 )
+ACCELERATION = 300
+MAX_SPEED = 5
+FRICTION = 200
+velocity = null
+max_health = 100.0
 
-[node name="Zombie2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1171.26, 1081.54 )
-
-[node name="Zombie3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 625.705, 881.44 )
-
-[node name="Zombie4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 733.306, 1047.56 )
-
-[node name="Zombie5" parent="." instance=ExtResource( 4 )]
-position = Vector2( 480.348, 1141.95 )
-
-[node name="Box" parent="." instance=ExtResource( 6 )]
+[node name="Box" type="StaticBody2D" parent="." instance=ExtResource( 10 )]
 position = Vector2( 1490.63, 804.48 )
+collision_layer = 8
+collision_mask = 7
+script = ExtResource( 7 )
 
-[node name="mapStatus" parent="." instance=ExtResource( 7 )]
-map = [ true, false, true, true ]
+[connection signal="body_entered" from="Fence1" to="Fence1" method="_on_body_entered"]
+[connection signal="body_entered" from="Fence2" to="Fence2" method="_on_body_entered"]
+[connection signal="body_entered" from="Fence3" to="Fence3" method="_on_body_entered"]
+[connection signal="body_entered" from="@Bullet@418" to="@Bullet@418" method="_on_Bullet_body_entered"]
+[connection signal="body_entered" from="@Bullet@420" to="@Bullet@420" method="_on_Bullet_body_entered"]
+[connection signal="body_entered" from="Bullet" to="Bullet" method="_on_Bullet_body_entered"]
+[connection signal="body_entered" from="@Bullet@421" to="@Bullet@421" method="_on_Bullet_body_entered"]
+[connection signal="body_entered" from="@Bullet@423" to="@Bullet@423" method="_on_Bullet_body_entered"]
+[connection signal="body_entered" from="@Bullet@424" to="@Bullet@424" method="_on_Bullet_body_entered"]
+[connection signal="body_entered" from="@Bullet@425" to="@Bullet@425" method="_on_Bullet_body_entered"]
+[connection signal="body_entered" from="@Bullet@426" to="@Bullet@426" method="_on_Bullet_body_entered"]
+[connection signal="body_entered" from="@Bullet@427" to="@Bullet@427" method="_on_Bullet_body_entered"]
+[connection signal="body_entered" from="@Bullet@428" to="@Bullet@428" method="_on_Bullet_body_entered"]

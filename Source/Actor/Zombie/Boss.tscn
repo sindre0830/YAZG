@@ -13,6 +13,8 @@ radius = 19.488
 height = 45.6275
 
 [node name="Boss" type="KinematicBody2D"]
+collision_layer = 4
+collision_mask = 27
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -28,6 +30,8 @@ shape = SubResource( 1 )
 [node name="Tween" type="Tween" parent="."]
 
 [node name="Hurtbox" parent="." instance=ExtResource( 3 )]
+collision_layer = 4
+collision_mask = 26
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 18.2635, -1.7818 )

@@ -1,15 +1,17 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://TileMap/16xTileset.tres" type="TileSet" id=1]
-[ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Portals/Portal.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Actor/Zombie/Zombie.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Breakable/Box.tscn" type="PackedScene" id=5]
-[ext_resource path="res://World/Scripts/1_2.gd" type="Script" id=6]
-[ext_resource path="res://UI/Minimap/mapStatus.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Actor/Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Throwables/FragGrenade.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Portals/Portal.gd" type="Script" id=4]
+[ext_resource path="res://Portals/Portal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Breakable/Box.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Breakable/Box.gd" type="Script" id=8]
+[ext_resource path="res://World/Scripts/1_2.gd" type="Script" id=9]
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource( 6 )
+script = ExtResource( 9 )
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 
@@ -25,34 +27,37 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 20, 71, 0, 21, 72, 0, 22, 72, 0, 23, 72, 0, 24, 72, 0, 25, 72, 0, 26, 72, 0, 27, 72, 0, 28, 72, 0, 29, 72, 0, 30, 72, 0, 31, 72, 0, 32, 72, 0, 33, 72, 0, 34, 72, 0, 35, 72, 0, 36, 72, 0, 37, 72, 0, 38, 72, 0, 39, 72, 0, 40, 72, 0, 41, 72, 0, 42, 72, 0, 43, 72, 0, 44, 72, 0, 45, 72, 0, 46, 72, 0, 47, 72, 0, 48, 72, 0, 49, 72, 0, 50, 72, 0, 51, 75, 0, 65556, 73, 0, 65557, 74, 0, 65558, 74, 0, 65559, 74, 0, 65560, 74, 0, 65561, 74, 0, 65562, 74, 0, 65563, 74, 0, 65564, 74, 0, 65565, 74, 0, 65566, 74, 0, 65567, 74, 0, 65568, 74, 0, 65569, 74, 0, 65570, 74, 0, 65571, 74, 0, 65572, 74, 0, 65573, 74, 0, 65574, 74, 0, 65575, 74, 0, 65576, 74, 0, 65577, 74, 0, 65578, 74, 0, 65579, 74, 0, 65580, 74, 0, 65581, 74, 0, 65582, 74, 0, 65583, 74, 0, 65584, 74, 0, 65585, 74, 0, 65586, 74, 0, 65587, 76, 0, 8519700, 71, 0, 8519701, 72, 0, 8519702, 72, 0, 8519703, 72, 0, 8519704, 72, 0, 8519705, 72, 0, 8519706, 72, 0, 8519707, 72, 0, 8519708, 72, 0, 8519709, 72, 0, 8519710, 72, 0, 8519711, 72, 0, 8519712, 72, 0, 8519713, 75, 0, 8519718, 71, 0, 8519719, 72, 0, 8519720, 72, 0, 8519721, 72, 0, 8519722, 72, 0, 8519723, 72, 0, 8519724, 72, 0, 8519725, 72, 0, 8519726, 72, 0, 8519727, 72, 0, 8519728, 72, 0, 8519729, 72, 0, 8519730, 72, 0, 8519731, 75, 0, 8585236, 73, 0, 8585237, 74, 0, 8585238, 74, 0, 8585239, 74, 0, 8585240, 74, 0, 8585241, 74, 0, 8585242, 74, 0, 8585243, 74, 0, 8585244, 74, 0, 8585245, 74, 0, 8585246, 74, 0, 8585247, 74, 0, 8585248, 74, 0, 8585249, 76, 0, 8585254, 73, 0, 8585255, 74, 0, 8585256, 74, 0, 8585257, 74, 0, 8585258, 74, 0, 8585259, 74, 0, 8585260, 74, 0, 8585261, 74, 0, 8585262, 74, 0, 8585263, 74, 0, 8585264, 74, 0, 8585265, 74, 0, 8585266, 74, 0, 8585267, 76, 0 )
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 557.314, 1974.5 )
+[node name="Player" type="KinematicBody2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 584.018, 2085.94 )
+rotation = 1.45557
+scale = Vector2( 0.999988, 0.999988 )
+z_index = 1
+collision_layer = 2
 collision_mask = 29
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+ACCELERATION = 2000
+MAX_SPEED = 400
+FRICTION = 4000
+velocity = Vector2( 0, 400 )
+max_health = 100.0
+FragGrenade = ExtResource( 3 )
 
-[node name="Zombie" parent="." instance=ExtResource( 4 )]
-position = Vector2( 425.199, 1686.01 )
-
-[node name="Zombie2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 625.211, 1479.65 )
-
-[node name="Zombie3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 468.059, 1470.12 )
-
-[node name="Zombie4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 487.108, 955.806 )
-
-[node name="Zombie5" parent="." instance=ExtResource( 4 )]
-position = Vector2( 456.947, 346.244 )
-
-[node name="Zombie6" parent="." instance=ExtResource( 4 )]
-position = Vector2( 553.778, 490.697 )
-
-[node name="Fence1" parent="." instance=ExtResource( 3 )]
+[node name="Fence1" type="Area2D" parent="." instance=ExtResource( 5 )]
 position = Vector2( 574.422, 2099.08 )
 rotation = 1.5708
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 4 )
 path = "res://World/MVP_World/1_3.tscn"
+destination_position = Vector2( 0, 0 )
 
-[node name="mapStatus" parent="." instance=ExtResource( 7 )]
-map = [ false, false, true, false ]
-[node name="Box" parent="." instance=ExtResource( 5 )]
+[node name="Box" type="StaticBody2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 563.303, 116.07 )
+collision_layer = 8
+collision_mask = 7
+script = ExtResource( 8 )
+
+[connection signal="body_entered" from="Fence1" to="Fence1" method="_on_body_entered"]

@@ -4,7 +4,7 @@ var HEALTHBAR = "UI/Healthbar"
 var GUNDISPLAY = "UI/GunDisplay"
 var DIFFICULTY = "UI/Difficulty/Label2"
 
-export var FragGrenade = preload("res://Throwables/FragGrenade.tscn")
+onready var Grenade = null
 
 onready var guns = [$"Guns/Mini-Gun", $Guns/Handgun]
 onready var gun_index = 0
@@ -40,12 +40,13 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_shoot") and gun.get_child(0).is_stopped():
 		gun.shoot($PositionMuzzle, self)
 		
-	if Input.is_action_pressed("ui_special_attack") and self.get_node("Throwables/GrenadeCooldown").is_stopped():
-			var grenade = FragGrenade.instance()
+	if (Input.is_action_pressed("ui_special_attack") and
+		self.Grenade != null):
+			var grenade = self.Grenade.instance()
 			grenade.init(self.position, get_global_mouse_position(), self.rotation)
 			grenade.transform =  self.global_transform 
 			self.owner.add_child(grenade)
-			self.get_node("Throwables/GrenadeCooldown").start()
+			self.Grenade = null
 
 	if Input.is_action_just_pressed("ui_switchWeapon"):
 		self.get_node(GUNDISPLAY).switchGunDisplayed()

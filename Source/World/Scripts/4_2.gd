@@ -10,10 +10,11 @@ func _ready():
 	pass # Replace with function body.
 
 func move_to_position(path = ""):
-	if(PreviousWorld.previous_name == path_from1|| path == path_from1):
+	print(path)
+	if(PreviousWorld.previous_name == path_from1 || path == path_from1):
 		get_node("Player").position = get_node("Fence1/Position2D").global_position
 		get_node("Player").velocity = Vector2.ZERO
-	elif(PreviousWorld.previous_name == path_from2|| path == path_from1):
+	elif(PreviousWorld.previous_name == path_from2 || path == path_from1):
 		get_node("Player").position = get_node("Fence2/Position2D").global_position
 		get_node("Player").velocity = Vector2.ZERO
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -35,7 +35,7 @@ position = Vector2( 2033, 576.716 )
 path = "res://World/MVP_World/5_2_BOSS.tscn"
 
 [node name="Fence2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 14.8523, 573.913 )
+position = Vector2( 14.8523, 572.969 )
 rotation = 3.14159
 path = "res://World/MVP_World/3_2.tscn"
 

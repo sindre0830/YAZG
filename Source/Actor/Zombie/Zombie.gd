@@ -35,7 +35,7 @@ func _physics_process(delta):
 		CHASE:
 			MAX_SPEED = 50
 			var path = player.global_position
-			if (collided && collided.collider != null) && !("Zombie" in collided.collider.name) && (path - global_position).length() > CHASE_TOLERANCE:
+			if (collided && collided.collider != null) && !("Zombie" in collided.collider.name || "Boss" in collided.collider.name) && (path - global_position).length() > CHASE_TOLERANCE:
 				path = getNextPosition(global_position, path)
 			collided = move(delta, path, 0.4)
 

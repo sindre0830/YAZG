@@ -1,6 +1,8 @@
 extends "res://Actor/Enemy.gd"
 
 var flagDamageModified = false
+var collided = false
+const CHASE_TOLERANCE = 50.0
 
 func _ready():
 	timer = Timer.new()
@@ -17,10 +19,13 @@ func _ready():
 	self.get_node("CanvasLayer/ProgressBar").value = health
 
 func _physics_process(delta) -> void:
-	var path = getNextPosition(global_position, player.global_position)
-	move(delta, path, 0.2)
+	var path = player.global_position
+	if (collided && collided.collider != null) && !("Zombie" in collided.collider.name || "Boss" in collided.collider.name) && (path - global_position).length() > CHASE_TOLERANCE:
+		path = getNextPosition(global_position, path)
+	collided = move(delta, path, 0.2)
 	if !flagDamageModified && health < max_health / 2:
 		damage = 30
+		flagDamageModified = true
 
 func take_damage(amount):
 	.take_damage(amount)

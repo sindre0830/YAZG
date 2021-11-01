@@ -35,6 +35,9 @@ func _physics_process(delta):
 		toggle_pause()
 		get_tree().paused = flagPaused
 		print(flagPaused)
+	
+	if flagPaused:
+		return
 
 	var input_vector = Vector2.ZERO
 	var mpos = get_global_mouse_position()

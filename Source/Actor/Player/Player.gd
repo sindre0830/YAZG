@@ -28,7 +28,9 @@ func _ready():
 
 	time_start = OS.get_unix_time()
 	get_node("UI/MiniMap").updateMinimap()		# Get current minimap
-	
+	#set inventory
+	$UI/Inventory.set_inventory()
+
 	
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_pause"):
@@ -71,6 +73,12 @@ func _physics_process(delta):
 		if gun_index >= guns.size():
 			gun_index = 0
 		gun = guns[gun_index]
+		# fix inventory position
+		var buffer = PlayerValues.inventory[0]
+		PlayerValues.inventory[0] = PlayerValues.inventory[1]
+		PlayerValues.inventory[1] = buffer
+		$UI/Inventory.set_inventory()
+
 
 func take_damage(amount):
 	.take_damage(amount)

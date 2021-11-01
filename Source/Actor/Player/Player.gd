@@ -73,10 +73,10 @@ func _physics_process(delta):
 		if gun_index >= guns.size():
 			gun_index = 0
 		gun = guns[gun_index]
-		# fix inventory position
-		var buffer = PlayerValues.inventory[0]
-		PlayerValues.inventory[0] = PlayerValues.inventory[1]
-		PlayerValues.inventory[1] = buffer
+		# fix toolbar position
+		var buffer = PlayerValues.toolbar[0]
+		PlayerValues.toolbar[0] = PlayerValues.toolbar[1]
+		PlayerValues.toolbar[1] = buffer
 		$UI/Inventory.set_inventory()
 
 

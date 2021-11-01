@@ -25,13 +25,34 @@ var itemDict = {
 }
 
 
-func _on_ItemList_item_selected(index):
-	$Icon.texture = $ItemList.get_item_icon(index)
-	$Header.text = $ItemList.get_item_text(index)
-
-
 func set_inventory():
+	# set toolbar
+	$Toolbar.clear()
+	for key in PlayerValues.toolbar:
+		$Toolbar.add_item(itemDict[key].title, itemDict[key].image)
+	# set inventory
 	$ItemList.clear()
 	for key in PlayerValues.inventory:
-		print(key)
 		$ItemList.add_item(itemDict[key].title, itemDict[key].image)
+
+
+func _on_ItemList_item_selected(index):
+	var key = PlayerValues.inventory[index]
+	$Header.text = itemDict[key].title
+	$Label.text = itemDict[key].description
+	$Icon.texture = itemDict[key].image
+
+
+func _on_Toolbar_item_selected(index):
+	var key = PlayerValues.toolbar[index]
+	$Header.text = itemDict[key].title
+	$Label.text = itemDict[key].description
+	$Icon.texture = itemDict[key].image
+
+
+func _on_Toolbar_focus_exited():
+	$Toolbar.unselect_all()
+
+
+func _on_ItemList_focus_exited():
+	$ItemList.unselect_all()

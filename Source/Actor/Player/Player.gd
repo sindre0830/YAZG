@@ -10,6 +10,7 @@ onready var guns = [$"Guns/Mini-Gun", $Guns/Handgun]
 onready var gun_index = 0
 onready var gun = guns[gun_index]
 onready var time_start
+var flagPaused = false
 
 var diff = 1
 
@@ -30,6 +31,11 @@ func _ready():
 	
 	
 func _physics_process(delta):
+	if Input.is_action_just_pressed("ui_pause"):
+		toggle_pause()
+		get_tree().paused = flagPaused
+		print(flagPaused)
+
 	var input_vector = Vector2.ZERO
 	var mpos = get_global_mouse_position()
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -77,3 +83,6 @@ func die():
 func increase_diff():
 	PlayerValues.current_difficulty += 0.2
 	self.get_node(DIFFICULTY).text = str(floor(PlayerValues.current_difficulty))
+
+func toggle_pause():
+	flagPaused = !flagPaused

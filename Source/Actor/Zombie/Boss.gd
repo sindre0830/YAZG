@@ -21,6 +21,12 @@ func _physics_process(delta) -> void:
 	move(delta, path, 0.2)
 	if !flagDamageModified && health < max_health / 2:
 		damage = 30
+	# Boss death animation
+	if health < max_health/3 && max_health/5 > health:
+		modulate = Color(0.4, 0, 0)
+	if health < max_health/5:
+		modulate = Color(0.2, 0, 0)
+	
 
 func take_damage(amount):
 	.take_damage(amount)

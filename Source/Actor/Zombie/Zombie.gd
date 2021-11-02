@@ -38,6 +38,13 @@ func _physics_process(delta):
 			if (collided && collided.collider != null) && !("Zombie" in collided.collider.name || "Boss" in collided.collider.name) && (path - global_position).length() > CHASE_TOLERANCE:
 				path = getNextPosition(global_position, path)
 			collided = move(delta, path, 0.4)
+			
+	# Zombie death animation
+	if health < max_health/3 && max_health/5 > health:
+		modulate = Color(0.4, 0, 0)
+	if health < max_health/5:
+		modulate = Color(0.2, 0, 0)
+	
 
 func _on_Vision_body_entered(body):
 	if body.name == "Player":

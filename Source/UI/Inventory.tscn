@@ -1,0 +1,116 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://UI/Inventory.gd" type="Script" id=2]
+
+[sub_resource type="Theme" id=1]
+Label/colors/idk = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.168627, 0.168627, 0.168627, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.168627, 0.168627, 0.168627, 0 )
+
+[node name="Inventory" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -384.0
+margin_right = 512.0
+margin_bottom = 384.0
+theme = SubResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 1024.0
+margin_bottom = 768.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Toolbar" type="ItemList" parent="."]
+margin_left = 192.0
+margin_top = 128.0
+margin_right = 832.0
+margin_bottom = 184.0
+custom_styles/bg = SubResource( 3 )
+items = [ "Item 0", ExtResource( 1 ), false, "Item 1", ExtResource( 1 ), false, "Item 2", ExtResource( 1 ), false ]
+max_columns = 3
+same_column_width = true
+fixed_column_width = 190
+fixed_icon_size = Vector2( 40, 40 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemList" type="ItemList" parent="."]
+margin_left = 192.0
+margin_top = 200.0
+margin_right = 832.0
+margin_bottom = 504.0
+custom_styles/bg = SubResource( 4 )
+items = [ "Item 0", ExtResource( 1 ), false, "Item 1", ExtResource( 1 ), false, "Item 2", ExtResource( 1 ), false, "Item 3", ExtResource( 1 ), false, "Item 4", ExtResource( 1 ), false, "Item 5", ExtResource( 1 ), false, "Item 6", ExtResource( 1 ), false, "Item 7", ExtResource( 1 ), false, "Item 8", ExtResource( 1 ), false, "Item 9", ExtResource( 1 ), false, "Item 10", ExtResource( 1 ), false, "Item 11", ExtResource( 1 ), false, "Item 12", ExtResource( 1 ), false, "Item 13", ExtResource( 1 ), false, "Item 14", ExtResource( 1 ), false, "Item 15", ExtResource( 1 ), false, "Item 16", ExtResource( 1 ), false, "Item 17", ExtResource( 1 ), false, "Item 18", ExtResource( 1 ), false, "Item 19", ExtResource( 1 ), false, "Item 20", ExtResource( 1 ), false, "Item 21", ExtResource( 1 ), false, "Item 22", ExtResource( 1 ), false, "Item 23", ExtResource( 1 ), false, "Item 24", ExtResource( 1 ), false, "Item 25", ExtResource( 1 ), false, "Item 26", ExtResource( 1 ), false, "Item 27", ExtResource( 1 ), false, "Item 28", ExtResource( 1 ), false, "Item 29", ExtResource( 1 ), false, "Item 30", ExtResource( 1 ), false, "Item 31", ExtResource( 1 ), false, "Item 32", ExtResource( 1 ), false, "Item 33", ExtResource( 1 ), false ]
+max_columns = 7
+same_column_width = true
+fixed_column_width = 190
+fixed_icon_size = Vector2( 40, 40 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="TextureRect" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 192.0
+margin_top = -248.0
+margin_right = 312.0
+margin_bottom = -128.0
+texture = ExtResource( 1 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Header" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 0.81
+anchor_right = 1.0
+anchor_bottom = 0.81
+margin_left = -696.0
+margin_top = -102.08
+margin_right = -192.0
+margin_bottom = -78.0801
+text = "Item 1"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -696.0
+margin_top = -208.0
+margin_right = -192.0
+margin_bottom = -128.0
+text = "Testing testing"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="focus_exited" from="Toolbar" to="." method="_on_Toolbar_focus_exited"]
+[connection signal="item_selected" from="Toolbar" to="." method="_on_Toolbar_item_selected"]
+[connection signal="focus_exited" from="ItemList" to="." method="_on_ItemList_focus_exited"]
+[connection signal="item_selected" from="ItemList" to="." method="_on_ItemList_item_selected"]

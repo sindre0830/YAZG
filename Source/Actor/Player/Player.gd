@@ -10,6 +10,7 @@ onready var guns = [$"Guns/Mini-Gun", $Guns/Handgun]
 onready var gun_index = 0
 onready var gun = guns[gun_index]
 onready var time_start
+var flagPaused = false
 
 var diff = 1
 
@@ -27,9 +28,19 @@ func _ready():
 
 	time_start = OS.get_unix_time()
 	get_node("UI/MiniMap").updateMinimap()		# Get current minimap
-	
+	#set inventory
+	$UI/Inventory.set_inventory()
+
 	
 func _physics_process(delta):
+	if Input.is_action_just_pressed("ui_pause"):
+		toggle_pause()
+		get_tree().paused = flagPaused
+		$UI/Inventory.visible = flagPaused
+	
+	if flagPaused:
+		return
+
 	var input_vector = Vector2.ZERO
 	var mpos = get_global_mouse_position()
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -62,6 +73,12 @@ func _physics_process(delta):
 		if gun_index >= guns.size():
 			gun_index = 0
 		gun = guns[gun_index]
+		# fix toolbar position
+		var buffer = PlayerValues.toolbar[0]
+		PlayerValues.toolbar[0] = PlayerValues.toolbar[1]
+		PlayerValues.toolbar[1] = buffer
+		$UI/Inventory.set_inventory()
+
 
 func take_damage(amount):
 	.take_damage(amount)
@@ -77,3 +94,6 @@ func die():
 func increase_diff():
 	PlayerValues.current_difficulty += 0.2
 	self.get_node(DIFFICULTY).text = str(floor(PlayerValues.current_difficulty))
+
+func toggle_pause():
+	flagPaused = !flagPaused

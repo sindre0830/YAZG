@@ -66,6 +66,10 @@ func _physics_process(delta):
 			grenade.transform =  self.global_transform 
 			self.owner.add_child(grenade)
 			self.Grenade = null
+			
+			# Clear UI
+			var ui_node = self.get_node("UI/GrenadeDisplay")
+			ui_node.setGrenadeDisplayed(ui_node.NO_GRENADE)
 
 	if Input.is_action_just_pressed("ui_switchWeapon"):
 		self.get_node(GUNDISPLAY).switchGunDisplayed()

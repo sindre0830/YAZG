@@ -40,6 +40,11 @@ func explode():
 	self.grenade_sprite.visible = false
 	self.explosion_animation.visible = true
 	self.explosion_animation.play()
+	
+	# Spawn a burning floor where the molly exploded
+	var burning_floor = BurningFloor.instance()
+	burning_floor.position = self.position
+	self.get_parent().add_child(burning_floor)
 
 
 func _on_MolotovCocktail_body_entered(body):
@@ -52,11 +57,6 @@ func _physics_process(delta):
 		self.explode()
 
 
-func _on_Explosion_animation_finished():
-	# Spawn a burning floor where the molly exploded
-	var burning_floor = BurningFloor.instance()
-	burning_floor.position = self.position
-	self.get_parent().add_child(burning_floor)
-	
+func _on_Explosion_animation_finished():	
 	# remove the molly
 	queue_free()

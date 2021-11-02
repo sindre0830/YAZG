@@ -1,7 +1,21 @@
 extends Node
 
+enum {
+	PRIMARY_GUN,
+	SECONDARY_GUN,
+	THROWABLE
+}
+
+enum {
+	MINI_GUN,
+	PISTOL,
+	MOLOTOV_COCKTAIL,
+	FRAG_GRENADE, 
+	NO_GRENADE
+}
+
 var current_health = 100
 var current_difficulty = 1
 var time_end
-var toolbar = [0, 1, 2]
-var inventory = [3, 3, 3, 3, 3, 3]
+var toolbar = [MINI_GUN, PISTOL]
+var inventory = [FRAG_GRENADE, FRAG_GRENADE, FRAG_GRENADE, FRAG_GRENADE, FRAG_GRENADE, FRAG_GRENADE]

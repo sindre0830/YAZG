@@ -4,13 +4,15 @@ var HEALTHBAR = "UI/Healthbar"
 var GUNDISPLAY = "UI/GunDisplay"
 var DIFFICULTY = "UI/Difficulty/Label2"
 
-onready var Grenade = null
+var MolotovCocktail = preload("res://Throwables/MolotovCocktail.tscn")
+var FragGrenade = preload("res://Throwables/FragGrenade.tscn")
 
 onready var guns = [$"Guns/Mini-Gun", $Guns/Handgun]
 onready var gun_index = 0
 onready var gun = guns[gun_index]
 onready var time_start
 var flagPaused = false
+var grenade
 
 var diff = 1
 
@@ -59,17 +61,18 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_shoot") and gun.get_child(0).is_stopped():
 		gun.shoot($PositionMuzzle, self)
 		
-	if (Input.is_action_pressed("ui_special_attack") and
-		self.Grenade != null):
-			var grenade = self.Grenade.instance()
-			grenade.init(self.position, get_global_mouse_position(), self.rotation)
-			grenade.transform =  self.global_transform 
-			self.owner.add_child(grenade)
-			self.Grenade = null
-			
-			# Clear UI
-			var ui_node = self.get_node("UI/GrenadeDisplay")
-			ui_node.setGrenadeDisplayed(ui_node.NO_GRENADE)
+	if (Input.is_action_pressed("ui_special_attack") and PlayerValues.toolbar.size() >= 3):
+		if PlayerValues.toolbar[2] == PlayerValues.MOLOTOV_COCKTAIL:
+			grenade = MolotovCocktail.instance()
+		elif PlayerValues.toolbar[2] == PlayerValues.FRAG_GRENADE:
+			grenade = FragGrenade.instance()
+		grenade.init(self.position, get_global_mouse_position(), self.rotation)
+		grenade.transform =  self.global_transform 
+		self.owner.add_child(grenade)
+		PlayerValues.toolbar.pop_back()
+		
+		# Update inventory
+		$UI/Inventory.set_inventory()
 
 	if Input.is_action_just_pressed("ui_switchWeapon"):
 		self.get_node(GUNDISPLAY).switchGunDisplayed()

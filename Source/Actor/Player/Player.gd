@@ -104,3 +104,7 @@ func increase_diff():
 
 func toggle_pause():
 	flagPaused = !flagPaused
+
+func take_xp(amount):
+	PlayerValues.XP += amount
+	print(PlayerValues.XP)

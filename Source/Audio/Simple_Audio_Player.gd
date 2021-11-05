@@ -17,7 +17,6 @@ func play_sound(audio_stream, position=null):
 		globals.created_audio.remove(globals.created_audio.find(self))
 		queue_free()
 		return
-
 	audio_node.stream = audio_stream
 	audio_node.play(0.0)
 
@@ -26,6 +25,9 @@ func sound_finished():
 	if should_loop:
 		audio_node.play(0.0)
 	else:
-		globals.created_audio.remove(globals.created_audio.find(self))
-		audio_node.stop()
-		queue_free()
+		stop()
+
+func stop():
+	globals.created_audio.remove(globals.created_audio.find(self))
+	audio_node.stop()
+	queue_free()

@@ -8,7 +8,8 @@ func _ready():
 var audio_clips = {
 	"Pistol_shot": preload("res://Audio/pistol.mp3"), #preload("res://path_to_your_audio_here!")
 	"Rifle_shot": preload("res://Audio/Assault_rifle.mp3"), #preload("res://path_to_your_audio_here!")
-	"ShotGun_shot": preload("res://Audio/Shotgun.mp3"), #preload("res://path_to_your_audio_here!")
+	"ShotGun_shot": preload("res://Audio/Shotgun.mp3"),
+	"Menu_background": preload("res://Audio/Main_menu.mp3"), #preload("res://path_to_your_audio_here!")
 }
 
 const SIMPLE_AUDIO_PLAYER_SCENE = preload("res://Audio/Simple_Audio_Player.tscn")
@@ -26,3 +27,8 @@ func play_sound(sound_name, loop_sound=false, sound_position=null):
 
 	else:
 		print ("ERROR: cannot play sound that does not exist in audio_clips!")
+
+func stop_sounds():
+	if (created_audio.size() != 0):
+		for player in created_audio:
+			player.stop()

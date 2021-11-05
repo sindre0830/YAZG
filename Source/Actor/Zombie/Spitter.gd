@@ -6,6 +6,9 @@ const WANDER_TOLERANCE = 8.0
 const WANDER_RADIUS = 16
 const CHASE_TOLERANCE = 50.0
 
+var spitTimer
+var FragGrenade = preload("res://Throwables/FragGrenade.tscn")
+
 func _init():
 	state = IDLE
 	pass
@@ -18,26 +21,43 @@ func _ready():
 	timer.connect("timeout", self, "_on_timer_timeout")
 	velocity = Vector2.ZERO
 	
+	spitTimer = Timer.new()
+	spitTimer.set_wait_time(1.0)
+	spitTimer.set_one_shot(false)
+	add_child(timer)	
+	spitTimer.connect("timeout", self, "_on_timer_timeout")
+	velocity = Vector2.ZERO
+	
+	
 	$VisionBuffer/ChaseCollision.set_deferred("disabled", true)
 
 func _physics_process(delta):
 	match state:
 		IDLE:
+			timer.stop()
 			MAX_SPEED = 5
 			state = WANDER
 			var target_vector = Vector2(rand_range(-WANDER_RADIUS, WANDER_RADIUS), rand_range(-WANDER_RADIUS, WANDER_RADIUS))
 			target_position = global_position + target_vector
 		WANDER:
+			timer.stop()
 			var path = getNextPosition(global_position, target_position)
 			collided = move(delta, path, 0.8)
 			if collided || (target_position - global_position).length() < WANDER_TOLERANCE:
 				state = IDLE
 		CHASE:
-			MAX_SPEED = 50
+			MAX_SPEED = 80
 			var path = player.global_position
-			if (collided && collided.collider != null) && !("Zombie" in collided.collider.name || "Boss" in collided.collider.name) && (path - global_position).length() > CHASE_TOLERANCE:
+			var distance = path - self.global_position
+			if (collided && collided.collider != null) && !("Zombie" in collided.collider.name || "Boss" in collided.collider.name) && ((path - global_position).length() > CHASE_TOLERANCE):
 				path = getNextPosition(global_position, path)
-			collided = move(delta, path, 0.4)
+			if distance.length() > 180:		# also need to check rotation!
+				collided = move(delta, path, 0.2)
+				timer.stop()
+			else:
+				turn(path, 0.2)
+				timer.start()
+				#throw_grenade(player)
 			
 	# Zombie death animation
 	if health < max_health/3 && max_health/5 > health:
@@ -64,3 +84,15 @@ func take_damage(amount):
 		state = CHASE
 		$VisionBuffer/ChaseCollision.set_deferred("disabled", true)
 		$Vision/WanderCollision.set_deferred("disabled", true)
+
+func _on_timer_timeout():
+	print("Timeout!")
+	throw_grenade(player)
+
+func throw_grenade(target):
+	print(self.position)
+	print(target.global_position)
+	var grenade = FragGrenade.instance()
+	grenade.init(self.position, target.global_position, self.rotation)
+	grenade.transform =  self.global_transform 
+	self.owner.add_child(grenade)

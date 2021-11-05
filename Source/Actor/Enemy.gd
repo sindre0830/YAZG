@@ -19,7 +19,14 @@ func _set_rotation(new_trans):
 	self.transform = self.transform.orthonormalized()
 
 func move(delta, path, turningSpeed):
-	# get initial value
+	turn(path, turningSpeed)
+	# set velocity
+	velocity = Vector2(1, 0).rotated(rotation)
+	# move
+	return move_and_collide(velocity * MAX_SPEED * delta)
+	
+func turn(path, turningSpeed):
+		# get initial value
 	var start = self.transform.x
 	# get final value
 	var distance = path - position
@@ -27,10 +34,6 @@ func move(delta, path, turningSpeed):
 	# start tweening animation and get rotation value
 	tween.interpolate_method(self, '_set_rotation', start, finish, turningSpeed, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	tween.start()
-	# set velocity
-	velocity = Vector2(1, 0).rotated(rotation)
-	# move
-	return move_and_collide(velocity * MAX_SPEED * delta)
 
 func getNextPosition(position, target):
 	# get list of paths to get from A to B

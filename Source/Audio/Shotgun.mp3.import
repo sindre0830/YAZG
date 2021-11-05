@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Shotgun.mp3-26494a648d62f6d1320a71b2809f9666.mp3str"
+
+[deps]
+
+source_file="res://Audio/Shotgun.mp3"
+dest_files=[ "res://.import/Shotgun.mp3-26494a648d62f6d1320a71b2809f9666.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

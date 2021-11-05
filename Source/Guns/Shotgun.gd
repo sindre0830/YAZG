@@ -6,6 +6,8 @@ func _init().(500) -> void:
 	pass
 	
 func shoot(muzzle: Position2D, player: Node):
+	var globals = get_node("/root/Globals")
+	globals.play_sound("ShotGun_shot", false, muzzle.global_position)
 	for n in n_bullets:
 		var bullet = Bullet.instance()
 		bullet.init(speed, damage)

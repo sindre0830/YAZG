@@ -10,6 +10,7 @@ func _ready():
 	print(get_node(label).get_name())
 	get_node(label).set_text(get_node("Label").get_text() + " with time: " + str(timer))
 
+
 func _on_Respawn_pressed():
 	# Start the game by switching to the World scene
 	var dir = Directory.new()
@@ -23,8 +24,6 @@ func _on_Respawn_pressed():
 				break
 			dir.remove(path)
 	assert(get_tree().change_scene("res://World/MVP_World/1_1.tscn") == OK)
-	
-
 
 
 func _on_RTMainMenu_pressed():

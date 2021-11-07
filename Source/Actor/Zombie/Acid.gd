@@ -1,5 +1,6 @@
 # Spitter - should spit globs of acid at player
-# Not quite working atm
+# Need acid resource for hazardous area
+# Besides splitting out the scene from throwable/grenade to acid, this works
 
 extends "res://Actor/Enemy.gd"
 
@@ -9,7 +10,7 @@ const WANDER_TOLERANCE = 8.0
 const WANDER_RADIUS = 16
 const CHASE_TOLERANCE = 50.0
 
-var spitTimer
+var acidTimer
 var FragGrenade = preload("res://Throwables/FragGrenade.tscn")
 
 func _init():
@@ -24,12 +25,15 @@ func _ready():
 	timer.connect("timeout", self, "_on_timer_timeout")
 	velocity = Vector2.ZERO
 	
-	spitTimer = Timer.new()
-	spitTimer.set_wait_time(1.0)
-	spitTimer.set_one_shot(false)
-	add_child(spitTimer)	
-	spitTimer.connect("timeout", self, "_on_spitTimer_timeout")
+	acidTimer = Timer.new()
+	acidTimer.set_wait_time(1.0)
+	acidTimer.set_one_shot(false)
+	add_child(acidTimer)	
+	acidTimer.connect("timeout", self, "_on_acidTimer_timeout")
 	velocity = Vector2.ZERO
+	# have to add acid as a new resource for this to work good
+	acidTimer.start()
+	
 	
 	$VisionBuffer/ChaseCollision.set_deferred("disabled", true)
 
@@ -51,13 +55,10 @@ func _physics_process(delta):
 			var distance = path - self.global_position
 			if (collided && collided.collider != null) && !("Zombie" in collided.collider.name || "Boss" in collided.collider.name) && ((path - global_position).length() > CHASE_TOLERANCE):
 				path = getNextPosition(global_position, path)
-			if distance.length() > 280:
-				# If we stop here, it never throws...because timer starts on leaving?
-				spitTimer.stop()
+			if distance.length() > 180:		# also need to check rotation!
 				collided = move(delta, path, 0.2)
 			else:
 				turn(path, 0.2)
-				spitTimer.start()
 				#throw_grenade(player)
 			
 	# Zombie death animation
@@ -86,13 +87,12 @@ func take_damage(amount):
 		$VisionBuffer/ChaseCollision.set_deferred("disabled", true)
 		$Vision/WanderCollision.set_deferred("disabled", true)
 
-func _on_spitTimer_timeout():
-	#Prints here but doesn't spit?
+func _on_acidTimer_timeout():
 	print("Timeout!")
-	spit(player)
+	throw_grenade(player)
 
-func spit(target):
-	var spit = FragGrenade.instance()
-	spit.init(self.position, target.global_position, self.rotation)
-	spit.transform =  self.global_transform 
-	self.owner.add_child(spit)
+func throw_grenade(target):
+	var grenade = FragGrenade.instance()
+	grenade.init(self.position, target.global_position, self.rotation)
+	grenade.transform =  self.global_transform 
+	self.owner.add_child(grenade)

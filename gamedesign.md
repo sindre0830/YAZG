@@ -14,93 +14,132 @@ Given we are using git you could also use @name to assign parts of the design to
 
 
 ## Overview
-*Name* , *Team*
+Authors: Sindre Eiklid, Casper Melhus, Henrik Karlsen, Rickard Loland, Niklas Menzel, Martin Araya
+Team: Zombie
+Game title: YAZG
 
 ### Game Concept
-What the game is about?
+Surviving in a zombie apocalypse with crazy guns. The player will have to navigate various stages consisting of groups of rooms connected by doors/corridors, a la Enter the Gungeon or Binding of Isaac. 
+The focus is on being somewhat of a power fantasy, mowing down zombies with flashy and fun weapons that allow for a variety of playstyles.
 
 ### Genre
-What other games is it like?
+Roguelike, Action, Adventure
+Binding of Isaac, Enter the Gungeon
 
 ### Target Audience
-Who will play it?
+Both action and roguelike fans
+People who want twitch-based and hectic gameplay. People that enjoy similar 2D shooter games.
+Chaos enjoyers.
 
 ### Game Flow Summary
-How does the player move through the game?
+The player spawns in a room, with a basic weapon. They move around the map into other rooms, fighting zombies and picking up power-ups. Eventually they run into a boss for the stage, and have to beat it. When they beat it, they become able to progress to the next stage. 
 
 ### Look and Feel
-What is the basic look and feel of the game?  What is the visual style?
+The game will be set in an apocalyptic future, overrun with zombies (stop us if you’ve heard this before).
+We are intending the look of the game to be somewhat cartoony, possibly pixel-based. This mostly depends on what kind of art assets we are able to find.
+We are planning for the game to be 2D.
 
 ## Gameplay and Mechanics
-What does the player do?
 
 ### Gameplay
-What is the core of the players interaction with the game?
+The players move around using WASD (or similar keybinds), aim their weapon with their mouse. They move around the map fighting hordes of zombies, and look for power-ups and similar to get stronger. Eventually they take on a powerful boss, and attempt to beat it in order to progress.
 
 #### Game progression
-How does the player progress through the experience and how do they know they are making progress?
+The player knows they are making progress primarily in two ways. The first is through picking up items that make them stronger. This lets them kill zombies faster, hit more zombies per shot, or increases their defenses. The second way is by killing bosses and progressing through floors. This allows the player to monitor their progress in a more direct way, and compare their progress to previous playthroughs.
+As our game is intended as a roguelike, progress is a lot more ephemeral than in many other games. This also means our two methods or progression are somewhat tied together - spending a lot of time (or getting lucky) and increasing character power a lot will make level progression slower but easier. Rushing through levels without exploring fully could even make the player feel like they are regressing in terms of personal power, as enemies get stronger at a more rapid pace than the player.
+The player wins the game by reaching the safe-house after X (TBD) levels.
 
 #### Mission/challenge Structure
-Is there a heirachy to the challenges in the game?
+For each map that the player clears, the difficulty will be increased. This will stop the player from clearing the entire level for the most optimal playthrough. There will also be a boss at the end of each level that needs to be defeated to progress, here the player needs to decide if they are ready.
 
 #### Puzzle Structure
-Are there puzzles, ie challenges that have a correct answer?
+The bosses will have different mechanics that the player will need to learn to defeat.
 
 #### Objectives
-What is the player trying to achieve?
+Survive → explore → get to the safe house
 
 ### Mechanics
-What are the rules to the game, both implicit and explicit?  
-This is the model of the universe that the game works under.  
-Think of it as a simulation of a world. How do all the pieces interact?
+What are the rules to the game, both implicit and explicit?
+- The player shoots zombies and tries to kill them
+- Zombies die when their health reaches zero.
+- Zombies rush at the player and try to kill you with whatever method they have.
+- Basic zombies only have melee attacks.
+- Special enemies can have ranged attacks.
+- The player dies when their health reaches 0.
+- When the player dies, their progress is erased and they have to start over (permanent progression?)
+- Players can gain power by picking up items
+- Power comes in two ways - numbers get bigger (damage, health, etc) and special attacks.
+- (Movement abilities?)
+- Levels are beaten by killing a boss.
+- When you kill a boss, you become able to move to the next level.
+- Players will spawn in empty rooms in new levels, so they get their bearings.
+- Players are supposed to gain power by exploring before killing bosses, in order to get the power to kill the boss and fight the tougher enemies in the following levels.
 
 #### Physics
-How does the physical universe work?
+Wall bounce
+- For enemies, to deal more damage
+- Potentially for some weaponry
 
 #### Movement
-How the player interacts with the game?
+Movement: WASD or Arrows
+Shoot: Cursor
 
 #### Objects
-What are the objects in the game?
-How does the player interact with them?
+Immovable objects: Buildings, trees, fences
+Breakable objects: Crates, doors, gates, damaged walls
+Hazardous: Fire, acid (From zombie spitters)
+Walkable surfaces: Roads, parking lots, houses/apartments
 
 #### Actions
-What are the other interactions the player has with the game world?
+Open crates (random items)
+Break objects (crates, doors, gates, damaged walls) to proceed on the map
 
 #### Combat
-If there is combat or conflict, how is this specifically modeled?
+The player walks into a map and will have to defeat the enemies to proceed. The player will utilize projectiles, while dodging enemies. The enemies can have melee, range and AOE attack.
 
 #### Economy
-What is the economy of the game? How does it work?
+You get points for each zombie killed, used to generate a score at the end of the game, and could be used to buy items.
 
 #### Screne Flow
-A graphical description of how each screne is related to every other and a description of the purpose of each screen.
+A graphical description of how each scene is related to every other and a description of the purpose of each screen. (Move level to level/menu/etc)
+- Scene transition between maps and levels, no transitions inside maps.
+- Main menu
 
 ### Game Options
 What are the options and how do they affect gameplay and mechanics?
+The player will be able to choose between different items that might give buffs and debuffs. 
 
 ### Replay and Saving
+The player can exit the game (in safe rooms only?) and the gamestate will save. The player can then start from that state the next time they start playing. There is only one save and saving again will overwrite it. After the player loads the save, it is deleted. As this is a roguelike, we do not want any reloading of previous saves or loading a save after death. (Potentially tough to do without letting player manually backup their save though, if they want to cheat).
+
+(Permanent progression?)
 
 ### Cheats and Easter Eggs
+Rear gun called McCallum.
 
 ## The Story, Setting, and Character
 
 ### Story and Narrative
-If there is a story component includes back story, plot elements, game progression, and cut scenes. 
-Cut scenes descriptions include the actors, the setting, and the storyboard or script.
+Survive and explore the apocalyptic world. Your goal is to get to a safe house, but the player needs to explore the map for possible exits.
 
 ### Game World
-The setting of the game
+The game is set in a post apocalyptic world filled with zombies who are out to get you.
 
 #### General look and feel of the World
-Aesthetics
 
 #### Areas
-including the general description and physical characteristics as well as how it relates to the rest of the world 
-(what levels use it, how it connects to other areas).
+including the general description and physical characteristics as well as how it relates to the rest of the world (what levels use it, how it connects to other areas).
+Initially, our idea is that each stage/level takes place in post-apocalyptic city streets, with buildings and some areas of greenery (trees etc). 
+** Do we want a progression towards/away from the city boundary to simulate moving towards the safehouse, with more trees towards the city boundaries and none around the city center?
 
 ### Characters
 Each character should include the back story, personality, appearance, animations, abilities, relevance to the story and relationship to other characters.
+As this is a roguelike focused on core combat gameplay and mechanical character progression, we are not really planning to have much in the way of characterization
+
+**Main Character**
+- Apperance: Top-down avrage Joe lookalike
+- Animations: Move, shoot, throw
+- Abilities: Move, shoot, throw
 
 ## Levels
 
@@ -111,26 +150,48 @@ Depending on the game, this may include the physical description of the map, the
 and what encounters are important or incidental.
 
 ### Training level
-How is onboarding managed?
+The gameplay is very basic, which is good. When a player starts the game for the first time, they will get something showing the controls - WASD to move, mouse for aiming and firing. When a player picks up a powerup, encounters a boss room, and has the option to advance to a new level, we want to have a pop-up briefly explaining these things as well.
 
 ## Interface
 
 ### Visual System
-If you have a HUD, what is on it?  What menus are you displaying? What is the camera model?
+HP, equipped weapon (portrait of your char?) should be displayed on the bottom of the screen
+A crosshair is placed where the mousecursor is.
+Boss name and healthcare shown at the top of screen.
 
 ### Control System
-How does the game player control the game?   What are the specific commands?
+- WASD - move the character around.
+- Move mouse to aim weapon.
+- LMB to fire current weapon.
+- (RMB for alt fire/grenade/whatever?)
+- Scrollwheel up/down to swap weapons.
+- Escape to bring up menu.
 
 ### Audio, Music, Sound Effects
+- We want the game to have a foreboding BGM ideally.
+- We want sound effects for at least the following:
+- Firing weapons (unique for each weapon)
+- Zombie attacking
+- Player getting hit
+- Picking up an item/power-up
+- Swapping weapons
+- Explosions (different for zombie acid and 
 
 ### Help System
+Since the controls are very simple we could just add a very short tutorial to the start of the game later
+Pop up when hovering items to show stats.
 
 ## Artificial Intelligence
 
 ### Opponent and Enemy AI
-The active opponent that plays against the player and therefore requires strategic decision making.
+- Zombies: Very basic AI. Once engaging the player, they will always move the shortest path towards the player as they are not very smart. Player can potentially ‘lose’ them, in which case they stop following the player. When not engaged, they move around aimlessly within a small area around their spawn point.
+- Special enemies: Also follows player, but a bit more advanced. Ranged enemies try to stay a certain distance from player for example. Some try to avoid hazards like thrown explosives, acid. 
+- Special AI for each enemy will be added here.
+- Bosses: Variable AI. Generally a mix of player-focused and predefined ‘patterns’, for example moving to the center of the room and firing a bullet hell pattern. Able to play around with this as the encounters will be confined to specially de-signed boss rooms.
+- Special AI for each boss will be added here.
 
 ### Non-combat and Friendly Characters
+Potentially shopkeeper NPCs - might be immersion breaking? Unsure whether we want to implement in a way that needs AI.
 
 ### Support AI
 
@@ -139,10 +200,14 @@ The active opponent that plays against the player and therefore requires strateg
 ## Technical
 
 ### Target Hardware
+We target this game towards PC-users - specifically, we intend for it to be played with a mouse and keyboard, rather than touchscreen or the like.
+The game should be quite lightweight and capable of running on most older hardware (within reason).
 
 ### Development Hardware and Software (including game engine)
+Game engines: Godot 2D
 
 ### Network requirements
+No networking.
 
 ## Game Art
 

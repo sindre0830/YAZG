@@ -3,11 +3,13 @@ extends Node2D
 onready var timer # Todo: make timer global
 
 onready var label = "Label"
-
+onready var score = 0
 func _ready():
-	# Code for displaying time TODO
-	print(get_node(label).get_name())
-	get_node(label).set_text(get_node("Label").get_text() + " with time: " + str(PlayerValues.time_end))
+	score = PlayerValues.XP /  PlayerValues.time_end
+	get_node(label).set_text(get_node("Label").get_text() + " with points: " + str(score))
+	
+	save(score)
+
 
 
 func _on_Respawn_pressed():
@@ -28,3 +30,13 @@ func _on_Respawn_pressed():
 func _on_RTMainMenu_pressed():
 	# Switch scene back to main menu
 	assert(get_tree().change_scene("res://Menu/MainMenu.tscn") == OK)
+
+
+	
+
+	
+func save(high_score):    
+   PlayerValues.save_data["highscore"] = high_score #data to save
+   PlayerValues.savegame.open(PlayerValues.save_path, File.WRITE) #open file to write
+   PlayerValues.savegame.store_var(PlayerValues.save_data) #store the data
+   PlayerValues.savegame.close() # close the file

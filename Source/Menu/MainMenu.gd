@@ -3,6 +3,7 @@ extends Control
 func _ready():
 	var globals = get_node("/root/Globals")
 	globals.play_sound("Menu_background", false)
+	$TextEdit.text = "Highscore: " + str(PlayerValues.read_savegame())
 	
 func _on_Play_pressed():
 	# Start the game by switching to the World scene
@@ -37,3 +38,4 @@ func _on_Volume_value_changed(value):
 		print("mute")
 		AudioServer.set_bus_mute(0, not AudioServer.is_bus_mute(0))
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), value-50)
+	

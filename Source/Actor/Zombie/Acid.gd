@@ -1,4 +1,4 @@
-# Spitter - should spit globs of acid at player
+# Acid - should drop globs of acid at the floor
 # Need acid resource for hazardous area
 # Besides splitting out the scene from throwable/grenade to acid, this works
 
@@ -14,7 +14,9 @@ var acidTimer
 var FragGrenade = preload("res://Throwables/FragGrenade.tscn")
 
 func _init():
-	state = IDLE
+	# change to wander after main merge
+	state = CHASE
+	MAX_SPEED = 50
 	pass
 	
 func _ready():
@@ -26,7 +28,7 @@ func _ready():
 	velocity = Vector2.ZERO
 	
 	acidTimer = Timer.new()
-	acidTimer.set_wait_time(1.0)
+	acidTimer.set_wait_time(3.0)
 	acidTimer.set_one_shot(false)
 	add_child(acidTimer)	
 	acidTimer.connect("timeout", self, "_on_acidTimer_timeout")
@@ -55,11 +57,7 @@ func _physics_process(delta):
 			var distance = path - self.global_position
 			if (collided && collided.collider != null) && !("Zombie" in collided.collider.name || "Boss" in collided.collider.name) && ((path - global_position).length() > CHASE_TOLERANCE):
 				path = getNextPosition(global_position, path)
-			if distance.length() > 180:		# also need to check rotation!
-				collided = move(delta, path, 0.2)
-			else:
-				turn(path, 0.2)
-				#throw_grenade(player)
+			collided = move(delta, path, 0.2)
 			
 	# Zombie death animation
 	if health < max_health/3 && max_health/5 > health:
@@ -88,11 +86,10 @@ func take_damage(amount):
 		$Vision/WanderCollision.set_deferred("disabled", true)
 
 func _on_acidTimer_timeout():
-	print("Timeout!")
 	throw_grenade(player)
 
 func throw_grenade(target):
 	var grenade = FragGrenade.instance()
-	grenade.init(self.position, target.global_position, self.rotation)
+	grenade.init(self.position, self.global_position, self.rotation)
 	grenade.transform =  self.global_transform 
 	self.owner.add_child(grenade)

@@ -10,6 +10,7 @@ const WANDER_RADIUS = 16
 const CHASE_TOLERANCE = 50.0
 
 var spitTimer
+var inRange = false
 var FragGrenade = preload("res://Throwables/FragGrenade.tscn")
 
 func _init():
@@ -25,7 +26,7 @@ func _ready():
 	velocity = Vector2.ZERO
 	
 	spitTimer = Timer.new()
-	spitTimer.set_wait_time(1.0)
+	spitTimer.set_wait_time(2.0)
 	spitTimer.set_one_shot(false)
 	add_child(spitTimer)	
 	spitTimer.connect("timeout", self, "_on_spitTimer_timeout")
@@ -52,14 +53,16 @@ func _physics_process(delta):
 			if (collided && collided.collider != null) && !("Zombie" in collided.collider.name || "Boss" in collided.collider.name) && ((path - global_position).length() > CHASE_TOLERANCE):
 				path = getNextPosition(global_position, path)
 			if distance.length() > 280:
-				# If we stop here, it never throws...because timer starts on leaving?
-				spitTimer.stop()
+				inRange = false
 				collided = move(delta, path, 0.2)
 			else:
 				turn(path, 0.2)
-				spitTimer.start()
+				inRange = true
 				#throw_grenade(player)
-			
+	if inRange && (spitTimer.time_left == 0):
+		spitTimer.start()
+	elif !inRange:
+		spitTimer.stop()
 	# Zombie death animation
 	if health < max_health/3 && max_health/5 > health:
 		modulate = Color(0.4, 0, 0)
@@ -87,12 +90,11 @@ func take_damage(amount):
 		$Vision/WanderCollision.set_deferred("disabled", true)
 
 func _on_spitTimer_timeout():
-	#Prints here but doesn't spit?
-	print("Timeout!")
 	spit(player)
 
 func spit(target):
+
 	var spit = FragGrenade.instance()
 	spit.init(self.position, target.global_position, self.rotation)
-	spit.transform =  self.global_transform 
+	spit.transform = self.global_transform 
 	self.owner.add_child(spit)

@@ -28,7 +28,7 @@ func _ready():
 	velocity = Vector2.ZERO
 	
 	bombTimer = Timer.new()
-	bombTimer.set_wait_time(0.1)
+	bombTimer.set_wait_time(0.05)
 	bombTimer.set_one_shot(true)
 	add_child(bombTimer)	
 	bombTimer.connect("timeout", self, "_on_bombTimer_timeout")
@@ -63,8 +63,8 @@ func _physics_process(delta):
 				collided = move(delta, path, 0.2)
 			else:
 				turn(path, 0.2)
-				# Exploding AFTER I leave only
-				bombTimer.start()
+				if bombTimer.time_left == 0:
+					bombTimer.start()
 			
 	# Zombie death animation
 	if health < max_health/3 && max_health/5 > health:
@@ -93,7 +93,6 @@ func take_damage(amount):
 		$Vision/WanderCollision.set_deferred("disabled", true)
 
 func _on_bombTimer_timeout():
-	print("Timeout!")
 	explode()
 
 func explode():
@@ -101,8 +100,10 @@ func explode():
 	bomb.init(self.position, self.position, self.rotation)
 	bomb.transform =  self.global_transform 
 	self.owner.add_child(bomb)
+	queue_free()
 	
 # Not blinking ATM, just changing color
 func modulation(player):
 	# 350 is literal random choice...
 	modulate = Color(max(0.2,(self.position - player.global_position).length()/350), 0, 0)
+	self.MAX_SPEED == 120 + (340-(self.position - player.global_position).length())

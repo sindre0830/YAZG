@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Assault_rifle.mp3-0011d772cdc913ac57cc16cd5825cb59.mp3str"
+
+[deps]
+
+source_file="res://Audio/Assault_rifle.mp3"
+dest_files=[ "res://.import/Assault_rifle.mp3-0011d772cdc913ac57cc16cd5825cb59.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

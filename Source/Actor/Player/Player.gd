@@ -11,7 +11,6 @@ onready var guns = [$"Guns/Mini-Gun", $Guns/Handgun]
 onready var gun_index = 0
 onready var gun = guns[gun_index]
 onready var time_start
-var flagPaused = false
 var grenade
 
 var diff = 1
@@ -37,10 +36,10 @@ func _ready():
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_pause"):
 		toggle_pause()
-		get_tree().paused = flagPaused
-		$UI/Inventory.visible = flagPaused
+		get_tree().paused = PlayerValues.flagPaused
+		$UI/Inventory.visible = PlayerValues.flagPaused
 	
-	if flagPaused:
+	if PlayerValues.flagPaused:
 		return
 
 	var input_vector = Vector2.ZERO
@@ -95,7 +94,7 @@ func take_damage(amount):
 
 func die():
 	# TODO: send timer to death screen
-	PlayerValues.time_end = OS.get_unix_time()
+	PlayerValues.time_end = OS.get_unix_time() - time_start
 	assert(get_tree().change_scene("res://Menu/DeathScreen.tscn") == OK)
 	
 func increase_diff():
@@ -103,4 +102,7 @@ func increase_diff():
 	self.get_node(DIFFICULTY).text = str(floor(PlayerValues.current_difficulty))
 
 func toggle_pause():
-	flagPaused = !flagPaused
+	PlayerValues.flagPaused = !PlayerValues.flagPaused
+
+func take_xp(amount):
+	PlayerValues.XP += amount

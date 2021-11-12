@@ -24,6 +24,7 @@ margin_left = -512.0
 margin_top = -384.0
 margin_right = 512.0
 margin_bottom = 384.0
+rect_pivot_offset = Vector2( 544, 584 )
 theme = SubResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
@@ -96,7 +97,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="RichTextLabel" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -106,6 +107,34 @@ margin_top = -208.0
 margin_right = -192.0
 margin_bottom = -128.0
 text = "Testing testing"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -88.0
+margin_top = -88.0
+margin_right = 88.0
+margin_bottom = -40.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="RTMainMenu" type="Button" parent="VBoxContainer"]
+margin_right = 176.0
+margin_bottom = 20.0
+text = "Return to Main Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitGame" type="Button" parent="VBoxContainer"]
+margin_top = 24.0
+margin_right = 176.0
+margin_bottom = 44.0
+text = "Exit Game"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -114,3 +143,5 @@ __meta__ = {
 [connection signal="item_selected" from="Toolbar" to="." method="_on_Toolbar_item_selected"]
 [connection signal="focus_exited" from="ItemList" to="." method="_on_ItemList_focus_exited"]
 [connection signal="item_selected" from="ItemList" to="." method="_on_ItemList_item_selected"]
+[connection signal="pressed" from="VBoxContainer/RTMainMenu" to="." method="_on_RTMainMenu_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitGame" to="." method="_on_ExitGame_pressed"]

@@ -61,3 +61,15 @@ func _on_Toolbar_focus_exited():
 
 func _on_ItemList_focus_exited():
 	$ItemList.unselect_all()
+
+
+func _on_RTMainMenu_pressed():
+	get_tree().paused = false
+	PlayerValues.flagPaused = false
+	# Switch scene back to main menu
+	assert(get_tree().change_scene("res://Menu/MainMenu.tscn") == OK)
+
+
+func _on_ExitGame_pressed():
+	# Quit the game
+	get_tree().quit(0)

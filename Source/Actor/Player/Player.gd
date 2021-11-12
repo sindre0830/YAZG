@@ -95,7 +95,7 @@ func take_damage(amount):
 
 func die():
 	# TODO: send timer to death screen
-	PlayerValues.time_end = OS.get_unix_time()
+	PlayerValues.time_end = OS.get_unix_time() - time_start
 	assert(get_tree().change_scene("res://Menu/DeathScreen.tscn") == OK)
 	
 func increase_diff():

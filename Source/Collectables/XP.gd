@@ -1,19 +1,18 @@
 extends "res://Collectables/Collectable.gd"
 
+
 onready var amount = 20
 var rng = RandomNumberGenerator.new()
 var deltatime = 0.0
+var XP_instance = []
 
 func _on_HP_body_entered(body):
 	# Heal the player if they step on it and
 	# delete the HealthCollectable
 	if body.get_name() == "Player":
 		body.take_xp(amount)
-	
+		
 		queue_free()
-
-
-
 
 
 

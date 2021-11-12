@@ -51,7 +51,24 @@ func _physics_process(delta):
 	look_at(mpos)
 
 	if input_vector != Vector2.ZERO:
-		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
+		# Calculate angle between the velocity vector and the direction the
+		# player is looking towards
+		var angle_facing_movement = acos(
+			(self.transform.x.dot(input_vector) / 
+			(self.transform.x.length() * input_vector.length())
+		))
+		
+		var speed_multiplier = 1.0
+		
+		# If the player is moving backwards reduce their speed
+		if angle_facing_movement > PI/2:
+			speed_multiplier = (1.5 - angle_facing_movement / PI)
+
+		# Calculate actual velocity
+		velocity = velocity.move_toward(
+			input_vector * speed_multiplier * MAX_SPEED, 
+			ACCELERATION * delta
+		)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	

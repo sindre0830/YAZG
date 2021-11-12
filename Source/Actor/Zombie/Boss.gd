@@ -63,3 +63,6 @@ func _on_modeSwitchTimer_timeout():
 		mode = NORMAL
 		$modeSwitchTimer.wait_time = 8
 		$modeSwitchTimer.start()
+		
+func die():
+	.die()

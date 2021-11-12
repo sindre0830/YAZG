@@ -1,6 +1,5 @@
 extends "res://Collectables/Collectable.gd"
 
-
 onready var amount = 20
 var rng = RandomNumberGenerator.new()
 var deltatime = 0.0
@@ -13,8 +12,6 @@ func _on_HP_body_entered(body):
 		body.take_xp(amount)
 		
 		queue_free()
-
-
 
 func get_rand_pos():
 	rng.randomize()

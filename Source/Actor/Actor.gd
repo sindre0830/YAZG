@@ -15,7 +15,7 @@ onready var health = max_health
 func die():
 	# Delete Zombie instance
 	rng.randomize()
-	
+
 	var x_rand = rng.randi_range(1, 5)
 	
 	for i in x_rand:
@@ -23,11 +23,9 @@ func die():
 		XP_instance.append(XP.instance())
 		XP_instance[i].position = position
 		get_parent().add_child(XP_instance[i])
-	
+
 	queue_free()
 	pl.increase_diff()
-	
-	
 
 func take_damage(amount):
 	# Reduce health by given amount

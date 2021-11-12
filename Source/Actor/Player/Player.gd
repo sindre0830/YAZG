@@ -107,4 +107,3 @@ func toggle_pause():
 
 func take_xp(amount):
 	PlayerValues.XP += amount
-	print(PlayerValues.XP)

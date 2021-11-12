@@ -3,10 +3,18 @@
 [ext_resource path="res://TileMap/16xTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Portals/Portal.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Actor/Zombie/Zombie.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/Scripts/3_3.gd" type="Script" id=5]
-[ext_resource path="res://Breakable/Box.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/Minimap/mapStatus.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 448, 320, 0, 0, 0, 0, 704, 320, 0, 0, 0, 0, 704, 384, 0, 0, 0, 0, 448, 384, 0, 0, 0, 0, 448, 448, 0, 0, 0, 0, 704, 448, 0, 0, 0, 0, 704, 512, 0, 0, 0, 0, 448, 512, 0, 0, 0, 0, 448, 576, 0, 0, 0, 0, 704, 576, 0, 0, 0, 0, 704, 640, 0, 0, 0, 0, 448, 640, 0, 0, 0, 0, 448, 704, 0, 0, 0, 0, 704, 704, 0, 0, 0, 0, 704, 768, 0, 0, 0, 0, 448, 768, 0, 0, 0, 0, 448, 832, 0, 0, 0, 0, 704, 832, 0, 0, 0, 0, 704, 896, 0, 0, 0, 0, 448, 896, 0, 0, 0, 0, 448, 960, 0, 0, 0, 0, 704, 960, 0, 0, 0, 0, 704, 1024, 0, 0, 0, 0, 448, 1024, 0, 0, 0, 0, 448, 1088, 0, 0, 0, 0, 704, 1088, 0, 0, 0, 0, 704, 1152, 0, 0, 0, 0, 448, 1152, 0, 0, 0, 0, 448, 1216, 0, 0, 0, 0, 704, 1216, 0, 0, 0, 0, 704, 1280, 0, 0, 0, 0, 448, 1280, 0, 0, 0, 0, 448, 1344, 0, 0, 0, 0, 704, 1344, 0, 0, 0, 0, 704, 1408, 0, 0, 0, 0, 448, 1408, 0, 0, 0, 0, 448, 1472, 0, 0, 0, 0, 704, 1472, 0, 0, 0, 0, 704, 1536, 0, 0, 0, 0, 448, 1536, 0, 0, 0, 0, 448, 1600, 0, 0, 0, 0, 704, 1600, 0, 0, 0, 0, 704, 1664, 0, 0, 0, 0, 448, 1664, 0, 0, 0, 0, 448, 1728, 0, 0, 0, 0, 704, 1728, 0, 0, 0, 0, 704, 1792, 0, 0, 0, 0, 448, 1792, 0, 0, 0, 0, 448, 1856, 0, 0, 0, 0, 704, 1856, 0, 0, 0, 0, 704, 1920, 0, 0, 0, 0, 448, 1920 )
+}
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 360, 96, 0, 0, 0, 0, 360, 2016, 0, 0, 0, 0, 792, 2016, 0, 0, 0, 0, 792, 96 )
+}
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 5 )
@@ -33,23 +41,15 @@ collision_mask = 29
 position = Vector2( 576.22, 16.5488 )
 path = "res://World/MVP_World/3_2.tscn"
 
-[node name="Zombie" parent="." instance=ExtResource( 4 )]
-position = Vector2( 443.954, 1484.89 )
-
-[node name="Zombie2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 608.003, 1250.13 )
-
-[node name="Zombie3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 418.498, 1221.85 )
-
-[node name="Zombie4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 466.581, 845.667 )
-
-[node name="Zombie5" parent="." instance=ExtResource( 4 )]
-position = Vector2( 571.233, 511.913 )
-
-[node name="Box" parent="." instance=ExtResource( 6 )]
-position = Vector2( 478.152, 1905.06 )
-
 [node name="mapStatus" parent="." instance=ExtResource( 7 )]
 map = [ true, false, false, false ]
+
+[node name="ZombieSpawn" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="ZombieSpawnLocations" type="PathFollow2D" parent="ZombieSpawn"]
+
+[node name="CrateSpawn" type="Path2D" parent="."]
+curve = SubResource( 2 )
+
+[node name="CrateSpawnLocations" type="PathFollow2D" parent="CrateSpawn"]

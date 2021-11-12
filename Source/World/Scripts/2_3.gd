@@ -1,4 +1,4 @@
-extends Node
+extends "BaseWorld.gd"
 
 var path_from1 = "res://World/MVP_World/1_3.tscn"
 var path_from2 = "res://World/MVP_World/2_2.tscn"
@@ -6,8 +6,11 @@ var path_from2 = "res://World/MVP_World/2_2.tscn"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# Spawn zombies/crates if not spawned yet
+	if not WorldFlags.entities_spawned_2_3:
+		spawn_zombies(3)
+		WorldFlags.entities_spawned_2_3 = true
 	move_to_position()
-	pass # Replace with function body.
 
 func move_to_position(path = ""):
 	if(PreviousWorld.previous_name == path_from1 || path == path_from1):

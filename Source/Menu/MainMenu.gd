@@ -33,4 +33,7 @@ func _on_SaveOptions_pressed():
 
 
 func _on_Volume_value_changed(value):
+	if value == 0:
+		print("mute")
+		AudioServer.set_bus_mute(0, not AudioServer.is_bus_mute(0))
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), value-50)

@@ -6,7 +6,6 @@ onready var label = "Label"
 
 func _ready():
 	# Code for displaying time TODO
-	timer = 20.08
 	print(get_node(label).get_name())
 	get_node(label).set_text(get_node("Label").get_text() + " with time: " + str(PlayerValues.time_end))
 

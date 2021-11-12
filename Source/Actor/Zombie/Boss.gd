@@ -36,3 +36,6 @@ func _physics_process(delta) -> void:
 func take_damage(amount):
 	.take_damage(amount)
 	self.get_node("CanvasLayer/ProgressBar").value = health
+
+func die():
+	.die()

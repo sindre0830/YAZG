@@ -44,4 +44,4 @@ func read_savegame():
 	if save_data["highscore"]:
 		return save_data["highscore"] #return the value
 	else:
-		return "No high score registered"
+		return 0

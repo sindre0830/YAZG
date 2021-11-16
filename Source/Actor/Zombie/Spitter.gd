@@ -78,7 +78,7 @@ func _on_Vision_body_entered(body):
 
 func _on_VisionBuffer_body_exited(body):
 	if body.name == "Player":
-		state = WANDER
+		state = IDLE
 		$VisionBuffer/ChaseCollision.set_deferred("disabled", true)
 		$Vision/WanderCollision.set_deferred("disabled", false)
 

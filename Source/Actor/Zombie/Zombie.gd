@@ -6,6 +6,10 @@ const WANDER_TOLERANCE = 8.0
 const WANDER_RADIUS = 16
 const CHASE_TOLERANCE = 50.0
 
+func init(transform, pos):
+	self.transform = transform
+	self.position = pos
+
 func _init():
 	state = IDLE
 	pass

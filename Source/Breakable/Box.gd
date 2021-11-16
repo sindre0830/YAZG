@@ -12,6 +12,10 @@ func _init():
 	broken_object = preload("res://Assets/Spritesheet/BreakableObj/broken_box.png")
 	max_health = 100
 	health = max_health
+	
+func init(transform, pos):
+	self.transform = transform
+	self.position = pos
 
 
 func destroy_object():

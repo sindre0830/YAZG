@@ -3,10 +3,19 @@
 [ext_resource path="res://TileMap/16xTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Portals/Portal.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Actor/Zombie/Zombie.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/Scripts/1_1.gd" type="Script" id=5]
 [ext_resource path="res://UI/Minimap/mapStatus.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Breakable/IronDoor.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 224, 736, 0, 0, 0, 0, 224, 416, 0, 0, 0, 0, 800, 416, 0, 0, 0, 0, 800, 736, 0, 0, 0, 0, 896, 736, 0, 0, 0, 0, 896, 416, 0, 0, 0, 0, 992, 416, 0, 0, 0, 0, 992, 736, 0, 0, 0, 0, 1088, 736, 0, 0, 0, 0, 1088, 416, 0, 0, 0, 0, 1184, 416, 0, 0, 0, 0, 1184, 736, 0, 0, 0, 0, 1280, 736, 0, 0, 0, 0, 1280, 416, 0, 0, 0, 0, 1376, 416, 0, 0, 0, 0, 1376, 736, 0, 0, 0, 0, 1472, 736, 0, 0, 0, 0, 1472, 416, 0, 0, 0, 0, 1568, 416, 0, 0, 0, 0, 1568, 736, 0, 0, 0, 0, 1664, 736, 0, 0, 0, 0, 1664, 416, 0, 0, 0, 0, 1760, 416, 0, 0, 0, 0, 1760, 736, 0, 0, 0, 0, 1856, 736, 0, 0, 0, 0, 1856, 416, 0, 0, 0, 0, 1952, 416, 0, 0, 0, 0, 1952, 736 )
+}
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 96, 360.143, 0, 0, 0, 0, 1952, 360.143, 0, 0, 0, 0, 1952, 799.857, 0, 0, 0, 0, 96, 799.857, 0, 0, 0, 0, 96, 799.857, 0, 0, 0, 0, 96, 360.143 )
+}
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 5 )
@@ -26,28 +35,27 @@ format = 1
 tile_data = PoolIntArray( 1114112, 71, 0, 1114113, 75, 0, 1114238, 71, 0, 1114239, 75, 0, 1179648, 73, 0, 1179649, 76, 0, 1179774, 73, 0, 1179775, 76, 0, 1245184, 73, 0, 1245185, 76, 0, 1245310, 73, 0, 1245311, 76, 0, 1310720, 73, 0, 1310721, 76, 0, 1310846, 73, 0, 1310847, 76, 0, 1376256, 73, 0, 1376257, 76, 0, 1376382, 73, 0, 1376383, 76, 0, 1441792, 73, 0, 1441793, 76, 0, 1441918, 73, 0, 1441919, 76, 0, 1507328, 73, 0, 1507329, 76, 0, 1507454, 73, 0, 1507455, 76, 0, 1572864, 73, 0, 1572865, 76, 0, 1572990, 73, 0, 1572991, 76, 0, 1638400, 73, 0, 1638401, 76, 0, 1638526, 73, 0, 1638527, 76, 0, 1703936, 73, 0, 1703937, 76, 0, 1704062, 73, 0, 1704063, 76, 0, 1769472, 73, 0, 1769473, 76, 0, 1769598, 73, 0, 1769599, 76, 0, 1835008, 73, 0, 1835009, 76, 0, 1835134, 73, 0, 1835135, 76, 0, 1900544, 73, 0, 1900545, 76, 0, 1900670, 73, 0, 1900671, 76, 0, 1966080, 73, 0, 1966081, 76, 0, 1966206, 73, 0, 1966207, 76, 0, 2031616, 73, 0, 2031617, 76, 0, 2031742, 73, 0, 2031743, 76, 0, 2097152, 73, 0, 2097153, 76, 0, 2097278, 73, 0, 2097279, 76, 0, 2162688, 73, 0, 2162689, 76, 0, 2162814, 73, 0, 2162815, 76, 0, 2228224, 73, 0, 2228225, 76, 0, 2293760, 73, 0, 2293761, 76, 0, 2359296, 73, 0, 2359297, 76, 0, 2424832, 73, 0, 2424833, 76, 0, 2490368, 73, 0, 2490369, 76, 0, 2490494, 71, 0, 2490495, 75, 0, 2555904, 73, 0, 2555905, 76, 0, 2556030, 73, 0, 2556031, 76, 0, 2621440, 73, 0, 2621441, 76, 0, 2621566, 73, 0, 2621567, 76, 0, 2686976, 73, 0, 2686977, 76, 0, 2687102, 73, 0, 2687103, 76, 0, 2752512, 73, 0, 2752513, 76, 0, 2752638, 73, 0, 2752639, 76, 0, 2818048, 73, 0, 2818049, 76, 0, 2818174, 73, 0, 2818175, 76, 0, 2883584, 73, 0, 2883585, 76, 0, 2883710, 73, 0, 2883711, 76, 0, 2949120, 73, 0, 2949121, 76, 0, 2949246, 73, 0, 2949247, 76, 0, 3014656, 73, 0, 3014657, 76, 0, 3014782, 73, 0, 3014783, 76, 0, 3080192, 73, 0, 3080193, 76, 0, 3080318, 73, 0, 3080319, 76, 0, 3145728, 73, 0, 3145729, 76, 0, 3145854, 73, 0, 3145855, 76, 0, 3211264, 73, 0, 3211265, 76, 0, 3211390, 73, 0, 3211391, 76, 0, 3276800, 73, 0, 3276801, 76, 0, 3276926, 73, 0, 3276927, 76, 0, 3342336, 73, 0, 3342337, 76, 0, 3342462, 73, 0, 3342463, 76, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 510.804, 541.595 )
+position = Vector2( 510.804, 576 )
 collision_mask = 29
 
 [node name="Fence1" parent="." instance=ExtResource( 3 )]
 position = Vector2( 2038.05, 577.411 )
 path = "res://World/MVP_World/2_1.tscn"
 
-[node name="Zombie" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1213.81, 465.352 )
-rotation = 3.16603
+[node name="mapStatus" parent="." instance=ExtResource( 6 )]
+map = [ false, false, false, true ]
 
-[node name="Zombie2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1487.53, 703.208 )
-rotation = 2.86932
+[node name="ZombieSpawn" type="Path2D" parent="."]
+curve = SubResource( 1 )
 
-[node name="Zombie3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1732.16, 463.24 )
-rotation = -1.08909
+[node name="ZombieSpawnLocations" type="PathFollow2D" parent="ZombieSpawn"]
+position = Vector2( 224, 736 )
+rotation = -1.5708
 
-[node name="Zombie4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1532.84, 525.76 )
-rotation = 4.45233
+[node name="CrateSpawn" type="Path2D" parent="."]
+position = Vector2( 0, 6.17545 )
+scale = Vector2( 1, 0.982456 )
+curve = SubResource( 2 )
 
 [node name="mapStatus" parent="." instance=ExtResource( 6 )]
 map = [ false, false, false, true ]
@@ -55,3 +63,6 @@ map = [ false, false, false, true ]
 [node name="StaticBody2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 2021.5, 576.5 )
 rotation = 1.5708
+[node name="CrateSpawnLocations" type="PathFollow2D" parent="CrateSpawn"]
+position = Vector2( 96, 360.143 )
+rotation = 7.73425e-06

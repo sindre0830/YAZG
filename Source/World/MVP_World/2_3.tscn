@@ -3,10 +3,19 @@
 [ext_resource path="res://TileMap/16xTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Portals/Portal.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Actor/Zombie/Zombie.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/Scripts/2_3.gd" type="Script" id=5]
 [ext_resource path="res://UI/Minimap/mapStatus.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Breakable/IronDoor.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 832, 256, 0, 0, 0, 0, 1088, 256, 0, 0, 0, 0, 1088, 320, 0, 0, 0, 0, 832, 320, 0, 0, 0, 0, 832, 384, 0, 0, 0, 0, 1088, 384, 0, 0, 0, 0, 1088, 448, 0, 0, 0, 0, 832, 448, 0, 0, 0, 0, 832, 512, 0, 0, 0, 0, 1088, 512, 0, 0, 0, 0, 1088, 576, 0, 0, 0, 0, 832, 576, 0, 0, 0, 0, 832, 640, 0, 0, 0, 0, 1088, 640, 0, 0, 0, 0, 1088, 704, 0, 0, 0, 0, 832, 704, 0, 0, 0, 0, 832, 768, 0, 0, 0, 0, 1088, 768, 0, 0, 0, 0, 1088, 832, 0, 0, 0, 0, 256, 832, 0, 0, 0, 0, 256, 896, 0, 0, 0, 0, 1088, 896, 0, 0, 0, 0, 1088, 960, 0, 0, 0, 0, 256, 960, 0, 0, 0, 0, 256, 1024, 0, 0, 0, 0, 1088, 1024, 0, 0, 0, 0, 1088, 1088, 0, 0, 0, 0, 256, 1088 )
+}
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 1176, 32, 0, 0, 0, 0, 1176, 1176, 0, 0, 0, 0, 32, 1176, 0, 0, 0, 0, 32, 744, 0, 0, 0, 0, 744, 744, 0, 0, 0, 0, 744, 32 )
+}
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 5 )
@@ -39,14 +48,14 @@ position = Vector2( 959.37, -51.941 )
 rotation = 4.71239
 path = "res://World/MVP_World/2_2.tscn"
 
-[node name="Zombie" parent="." instance=ExtResource( 4 )]
-position = Vector2( 488.281, 1035.68 )
+[node name="mapStatus" parent="." instance=ExtResource( 6 )]
+map = [ true, true, false, false ]
 
-[node name="Zombie2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 830.773, 866.815 )
+[node name="ZombieSpawn" type="Path2D" parent="."]
+curve = SubResource( 1 )
 
-[node name="Zombie3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 778.448, 1068.98 )
+[node name="ZombieSpawnLocations" type="PathFollow2D" parent="ZombieSpawn"]
+position = Vector2( 832, 256 )
 
 [node name="mapStatus" parent="." instance=ExtResource( 6 )]
 map = [ true, true, false, false ]
@@ -57,3 +66,9 @@ rotation = 1.5708
 
 [node name="StaticBody2D2" parent="." instance=ExtResource( 7 )]
 position = Vector2( 960.095, -37.4131 )
+[node name="CrateSpawn" type="Path2D" parent="."]
+curve = SubResource( 2 )
+
+[node name="CrateSpawnLocations" type="PathFollow2D" parent="CrateSpawn"]
+position = Vector2( 1176, 32 )
+rotation = 1.5708

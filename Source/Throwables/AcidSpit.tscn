@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Grenades/grenades_by_mtk.png" type="Texture" id=1]
+[ext_resource path="res://Throwables/Explosion.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Throwables/AcidSpit.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 8.5666
+
+[node name="Spit" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 13
+mass = 0.102041
+gravity_scale = 0.0
+script = ExtResource( 3 )
+
+[node name="GrenadeSprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 8
+vframes = 4
+frame = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="ExplodeTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Explosion" parent="." instance=ExtResource( 2 )]
+
+[node name="DeleteTimer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="ExplodeTimer" to="." method="_on_ExplodeTimer_timeout"]
+[connection signal="timeout" from="DeleteTimer" to="." method="_on_DeleteTimer_timeout"]

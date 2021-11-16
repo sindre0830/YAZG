@@ -11,7 +11,7 @@ const CHASE_TOLERANCE = 50.0
 
 var spitTimer
 var inRange = false
-var FragGrenade = preload("res://Throwables/FragGrenade.tscn")
+var Spit = preload("res://Throwables/AcidSpit.tscn")
 
 func _init():
 	state = IDLE
@@ -94,7 +94,7 @@ func _on_spitTimer_timeout():
 
 func spit(target):
 
-	var spit = FragGrenade.instance()
+	var spit = Spit.instance()
 	spit.init(self.position, target.global_position, self.rotation)
 	spit.transform = self.global_transform 
 	self.owner.add_child(spit)

@@ -11,7 +11,7 @@ const WANDER_RADIUS = 16
 const CHASE_TOLERANCE = 50.0
 
 var acidTimer
-var FragGrenade = preload("res://Throwables/FragGrenade.tscn")
+var Spit = preload("res://Throwables/AcidSpit.tscn")
 
 func _init():
 	# change to wander after main merge
@@ -28,7 +28,7 @@ func _ready():
 	velocity = Vector2.ZERO
 	
 	acidTimer = Timer.new()
-	acidTimer.set_wait_time(3.0)
+	acidTimer.set_wait_time(2.0)		# change
 	acidTimer.set_one_shot(false)
 	add_child(acidTimer)	
 	acidTimer.connect("timeout", self, "_on_acidTimer_timeout")
@@ -89,7 +89,7 @@ func _on_acidTimer_timeout():
 	throw_grenade(player)
 
 func throw_grenade(target):
-	var grenade = FragGrenade.instance()
-	grenade.init(self.position, self.global_position, self.rotation)
-	grenade.transform =  self.global_transform 
-	self.owner.add_child(grenade)
+	var spit = Spit.instance()
+	spit.init(self.position, self.global_position, self.rotation)
+	spit.transform =  self.global_transform 
+	self.owner.add_child(spit)

@@ -1,5 +1,6 @@
 extends "res://Throwables/Throwable.gd"
 
+# change sprite
 var grenade_sprite
 var explosion
 
@@ -14,21 +15,26 @@ func init(var start_position, var target_position, var direction):
 
 	# Init speed and deceleration according to the start and target positions
 	var frag_grenade_speed = (start_position - target_position).length()
-	self.deceleration = frag_grenade_speed / $Timer.wait_time
+	self.deceleration = frag_grenade_speed / $ExplodeTimer.wait_time
 
-	# Apply velocity
-	self.apply_impulse(Vector2(), Vector2(frag_grenade_speed, 0).rotated(direction))
-	
-	# Set physical behavior of the grenade
+	# Set physical behavior - change from grenade?
 	self.bounce = 0.5
 	self.friction = 1
+	
+	# Velocity for enemies
+	self.linear_velocity = Vector2(frag_grenade_speed, 0).rotated(direction)
+
 
 func _ready():
 	self.grenade_sprite = $GrenadeSprite
 
-func _on_Timer_timeout():
+func _on_ExplodeTimer_timeout():
 	# Stop the grenades movement
 	self.sleeping = true
 	# Hide the sprite and play the explosion animation
 	self.grenade_sprite.visible = false
 	self.explosion = $Explosion
+
+	# Ensure we delete the spit once it's done working
+func _on_DeleteTimer_timeout():
+	self.queue_free()

@@ -96,6 +96,7 @@ ui_pause={
 2d_physics/layer_4="Breakable"
 2d_render/layer_5="Throwable"
 2d_physics/layer_5="Throwable"
+2d_physics/layer_6="Acid"
 
 [physics]
 

@@ -47,7 +47,6 @@ func seek_player(zoneDetect):
 	if zoneDetect.can_see_player():
 		state = CHASE
 
-
 func _on_timer_timeout():
 	if player != null:
 		if player.has_method("take_damage") && reachPlayer:

@@ -24,15 +24,6 @@ func _ready():
 	add_child(timer)	
 	timer.connect("timeout", self, "_on_timer_timeout")
 	velocity = Vector2.ZERO
-	# Timer for bomb
-	# NEEDED?
-	bombTimer = Timer.new()
-	bombTimer.set_wait_time(0.05)
-	bombTimer.set_one_shot(true)
-	add_child(bombTimer)	
-	bombTimer.connect("timeout", self, "_on_bombTimer_timeout")
-	velocity = Vector2.ZERO
-	
 	
 	$VisionBuffer/ChaseCollision.set_deferred("disabled", true)
 
@@ -58,14 +49,11 @@ func _physics_process(delta):
 			var distance = path - self.global_position
 			if (collided && collided.collider != null) && !("Zombie" in collided.collider.name || "Boss" in collided.collider.name) && ((path - global_position).length() > CHASE_TOLERANCE):
 				path = getNextPosition(global_position, path)
-			if distance.length() > 10:
+			if distance.length() > 40:
+				print(distance.length())
 				collided = move(delta, path, 0.2)
 			else:
-				turn(path, 0.2)
-				# Explodes when close enough
-				# TRY JUST CALLING EXPLODE
-				if bombTimer.time_left == 0:
-					bombTimer.start()	
+				explode()
 	# Zombie death animation
 	if health < max_health/3 && max_health/5 > health:
 		modulate = Color(0.4, 0, 0)
@@ -94,10 +82,6 @@ func _on_VisionBuffer_body_exited(body):
 		$Vision/WanderCollision.set_deferred("disabled", true)
 
 # Explodes on contact with player
-# IMPROVE THIS WHY TIMER!?!?!?
-func _on_bombTimer_timeout():
-	explode()
-
 func explode():
 	var bomb = Bomb.instance()
 	bomb.init(self.position, self.position, self.rotation)

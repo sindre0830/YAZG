@@ -27,8 +27,8 @@ region_rect = Rect2( 459.111, 86.397, 27.8889, 46.4919 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2( 1.6, 1.6 )
+z_index = 1
 shape = SubResource( 1 )
-disabled = true
 
 [node name="Tween" type="Tween" parent="."]
 

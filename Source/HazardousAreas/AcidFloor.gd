@@ -7,7 +7,7 @@ var dps = 5
 func _physics_process(delta):
 	# Deal damage to bodies inside the acid pool area
 	for body in bodies_in_area:
-		if body.has_method("take_damage"):
+		if body.name == "Player":
 			if body.hazard < dps:
 				body.hazard = dps
 			#body.take_damage(delta * dps)

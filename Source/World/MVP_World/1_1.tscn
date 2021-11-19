@@ -3,7 +3,6 @@
 [ext_resource path="res://TileMap/16xTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Portals/Portal.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Breakable/IronDoor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/Scripts/1_1.gd" type="Script" id=5]
 [ext_resource path="res://UI/Minimap/mapStatus.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Breakable/IronDoor.tscn" type="PackedScene" id=7]
@@ -53,13 +52,13 @@ curve = SubResource( 1 )
 position = Vector2( 224, 736 )
 rotation = -1.5708
 
-[node name="StaticBody2D" parent="EnemySpawn" instance=ExtResource( 4 )]
-position = Vector2( 1937.55, 624.774 )
-
 [node name="CrateSpawn" type="Path2D" parent="."]
 position = Vector2( 0, 6.17545 )
 scale = Vector2( 1, 0.982456 )
 curve = SubResource( 2 )
+
+[node name="CrateSpawnLocations" type="PathFollow2D" parent="CrateSpawn"]
+position = Vector2( 96, 360.143 )
 
 [node name="mapStatus" parent="." instance=ExtResource( 6 )]
 map = [ false, false, false, true ]
@@ -67,5 +66,3 @@ map = [ false, false, false, true ]
 [node name="StaticBody2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 2021.5, 576.5 )
 rotation = 1.5708
-[node name="CrateSpawnLocations" type="PathFollow2D" parent="CrateSpawn"]
-position = Vector2( 96, 360.143 )

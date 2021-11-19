@@ -40,6 +40,17 @@ margin_right = 378.0
 margin_bottom = 68.0
 text = "Exit Game"
 
+[node name="TextEdit" type="TextEdit" parent="."]
+margin_left = 456.14
+margin_top = 92.6535
+margin_right = 587.14
+margin_bottom = 205.653
+grow_horizontal = 2
+grow_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Options" type="Control" parent="."]
 visible = false
 margin_right = 1024.0
@@ -99,14 +110,6 @@ ticks_on_borders = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="TextEdit" type="TextEdit" parent="."]
-margin_left = 456.14
-margin_top = 92.6535
-margin_right = 587.14
-margin_bottom = 205.653
-grow_horizontal = 2
-grow_vertical = 2
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_Options_pressed"]

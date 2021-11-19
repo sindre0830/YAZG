@@ -41,6 +41,9 @@ func _on_Timer_timeout():
 	self.grenade_sprite.visible = false
 	self.explosion_animation.visible = true
 	self.explosion_animation.play()
+	
+	var globals = get_node("/root/Globals")
+	globals.play_sound("grenade_explosion", false, self.global_position)
 
 
 func _on_Explosion_animation_finished():

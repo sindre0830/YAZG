@@ -11,6 +11,8 @@ var audio_clips = {
 	"ShotGun_shot": preload("res://Audio/Shotgun.mp3"),
 	"Menu_background": preload("res://Audio/Main_menu.mp3"), #preload("res://path_to_your_audio_here!")
 	"Reload": preload("res://Audio/Reload.mp3"), #preload("res://path_to_your_audio_here!")
+	"grenade_explosion": preload("res://Audio/grenade.wav"),
+	"molotov_explosion": preload("res://Audio/molotov.wav"),
 }
 
 const SIMPLE_AUDIO_PLAYER_SCENE = preload("res://Audio/Simple_Audio_Player.tscn")
@@ -25,6 +27,8 @@ func play_sound(sound_name, loop_sound=false, sound_position=null):
 		created_audio.append(new_audio)
 
 		new_audio.play_sound(audio_clips[sound_name], sound_position)
+		
+		return new_audio
 
 	else:
 		print ("ERROR: cannot play sound that does not exist in audio_clips!")

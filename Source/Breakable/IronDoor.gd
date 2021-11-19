@@ -5,13 +5,5 @@ func _init():
 	health = max_health
 
 
-func destroy_object():
-	# Remove car
-	var isZombie = get_owner().get_children()
-	var zombiecount = 0
-	for i in isZombie:
-		if "Zombie" in i.get_name():
-			zombiecount += zombiecount + 1
-	if zombiecount == 0: 
-		
+func destroy_object():		
 		queue_free()

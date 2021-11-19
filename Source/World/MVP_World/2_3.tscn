@@ -50,10 +50,10 @@ path = "res://World/MVP_World/2_2.tscn"
 [node name="mapStatus" parent="." instance=ExtResource( 6 )]
 map = [ true, true, false, false ]
 
-[node name="ZombieSpawn" type="Path2D" parent="."]
+[node name="EnemySpawn" type="Path2D" parent="."]
 curve = SubResource( 1 )
 
-[node name="ZombieSpawnLocations" type="PathFollow2D" parent="ZombieSpawn"]
+[node name="ZombieSpawnLocations" type="PathFollow2D" parent="EnemySpawn"]
 position = Vector2( 832, 256 )
 
 [node name="CrateSpawn" type="Path2D" parent="."]

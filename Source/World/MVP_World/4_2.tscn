@@ -53,12 +53,14 @@ position = Vector2( 1632.95, 68.5021 )
 [node name="mapStatus" parent="." instance=ExtResource( 8 )]
 map = [ false, true, false, true ]
 
-[node name="ZombieSpawn" type="Path2D" parent="."]
+[node name="EnemySpawn" type="Path2D" parent="."]
 curve = SubResource( 1 )
 
-[node name="ZombieSpawnLocations" type="PathFollow2D" parent="ZombieSpawn"]
+[node name="ZombieSpawnLocations" type="PathFollow2D" parent="EnemySpawn"]
+position = Vector2( 320, 384 )
 
 [node name="CrateSpawn" type="Path2D" parent="."]
 curve = SubResource( 2 )
 
 [node name="CrateSpawnLocations" type="PathFollow2D" parent="CrateSpawn"]
+position = Vector2( 1320, -216 )

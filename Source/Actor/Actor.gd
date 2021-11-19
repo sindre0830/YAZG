@@ -28,6 +28,10 @@ func die():
 	pl.increase_diff()
 
 func take_damage(amount):
+	var globals = get_node("/root/Globals")
+	globals.play_sound("Zombie_hit", false)
+	
+	
 	# Reduce health by given amount
 	health = clamp(health - amount, 0, max_health)
 	

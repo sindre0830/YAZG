@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ZombieHit.mp3-869751eb9a7b6f4e850846c73dc15ef1.mp3str"
+
+[deps]
+
+source_file="res://Audio/ZombieHit.mp3"
+dest_files=[ "res://.import/ZombieHit.mp3-869751eb9a7b6f4e850846c73dc15ef1.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

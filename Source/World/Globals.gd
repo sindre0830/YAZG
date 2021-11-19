@@ -10,6 +10,7 @@ var audio_clips = {
 	"Rifle_shot": preload("res://Audio/Assault_rifle.mp3"), #preload("res://path_to_your_audio_here!")
 	"ShotGun_shot": preload("res://Audio/Shotgun.mp3"),
 	"Menu_background": preload("res://Audio/Main_menu.mp3"), #preload("res://path_to_your_audio_here!")
+	"Zombie_hit": preload("res://Audio/ZombieHit.mp3"),
 }
 
 const SIMPLE_AUDIO_PLAYER_SCENE = preload("res://Audio/Simple_Audio_Player.tscn")

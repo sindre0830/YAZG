@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://TileMap/16xTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=2]
@@ -9,10 +9,15 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 416, 96, 0, 0, 0, 0, 736, 96, 0, 0, 0, 0, 736, 192, 0, 0, 0, 0, 416, 192, 0, 0, 0, 0, 416, 288, 0, 0, 0, 0, 736, 288, 0, 0, 0, 0, 736, 384, 0, 0, 0, 0, 416, 384, 0, 0, 0, 0, 416, 480, 0, 0, 0, 0, 736, 480, 0, 0, 0, 0, 736, 576, 0, 0, 0, 0, 424, 576, 0, 0, 0, 0, 424, 672, 0, 0, 0, 0, 736, 672, 0, 0, 0, 0, 736, 768, 0, 0, 0, 0, 424, 768, 0, 0, 0, 0, 424, 864, 0, 0, 0, 0, 736, 864, 0, 0, 0, 0, 736, 960, 0, 0, 0, 0, 424, 960, 0, 0, 0, 0, 424, 1056, 0, 0, 0, 0, 736, 1056, 0, 0, 0, 0, 736, 1152, 0, 0, 0, 0, 424, 1152, 0, 0, 0, 0, 424, 1248, 0, 0, 0, 0, 736, 1248, 0, 0, 0, 0, 736, 1344, 0, 0, 0, 0, 424, 1344, 0, 0, 0, 0, 424, 1440, 0, 0, 0, 0, 736, 1440, 0, 0, 0, 0, 736, 1536, 0, 0, 0, 0, 424, 1536, 0, 0, 0, 0, 424, 1632, 0, 0, 0, 0, 736, 1632, 0, 0, 0, 0, 736, 1728, 0, 0, 0, 0, 424, 1728, 0, 0, 0, 0, 424, 1824, 0, 0, 0, 0, 736, 1824, 0, 0, 0, 0, 736, 1920, 0, 0, 0, 0, 424, 1920 )
+"points": PoolVector2Array(  )
 }
 
 [sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 416, 96, 0, 0, 0, 0, 736, 96, 0, 0, 0, 0, 736, 192, 0, 0, 0, 0, 416, 192, 0, 0, 0, 0, 416, 288, 0, 0, 0, 0, 736, 288, 0, 0, 0, 0, 736, 384, 0, 0, 0, 0, 416, 384, 0, 0, 0, 0, 416, 480, 0, 0, 0, 0, 736, 480, 0, 0, 0, 0, 736, 576, 0, 0, 0, 0, 424, 576, 0, 0, 0, 0, 424, 672, 0, 0, 0, 0, 736, 672, 0, 0, 0, 0, 736, 768, 0, 0, 0, 0, 424, 768, 0, 0, 0, 0, 424, 864, 0, 0, 0, 0, 736, 864, 0, 0, 0, 0, 736, 960, 0, 0, 0, 0, 424, 960, 0, 0, 0, 0, 424, 1056, 0, 0, 0, 0, 736, 1056, 0, 0, 0, 0, 736, 1152, 0, 0, 0, 0, 424, 1152, 0, 0, 0, 0, 424, 1248, 0, 0, 0, 0, 736, 1248, 0, 0, 0, 0, 736, 1344, 0, 0, 0, 0, 424, 1344, 0, 0, 0, 0, 424, 1440, 0, 0, 0, 0, 736, 1440, 0, 0, 0, 0, 736, 1536, 0, 0, 0, 0, 424, 1536, 0, 0, 0, 0, 424, 1632, 0, 0, 0, 0, 736, 1632, 0, 0, 0, 0, 736, 1728, 0, 0, 0, 0, 424, 1728, 0, 0, 0, 0, 424, 1824, 0, 0, 0, 0, 736, 1824, 0, 0, 0, 0, 736, 1920, 0, 0, 0, 0, 424, 1920 )
+}
+
+[sub_resource type="Curve2D" id=3]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 360, 2014.5, 0, 0, 0, 0, 360, 94.5017, 0, 0, 0, 0, 792, 94.5017, 0, 0, 0, 0, 792, 2014.5 )
 }
@@ -46,21 +51,21 @@ path = "res://World/MVP_World/1_3.tscn"
 [node name="mapStatus" parent="." instance=ExtResource( 7 )]
 map = [ false, false, true, false ]
 
-[node name="Box" parent="." instance=ExtResource( 5 )]
-position = Vector2( 563.303, 116.07 )
-
 [node name="StaticBody2D" parent="." instance=ExtResource( 8 )]
 position = Vector2( 575.8, 2084.92 )
+
 [node name="ZombieSpawn" type="Path2D" parent="."]
-[node name="EnemySpawn" type="Path2D" parent="."]
 curve = SubResource( 1 )
+
+[node name="EnemySpawn" type="Path2D" parent="."]
+curve = SubResource( 2 )
 
 [node name="ZombieSpawnLocations" type="PathFollow2D" parent="EnemySpawn"]
 position = Vector2( 416, 96 )
 
 [node name="CrateSpawn" type="Path2D" parent="."]
 position = Vector2( 0, 1.49831 )
-curve = SubResource( 2 )
+curve = SubResource( 3 )
 
 [node name="CrateSpawnLocations" type="PathFollow2D" parent="CrateSpawn"]
 position = Vector2( 360, 2014.5 )

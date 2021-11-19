@@ -39,23 +39,11 @@ script = ExtResource( 3 )
 [node name="Handgun" type="Node" parent="Guns"]
 script = ExtResource( 4 )
 
-[node name="Timer" type="Timer" parent="Guns/Handgun"]
-wait_time = 0.3
-one_shot = true
-
 [node name="Shotgun" type="Node" parent="Guns"]
 script = ExtResource( 6 )
 
-[node name="Timer" type="Timer" parent="Guns/Shotgun"]
-wait_time = 0.05
-one_shot = true
-
 [node name="Mini-Gun" type="Node" parent="Guns"]
 script = ExtResource( 7 )
-
-[node name="Timer" type="Timer" parent="Guns/Mini-Gun"]
-wait_time = 0.05
-one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

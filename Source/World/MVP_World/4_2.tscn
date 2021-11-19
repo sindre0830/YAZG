@@ -62,11 +62,14 @@ rotation = 1.5708
 position = Vector2( 2021.01, 576.081 )
 rotation = 1.5708
 [node name="ZombieSpawn" type="Path2D" parent="."]
+[node name="EnemySpawn" type="Path2D" parent="."]
 curve = SubResource( 1 )
 
-[node name="ZombieSpawnLocations" type="PathFollow2D" parent="ZombieSpawn"]
+[node name="ZombieSpawnLocations" type="PathFollow2D" parent="EnemySpawn"]
+position = Vector2( 320, 384 )
 
 [node name="CrateSpawn" type="Path2D" parent="."]
 curve = SubResource( 2 )
 
 [node name="CrateSpawnLocations" type="PathFollow2D" parent="CrateSpawn"]
+position = Vector2( 1320, -216 )

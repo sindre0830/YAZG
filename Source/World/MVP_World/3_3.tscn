@@ -46,10 +46,12 @@ path = "res://World/MVP_World/3_2.tscn"
 [node name="mapStatus" parent="." instance=ExtResource( 7 )]
 map = [ true, false, false, false ]
 
-[node name="ZombieSpawn" type="Path2D" parent="."]
+[node name="EnemySpawn" type="Path2D" parent="."]
 curve = SubResource( 1 )
 
-[node name="ZombieSpawnLocations" type="PathFollow2D" parent="ZombieSpawn"]
+[node name="ZombieSpawnLocations" type="PathFollow2D" parent="EnemySpawn"]
+position = Vector2( 448, 320 )
+rotation = 1.55317e-05
 
 [node name="CrateSpawn" type="Path2D" parent="."]
 curve = SubResource( 2 )
@@ -60,3 +62,5 @@ map = [ true, false, false, false ]
 [node name="StaticBody2D" parent="." instance=ExtResource( 8 )]
 position = Vector2( 575.841, 26.6001 )
 [node name="CrateSpawnLocations" type="PathFollow2D" parent="CrateSpawn"]
+position = Vector2( 360, 96 )
+rotation = 1.5708

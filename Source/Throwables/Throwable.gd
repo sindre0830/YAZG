@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 # How fast should the object slow down
-var deceleration
+var deceleration = 0
 
 func _physics_process(delta):
 	# Current speed is the length of the velocity vector

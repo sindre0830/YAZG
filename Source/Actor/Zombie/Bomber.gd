@@ -1,9 +1,5 @@
 # Should run at enemy and explode when it reaches the enemy!
 # Blink during chase mode - faster the closer it is
-# Not sure if acid or grenade explosion
-# Not sure if want to remove hurtbox or do something else to stop melee attack?
-# Maybe also reduce max health?
-# Currently it only explodes on LEAVING the 10 distance area...
 extends "res://Actor/Enemy.gd"
 
 var collided
@@ -12,6 +8,7 @@ const WANDER_TOLERANCE = 8.0
 const WANDER_RADIUS = 16
 const CHASE_TOLERANCE = 50.0
 
+# This zombie uses the molotov functionality when exploding
 var bombTimer
 var Bomb = preload("res://Throwables/MolotovCocktail.tscn")
 
@@ -20,13 +17,15 @@ func _init():
 	pass
 	
 func _ready():
+	# Hurtbox timer in enemy...naming?
 	timer = Timer.new()
 	timer.set_wait_time(1.0)
 	timer.set_one_shot(false)
 	add_child(timer)	
 	timer.connect("timeout", self, "_on_timer_timeout")
 	velocity = Vector2.ZERO
-	
+	# Timer for bomb
+	# NEEDED?
 	bombTimer = Timer.new()
 	bombTimer.set_wait_time(0.05)
 	bombTimer.set_one_shot(true)
@@ -59,39 +58,43 @@ func _physics_process(delta):
 			var distance = path - self.global_position
 			if (collided && collided.collider != null) && !("Zombie" in collided.collider.name || "Boss" in collided.collider.name) && ((path - global_position).length() > CHASE_TOLERANCE):
 				path = getNextPosition(global_position, path)
-			if distance.length() > 10:		# also need to check rotation!
+			if distance.length() > 10:
 				collided = move(delta, path, 0.2)
 			else:
 				turn(path, 0.2)
+				# Explodes when close enough
+				# TRY JUST CALLING EXPLODE
 				if bombTimer.time_left == 0:
-					bombTimer.start()
-			
+					bombTimer.start()	
 	# Zombie death animation
 	if health < max_health/3 && max_health/5 > health:
 		modulate = Color(0.4, 0, 0)
 	if health < max_health/5:
 		modulate = Color(0.2, 0, 0)
 	
-
+# Chases player when they enter vision
 func _on_Vision_body_entered(body):
 	if body.name == "Player":
 		state = CHASE
 		$VisionBuffer/ChaseCollision.set_deferred("disabled", false)
 		$Vision/WanderCollision.set_deferred("disabled", true)
 
+# Returns to idle when player outside detection zone
+# REMOVE?
 func _on_VisionBuffer_body_exited(body):
 	if body.name == "Player":
-		state = IDLE
+		state = WANDER
 		$VisionBuffer/ChaseCollision.set_deferred("disabled", true)
 		$Vision/WanderCollision.set_deferred("disabled", false)
 
-func take_damage(amount):
-	.take_damage(amount)
+# Aggros when dealt damage
 	if state != CHASE:
 		state = CHASE
 		$VisionBuffer/ChaseCollision.set_deferred("disabled", true)
 		$Vision/WanderCollision.set_deferred("disabled", true)
 
+# Explodes on contact with player
+# IMPROVE THIS WHY TIMER!?!?!?
 func _on_bombTimer_timeout():
 	explode()
 
@@ -102,7 +105,7 @@ func explode():
 	self.owner.add_child(bomb)
 	queue_free()
 	
-# Not blinking ATM, just changing color
+# Visual indicator of closeness + speed-increase when near
 func modulation(player):
 	# 350 is literal random choice...
 	modulate = Color(max(0.2,(self.position - player.global_position).length()/350), 0, 0)

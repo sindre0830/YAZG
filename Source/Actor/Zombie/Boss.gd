@@ -11,6 +11,7 @@ enum {
 }
 
 func _ready():
+	# Hurtbox timer in enemy...naming?
 	timer = Timer.new()
 	timer.set_wait_time(1.0)
 	timer.set_one_shot(false)

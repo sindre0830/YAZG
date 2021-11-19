@@ -11,7 +11,8 @@ const WANDER_RADIUS = 16
 const CHASE_TOLERANCE = 50.0
 
 var acidTimer
-var Spit = preload("res://Throwables/AcidSpit.tscn")
+# Change to pool!
+var AcidFloor = preload("res://HazardousAreas/AcidFloor.tscn")
 
 func _init():
 	# change to wander after main merge
@@ -20,13 +21,14 @@ func _init():
 	pass
 	
 func _ready():
+	# Initialize timer - LOOK AT
 	timer = Timer.new()
 	timer.set_wait_time(1.0)
 	timer.set_one_shot(false)
 	add_child(timer)	
 	timer.connect("timeout", self, "_on_timer_timeout")
 	velocity = Vector2.ZERO
-	
+	# Initialize attack timer
 	acidTimer = Timer.new()
 	acidTimer.set_wait_time(2.0)		# change
 	acidTimer.set_one_shot(false)
@@ -65,19 +67,21 @@ func _physics_process(delta):
 	if health < max_health/5:
 		modulate = Color(0.2, 0, 0)
 	
-
+# Trigger when a body enters vision
 func _on_Vision_body_entered(body):
 	if body.name == "Player":
 		state = CHASE
 		$VisionBuffer/ChaseCollision.set_deferred("disabled", false)
 		$Vision/WanderCollision.set_deferred("disabled", true)
 
+# Triggers when a body leaves detection area
 func _on_VisionBuffer_body_exited(body):
 	if body.name == "Player":
 		state = IDLE
 		$VisionBuffer/ChaseCollision.set_deferred("disabled", true)
 		$Vision/WanderCollision.set_deferred("disabled", false)
 
+# Initializes chase on damage
 func take_damage(amount):
 	.take_damage(amount)
 	if state != CHASE:
@@ -85,11 +89,14 @@ func take_damage(amount):
 		$VisionBuffer/ChaseCollision.set_deferred("disabled", true)
 		$Vision/WanderCollision.set_deferred("disabled", true)
 
+# Drops spit on timer
 func _on_acidTimer_timeout():
-	throw_grenade(player)
+	pool(player)
 
-func throw_grenade(target):
-	var spit = Spit.instance()
-	spit.init(self.position, self.global_position, self.rotation)
-	spit.transform =  self.global_transform 
-	self.owner.add_child(spit)
+# Attacking function
+func pool(target):
+	var acid_floor = AcidFloor.instance()
+	# Change duration of acid pool so it lasts longer - can modify as wanted
+	acid_floor.get_node("Timer").wait_time = 9
+	acid_floor.position = self.position
+	self.get_parent().add_child(acid_floor)

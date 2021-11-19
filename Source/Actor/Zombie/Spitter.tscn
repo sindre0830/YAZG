@@ -15,6 +15,7 @@ radius = 12.1043
 height = 15.2605
 
 [node name="Spitter" type="KinematicBody2D"]
+z_index = 1
 collision_layer = 4
 collision_mask = 27
 script = ExtResource( 2 )

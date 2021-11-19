@@ -11,6 +11,7 @@ onready var guns = [$"Guns/Mini-Gun", $Guns/Handgun]
 onready var gun_index = 0
 onready var gun = guns[gun_index]
 onready var time_start
+onready var hazard = 0			# Tracks whether player is taking damage from hazard
 var grenade
 
 var diff = 1
@@ -18,6 +19,7 @@ var diff = 1
 func _init():
 	ACCELERATION = 2000
 	MAX_SPEED = 400
+	ORIG_SPEED = 400
 	FRICTION = 4000
 
 
@@ -101,6 +103,9 @@ func _physics_process(delta):
 		PlayerValues.toolbar[0] = PlayerValues.toolbar[1]
 		PlayerValues.toolbar[1] = buffer
 		$UI/Inventory.set_inventory()
+	# Check if in hazardous area
+	if hazard != 0:
+		take_damage(delta * hazard)
 
 
 func take_damage(amount):

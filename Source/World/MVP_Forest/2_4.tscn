@@ -4,7 +4,7 @@
 [ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Portals/Portal.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Actor/Zombie/Zombie.tscn" type="PackedScene" id=4]
-[ext_resource path="res://World/Scripts/3_3.gd" type="Script" id=5]
+[ext_resource path="res://World/Scripts/MVP_Forest/2_4.gd" type="Script" id=5]
 [ext_resource path="res://Breakable/Box.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/Minimap/mapStatus.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Breakable/IronDoor.tscn" type="PackedScene" id=8]
@@ -33,7 +33,7 @@ collision_mask = 29
 [node name="Fence1" parent="." instance=ExtResource( 3 )]
 position = Vector2( 576.22, 16.5488 )
 rotation = 4.71239
-path = "res://World/MVP_World/3_2.tscn"
+path = "res://World/MVP_Forest/2_3.tscn"
 
 [node name="Zombie" parent="." instance=ExtResource( 4 )]
 position = Vector2( 443.954, 1484.89 )
@@ -59,6 +59,7 @@ map = [ true, false, false, false ]
 [node name="Fence2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 574.809, 2097.79 )
 rotation = 1.5708
+path = "res://World/MVP_Forest/2_5_BOSS.tscn"
 
 [node name="StaticBody2D" parent="." instance=ExtResource( 8 )]
 position = Vector2( 576.273, 2085.32 )

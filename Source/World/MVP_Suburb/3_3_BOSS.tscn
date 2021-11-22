@@ -35,7 +35,7 @@ position = Vector2( 530.591, 182.291 )
 [node name="Fence1" parent="." instance=ExtResource( 4 )]
 position = Vector2( -117.269, 480.903 )
 rotation = 3.14159
-path = "res://World/MVP_World/2_1.tscn"
+path = "res://World/MVP_Suburb/2_3.tscn"
 
 [node name="mapStatus" parent="." instance=ExtResource( 7 )]
 map = [ false, true, false, false ]
@@ -43,6 +43,7 @@ map = [ false, true, false, false ]
 [node name="Fence2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 575.436, 1127.93 )
 rotation = 1.5708
+path = "res://World/MVP_Forest/2_1.tscn"
 
 [node name="StaticBody2D" parent="." instance=ExtResource( 2 )]
 position = Vector2( -101.063, 480.6 )

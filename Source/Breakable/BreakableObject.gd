@@ -22,12 +22,3 @@ func is_broken():
 		return true
 	return false
 
-func _process(delta):
-		# Remove car
-	var isZombie = get_owner().get_children()
-	var zombiecount = 0
-	for i in isZombie:
-		if "Zombie" in i.get_name():
-			zombiecount += zombiecount + 1
-	if zombiecount == 0: 
-		destroy_object()

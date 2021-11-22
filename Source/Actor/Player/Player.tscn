@@ -54,3 +54,5 @@ current = true
 
 [node name="GrenadeCooldown" type="Timer" parent="Throwables"]
 one_shot = true
+
+[editable path="UI"]

@@ -7,7 +7,7 @@
 radius = 18.8552
 
 [node name="Area2D" type="Area2D"]
-modulate = Color( 0.380392, 0.756863, 0.427451, 1 )
+modulate = Color( 0.956863, 0.898039, 0.278431, 1 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

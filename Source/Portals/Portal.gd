@@ -11,7 +11,7 @@ func _ready() -> void:
 
 
 func _on_body_entered(body: Node) -> void:	
-	save_current_world()
+	# save_current_world()
 	PreviousWorld.previous_name = get_tree().current_scene.filename
 	print(PreviousWorld.previous_name)
 	if(directory.file_exists("res://Temp/temp_" + path.split("/")[-1])):

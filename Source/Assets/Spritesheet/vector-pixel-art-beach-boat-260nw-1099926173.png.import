@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tileset_plains_070419_zp.png-f1e978c7a1ee82f46edb45ea30a5078d.stex"
+path="res://.import/vector-pixel-art-beach-boat-260nw-1099926173.png-1e76efad0b03e1ecc8cce677b62f6e9b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Spritesheet/tileset_plains_070419_zp.png"
-dest_files=[ "res://.import/tileset_plains_070419_zp.png-f1e978c7a1ee82f46edb45ea30a5078d.stex" ]
+source_file="res://Assets/Spritesheet/vector-pixel-art-beach-boat-260nw-1099926173.png"
+dest_files=[ "res://.import/vector-pixel-art-beach-boat-260nw-1099926173.png-1e76efad0b03e1ecc8cce677b62f6e9b.stex" ]
 
 [params]
 

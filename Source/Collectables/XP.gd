@@ -1,17 +1,15 @@
 extends "res://Collectables/Collectable.gd"
 
+onready var player = get_parent().get_node("Player")
 onready var amount = 20
 var rng = RandomNumberGenerator.new()
 var deltatime = 0.0
 var XP_instance = []
-
-func _on_HP_body_entered(body):
-	# Heal the player if they step on it and
-	# delete the HealthCollectable
-	if body.get_name() == "Player":
-		body.take_xp(amount)
-		
-		queue_free()
+var lerp_time = 0
+var move_to_player = false
+var move_time = 0.5
+var body_pos
+ 
 
 func get_rand_pos():
 	rng.randomize()
@@ -23,3 +21,28 @@ func _physics_process(delta):
 	deltatime += delta
 	if deltatime <= 0.1:
 		position = lerp(position, (position - get_rand_pos()), 0.05)
+		# making sure lerp time always is zero before entering the movement process
+	if(!move_to_player):
+		lerp_time = 0.0
+	if(move_to_player):
+		
+			lerp_time += delta
+	
+			position = position.linear_interpolate(player.position, lerp_time / move_time)
+			
+			# Resets when the movement is done
+			if (lerp_time >= move_time || position == player.position):
+				move_to_player = false
+				queue_free()
+			
+				
+	
+
+# Function lets the script know that the player is inside the area and calls
+# the take_amount in the actor player script
+func _on_XP_body_entered(body):
+	if body.get_name() == "Player":
+		move_to_player = true
+		body.take_xp(amount)
+		
+	#	queue_free()

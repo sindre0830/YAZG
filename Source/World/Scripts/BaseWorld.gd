@@ -8,11 +8,11 @@ var Box = preload("res://Breakable/Box.tscn")
 func _ready():
 	# Make sure the zombies/crates have a certain distance when being spawned
 	$CrateSpawn.curve.bake_interval = 50
-	$ZombieSpawn.curve.bake_interval = 50
+	$EnemySpawn.curve.bake_interval = 50
 
 func spawn_zombies(num_zombies):
 	randomize()
-	var zombie_spawn_location = get_node("ZombieSpawn/ZombieSpawnLocations")
+	var zombie_spawn_location = get_node("EnemySpawn/ZombieSpawnLocations")
 	
 	for _i in range(num_zombies):
 		# Spawn zombie on random position on the Path2D

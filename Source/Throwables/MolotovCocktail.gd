@@ -40,18 +40,19 @@ func explode():
 	self.grenade_sprite.visible = false
 	self.explosion_animation.visible = true
 	self.explosion_animation.play()
-	
+
 	# Spawn a burning floor where the molly exploded
 	var burning_floor = BurningFloor.instance()
 	burning_floor.position = self.position
 	self.get_parent().add_child(burning_floor)
+	burning_floor.start_burn_audio()
 
 
-func _on_MolotovCocktail_body_entered(body):
+func _on_MolotovCocktail_body_entered(_body):
 	# Stop molly and explode if it hits a body
 	self.linear_velocity = Vector2(0.0, 0.0)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# Explode molly if it stops moving
 	if self.linear_velocity.length() == 0.0 and not self.exploded:
 		self.explode()

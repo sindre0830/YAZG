@@ -21,3 +21,4 @@ func is_broken():
 	if $CollisionShape2D.disabled == true:
 		return true
 	return false
+

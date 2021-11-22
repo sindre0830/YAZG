@@ -3,6 +3,8 @@ extends "res://Actor/Actor.gd"
 var HEALTHBAR = "UI/Healthbar"
 var GUNDISPLAY = "UI/GunDisplay"
 var DIFFICULTY = "UI/Difficulty/Label2"
+var XPShow = "UI/XPDisplay/Label"
+
 
 var MolotovCocktail = preload("res://Throwables/MolotovCocktail.tscn")
 var FragGrenade = preload("res://Throwables/FragGrenade.tscn")
@@ -19,6 +21,7 @@ func _init():
 	ACCELERATION = 2000
 	MAX_SPEED = 400
 	FRICTION = 4000
+	
 
 
 func _ready():
@@ -26,6 +29,7 @@ func _ready():
 	self.get_node(HEALTHBAR).value = PlayerValues.current_health
 	health = PlayerValues.current_health
 	self.get_node(DIFFICULTY).text = str(floor(PlayerValues.current_difficulty))
+	self.get_node(XPShow).text = str(PlayerValues.current_XP)
 
 	time_start = OS.get_unix_time()
 	get_node("UI/MiniMap").updateMinimap()		# Get current minimap
@@ -122,4 +126,6 @@ func toggle_pause():
 	PlayerValues.flagPaused = !PlayerValues.flagPaused
 
 func take_xp(amount):
-	PlayerValues.XP += amount
+	PlayerValues.current_XP += amount
+	self.get_node(XPShow).text = str(PlayerValues.current_XP)
+	

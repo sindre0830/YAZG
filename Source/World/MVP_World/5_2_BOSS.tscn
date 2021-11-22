@@ -64,3 +64,7 @@ position = Vector2( 543.958, 1030.67 )
 [node name="Fence2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 542.698, 1266.91 )
 rotation = 1.5708
+
+[node name="StaticBody2D2" parent="." instance=ExtResource( 9 )]
+position = Vector2( -101.183, 479.992 )
+rotation = 1.5708

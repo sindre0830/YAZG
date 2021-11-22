@@ -5,10 +5,10 @@ onready var timer # Todo: make timer global
 onready var label = "Label"
 onready var score = 0
 func _ready():
-	if PlayerValues.XP == 0:
-		PlayerValues.XP = 20
+	if PlayerValues.current_XP == 0:
+		PlayerValues.current_XP = 20
 	else:
-		score = PlayerValues.XP /  PlayerValues.time_end
+		score = PlayerValues.current_XP /  PlayerValues.time_end
 	get_node(label).set_text(get_node("Label").get_text() + " with points: " + str(score))
 	if score > PlayerValues.read_savegame():
 		save(score)

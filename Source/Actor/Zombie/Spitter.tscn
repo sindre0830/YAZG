@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Spritesheet/spritesheet_characters.png" type="Texture" id=1]
-[ext_resource path="res://Actor/Zombie/Zombie.gd" type="Script" id=2]
+[ext_resource path="res://Actor/Zombie/Spitter.gd" type="Script" id=2]
 [ext_resource path="res://Intersection/Hurtbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Stats/Stats.tscn" type="PackedScene" id=5]
 
@@ -14,7 +14,7 @@ radius = 320.0
 radius = 12.1043
 height = 15.2605
 
-[node name="Zombie" type="KinematicBody2D"]
+[node name="Spitter" type="KinematicBody2D"]
 z_index = 1
 collision_layer = 4
 collision_mask = 27
@@ -23,10 +23,11 @@ script = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 424, 0, 37, 45 )
+region_rect = Rect2( 427.838, 175.996, 26.7374, 42.5616 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2( 1.6, 1.6 )
+z_index = 1
 shape = SubResource( 1 )
 
 [node name="Tween" type="Tween" parent="."]

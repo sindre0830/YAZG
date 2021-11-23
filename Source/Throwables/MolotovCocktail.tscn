@@ -51,7 +51,7 @@ radius = 162.999
 
 [node name="MolotovCocktail" type="RigidBody2D"]
 collision_layer = 16
-collision_mask = 13
+collision_mask = 45
 gravity_scale = 0.0
 contacts_reported = 1
 contact_monitor = true

@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/explosion/expl_01_0003.png" type="Texture" id=1]
+[ext_resource path="res://Throwables/AcidSpit.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 6.91844
+
+[node name="Spit" type="RigidBody2D"]
+collision_layer = 32
+collision_mask = 27
+gravity_scale = 0.0
+contacts_reported = 1
+contact_monitor = true
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="PoolTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="DeleteTimer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[node name="AcidSprite" type="Sprite" parent="."]
+position = Vector2( -0.4, -1.4 )
+scale = Vector2( 1.1, 1.1 )
+texture = ExtResource( 1 )
+
+[connection signal="body_entered" from="." to="." method="_on_Spit_body_entered"]
+[connection signal="timeout" from="PoolTimer" to="." method="_on_ExplodeTimer_timeout"]
+[connection signal="timeout" from="DeleteTimer" to="." method="_on_DeleteTimer_timeout"]

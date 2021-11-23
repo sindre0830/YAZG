@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://TileMap/16xTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=2]
@@ -10,15 +10,10 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array(  )
-}
-
-[sub_resource type="Curve2D" id=2]
-_data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 320, 384, 0, 0, 0, 0, 1920, 384, 0, 0, 0, 0, 1920, 448, 0, 0, 0, 0, 320, 448, 0, 0, 0, 0, 320, 512, 0, 0, 0, 0, 1920, 512, 0, 0, 0, 0, 1920, 576, 0, 0, 0, 0, 320, 576, 0, 0, 0, 0, 320, 640, 0, 0, 0, 0, 1920, 640, 0, 0, 0, 0, 1920, 704, 0, 0, 0, 0, 320, 704, 0, 0, 0, 0, 320, 768, 0, 0, 0, 0, 1920, 768 )
 }
 
-[sub_resource type="Curve2D" id=3]
+[sub_resource type="Curve2D" id=2]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 1320, -216, 0, 0, 0, 0, 1880, -216, 0, 0, 0, 0, 1880, -152, 0, 0, 0, 0, 1320, -152, 0, 0, 0, 0, 1320, -88, 0, 0, 0, 0, 1880, -88, 0, 0, 0, 0, 1880, -24, 0, 0, 0, 0, 1320, -24 )
 }
@@ -67,17 +62,14 @@ rotation = 1.5708
 position = Vector2( 2021.01, 576.081 )
 rotation = 1.5708
 
-[node name="Enemyspawn" type="Path2D" parent="."]
-curve = SubResource( 1 )
-
 [node name="EnemySpawn" type="Path2D" parent="."]
-curve = SubResource( 2 )
+curve = SubResource( 1 )
 
 [node name="ZombieSpawnLocations" type="PathFollow2D" parent="EnemySpawn"]
 position = Vector2( 320, 384 )
 
 [node name="CrateSpawn" type="Path2D" parent="."]
-curve = SubResource( 3 )
+curve = SubResource( 2 )
 
 [node name="CrateSpawnLocations" type="PathFollow2D" parent="CrateSpawn"]
 position = Vector2( 1320, -216 )

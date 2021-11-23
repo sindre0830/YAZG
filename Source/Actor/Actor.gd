@@ -19,7 +19,6 @@ func die():
 	var x_rand = rng.randi_range(1, 5)
 	
 	for i in x_rand:
-		
 		XP_instance.append(XP.instance())
 		XP_instance[i].position = position
 		get_parent().add_child(XP_instance[i])

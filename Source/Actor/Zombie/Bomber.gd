@@ -50,7 +50,6 @@ func _physics_process(delta):
 			if (collided && collided.collider != null) && !("Zombie" in collided.collider.name || "Boss" in collided.collider.name) && ((path - global_position).length() > CHASE_TOLERANCE):
 				path = getNextPosition(global_position, path)
 			if distance.length() > 40:
-				print(distance.length())
 				collided = move(delta, path, 0.2)
 			else:
 				explode()

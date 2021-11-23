@@ -33,7 +33,4 @@ func reload():
 	reload_timer.start()
 	
 func _on_timer_timeout():
-	print("timeout")
-	print(clip_size)
 	clip = clip_size
-	print(clip)

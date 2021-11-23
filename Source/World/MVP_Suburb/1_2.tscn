@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://TileMap/16xTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/Minimap/mapStatus.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Portals/Portal.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Breakable/IronDoor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://World/Scripts/MVP_Suburb/1_2.gd" type="Script" id=6]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 6 )
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 
@@ -31,10 +33,12 @@ map = [ true, false, false, false ]
 
 [node name="Fence1" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1855.69, 577.102 )
+path = "res://World/MVP_Suburb/2_2.tscn"
 
 [node name="Fence2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 574.517, 1793.35 )
 rotation = 1.5708
+path = "res://World/MVP_Suburb/1_3.tscn"
 
 [node name="StaticBody2D" parent="." instance=ExtResource( 5 )]
 position = Vector2( 575.973, 1780.76 )

@@ -64,6 +64,10 @@ position = Vector2( 448, 256 )
 [node name="CrateSpawn" type="Path2D" parent="."]
 curve = SubResource( 2 )
 
+[node name="CrateSpawnLocations" type="PathFollow2D" parent="CrateSpawn"]
+position = Vector2( 1760, 1176 )
+rotation = 3.14159
+
 [node name="mapStatus" parent="." instance=ExtResource( 7 )]
 map = [ true, false, true, true ]
 
@@ -76,6 +80,3 @@ position = Vector2( 575.879, 1957.35 )
 [node name="StaticBody2D3" parent="." instance=ExtResource( 8 )]
 position = Vector2( 1828.97, 960.033 )
 rotation = 1.5708
-[node name="CrateSpawnLocations" type="PathFollow2D" parent="CrateSpawn"]
-position = Vector2( 1760, 1176 )
-rotation = 3.14159

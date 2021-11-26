@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://VendingMachine/VendingMachine.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.168627, 0.168627, 0.168627, 1 )
+
+[node name="Shop" type="Control"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 263.0
+margin_top = 45.0
+margin_right = 737.0
+margin_bottom = 680.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 303.0
+margin_top = 219.109
+margin_right = 690.0
+margin_bottom = 311.109
+rect_pivot_offset = Vector2( 193.5, 92 )
+text = "Buy Health Pack"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="."]
+margin_left = 303.0
+margin_top = 327.988
+margin_right = 690.0
+margin_bottom = 419.988
+rect_pivot_offset = Vector2( 193.5, 92 )
+text = "Buy Frag Granade"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="Button" parent="."]
+margin_left = 301.878
+margin_top = 442.618
+margin_right = 688.878
+margin_bottom = 534.618
+rect_pivot_offset = Vector2( 193.5, 92 )
+text = "Buy Molotov cocktail"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exit" type="Button" parent="."]
+margin_left = 303.212
+margin_top = 559.671
+margin_right = 690.212
+margin_bottom = 651.671
+rect_pivot_offset = Vector2( 193.5, 92 )
+text = "Close Shop"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 445.0
+margin_top = 130.0
+margin_right = 564.0
+margin_bottom = 175.0
+text = "Vending Machine"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

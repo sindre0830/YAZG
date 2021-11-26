@@ -76,4 +76,4 @@ curve = SubResource( 2 )
 position = Vector2( 1320, -216 )
 
 [node name="StaticBody2D3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1972.53, 487.218 )
+position = Vector2( 1941.35, 398.128 )

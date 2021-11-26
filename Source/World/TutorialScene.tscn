@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actor/Zombie/Spitter.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Actor/Zombie/Zombie.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Actor/Zombie/Acid.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Actor/Zombie/Bomber.tscn" type="PackedScene" id=7]
+[ext_resource path="res://VendingMachine/VendingMachine.tscn" type="PackedScene" id=8]
 
 [node name="World" type="Node2D"]
 
@@ -39,7 +40,7 @@ margin_left = 1016.0
 margin_top = 201.0
 margin_right = 1305.0
 margin_bottom = 313.0
-text = "USE LEFT MOUSE BUTTON TO FIRE YOUR GUN. TRY DESTROYING THE BOX. BOXES WILL BE SCATTERED AROUND THE DIFFERENT MAPS CONTAINING ITEMS LIKE GRANADES, MOLOTOV, HEALTH. USE RIGHT MOUSE BUTTON TO THROW THOSE."
+text = "USE LEFT MOUSE BUTTON TO FIRE YOUR GUN. TRY DESTROYING THE BOX. BOXES WILL BE SCATTERED AROUND THE DIFFERENT MAPS CONTAINING ITEMS LIKE GRANADES, MOLOTOV, HEALTH. USE RIGHT MOUSE BUTTON TO THROW THEM."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -64,6 +65,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="RichTextLabel5" type="RichTextLabel" parent="."]
+margin_left = 2811.01
+margin_top = 212.365
+margin_right = 3056.01
+margin_bottom = 294.365
+text = "BEFORE EACH BOSS ROOM YOU WILL FIND A VENDING MACHINE. WALK UP TO THE VENDING MACHINE AND PRESS E OR F TO OPEN THE SHOPPING WINDOW."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 285.393, 225.702 )
 collision_mask = 5
@@ -71,13 +82,16 @@ collision_mask = 5
 [node name="mapStatus" parent="." instance=ExtResource( 3 )]
 
 [node name="Spitter" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1861.53, 418.292 )
+position = Vector2( 2359.2, 367.895 )
 
 [node name="Acid" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1430.31, 388.787 )
+position = Vector2( 3606.55, 637.692 )
 
 [node name="Bomber" parent="." instance=ExtResource( 7 )]
-position = Vector2( 766.033, 365.377 )
+position = Vector2( 3726.77, 280.264 )
 
 [node name="Zombie" parent="." instance=ExtResource( 5 )]
-position = Vector2( 947.461, 435.933 )
+position = Vector2( 2046.03, 343.892 )
+
+[node name="StaticBody2D" parent="." instance=ExtResource( 8 )]
+position = Vector2( 3136.31, 219.322 )

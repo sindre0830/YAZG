@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://TileMap/16xTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,16 @@
 [ext_resource path="res://Breakable/IronDoor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/Scripts/MVP_Suburb/2_1.gd" type="Script" id=5]
 [ext_resource path="res://UI/Minimap/mapStatus.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 320, 448, 0, 0, 0, 0, 1728, 448, 0, 0, 0, 0, 1728, 544, 0, 0, 0, 0, 320, 544, 0, 0, 0, 0, 320, 608, 0, 0, 0, 0, 1728, 608, 0, 0, 0, 0, 1728, 704, 0, 0, 0, 0, 320, 704 )
+}
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 96, 360, 0, 0, 0, 0, 1952, 360, 0, 0, 0, 0, 1952, 792, 0, 0, 0, 0, 96, 792, 0, 0, 0, 0, 96, 360 )
+}
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 5 )
@@ -47,3 +57,14 @@ rotation = 1.5708
 [node name="StaticBody2D2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 2021.08, 576.107 )
 rotation = 1.5708
+
+[node name="EnemySpawn" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="ZombieSpawnLocations" type="PathFollow2D" parent="EnemySpawn"]
+position = Vector2( 320, 448 )
+
+[node name="CrateSpawn" type="Path2D" parent="."]
+curve = SubResource( 2 )
+
+[node name="CrateSpawnLocations" type="PathFollow2D" parent="CrateSpawn"]

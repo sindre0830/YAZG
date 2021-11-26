@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://TileMap/16xTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,16 @@
 [ext_resource path="res://Portals/Portal.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Breakable/IronDoor.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/Scripts/MVP_Forest/2_1.gd" type="Script" id=6]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 256, 704, 0, 0, 0, 0, 256, 448, 0, 0, 0, 0, 352, 448, 0, 0, 0, 0, 352, 704, 0, 0, 0, 0, 448, 704, 0, 0, 0, 0, 448, 448, 0, 0, 0, 0, 544, 448, 0, 0, 0, 0, 544, 704, 0, 0, 0, 0, 640, 704, 0, 0, 0, 0, 640, 448, 0, 0, 0, 0, 736, 448, 0, 0, 0, 0, 736, 704, 0, 0, 0, 0, 832, 704, 0, 0, 0, 0, 832, -128, 0, 0, 0, 0, 928, -128, 0, 0, 0, 0, 928, 704, 0, 0, 0, 0, 992, 704, 0, 0, 0, 0, 992, -128, 0, 0, 0, 0, 1088, -128, 0, 0, 0, 0, 1088, 704, 0, 0, 0, 0, 1184, 704, 0, 0, 0, 0, 1184, 448, 0, 0, 0, 0, 1280, 448, 0, 0, 0, 0, 1280, 704, 0, 0, 0, 0, 1376, 704, 0, 0, 0, 0, 1376, 448, 0, 0, 0, 0, 1472, 448, 0, 0, 0, 0, 1472, 704, 0, 0, 0, 0, 1568, 704, 0, 0, 0, 0, 1568, 448, 0, 0, 0, 0, 1664, 448, 0, 0, 0, 0, 1664, 704 )
+}
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 32, 776, 0, 0, 0, 0, 1888, 776 )
+}
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 6 )
@@ -55,3 +65,16 @@ rotation = 1.5708
 [node name="StaticBody2D3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1956.96, 575.966 )
 rotation = 1.5708
+
+[node name="EnemySpawn" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="ZombieSpawnLocations" type="PathFollow2D" parent="EnemySpawn"]
+position = Vector2( 256, 704 )
+rotation = -1.5708
+
+[node name="CrateSpawn" type="Path2D" parent="."]
+curve = SubResource( 2 )
+
+[node name="CrateSpawnLocations" type="PathFollow2D" parent="CrateSpawn"]
+position = Vector2( 32, 776 )

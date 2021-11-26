@@ -6,9 +6,10 @@ var path_from2 = "res://World/MVP_Suburb/1_3.tscn"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Spawn zombies/crates if not spawned yet
-	if not WorldFlags.entities_spawned_1_1:
+	if not WorldFlags.entities_spawned_suburb_1_2:
 		spawn_zombies(4)
-		WorldFlags.entities_spawned_1_1 = true
+		spawn_crates(1)
+		WorldFlags.entities_spawned_suburb_1_2 = true
 	move_to_position()
 
 func move_to_position(path = ""):

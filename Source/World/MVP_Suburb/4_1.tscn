@@ -1,12 +1,21 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://TileMap/16xTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Breakable/IronDoor.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Breakable/Box.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Portals/Portal.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/Scripts/MVP_Suburb/4_1.gd" type="Script" id=6]
 [ext_resource path="res://UI/Minimap/mapStatus.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 128, 128, 0, 0, 0, 0, 1024, 128, 0, 0, 0, 0, 1024, 224, 0, 0, 0, 0, 128, 224, 0, 0, 0, 0, 128, 320, 0, 0, 0, 0, 1024, 320, 0, 0, 0, 0, 1024, 416, 0, 0, 0, 0, 128, 416, 0, 0, 0, 0, 128, 512, 0, 0, 0, 0, 1024, 512, 0, 0, 0, 0, 1024, 608, 0, 0, 0, 0, 128, 608, 0, 0, 0, 0, 128, 704, 0, 0, 0, 0, 1024, 704, 0, 0, 0, 0, 1024, 800, 0, 0, 0, 0, 128, 800, 0, 0, 0, 0, 128, 896, 0, 0, 0, 0, 1024, 896 )
+}
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 40, 224, 0, 0, 0, 0, 40, 40, 0, 0, 0, 0, 1112, 40, 0, 0, 0, 0, 1112, 984, 0, 0, 0, 0, 40, 984, 0, 0, 0, 0, 40, 736 )
+}
 
 [node name="World" type="Node2D"]
 script = ExtResource( 6 )
@@ -29,9 +38,6 @@ tile_data = PoolIntArray( -1245185, 110, 0, -1310695, 110, 0, -1310663, 110, 0, 
 position = Vector2( 28.3529, 469.942 )
 collision_mask = 5
 
-[node name="Box" parent="." instance=ExtResource( 3 )]
-position = Vector2( 530.591, 182.291 )
-
 [node name="Fence1" parent="." instance=ExtResource( 4 )]
 position = Vector2( -118.737, 480.063 )
 rotation = 3.14159
@@ -43,3 +49,17 @@ map = [ false, true, false, false ]
 [node name="StaticBody2D" parent="." instance=ExtResource( 2 )]
 position = Vector2( -100.85, 479.613 )
 rotation = 1.5708
+
+[node name="EnemySpawn" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="ZombieSpawnLocations" type="PathFollow2D" parent="EnemySpawn"]
+position = Vector2( 128, 128 )
+rotation = -3.88027e-06
+
+[node name="CrateSpawn" type="Path2D" parent="."]
+curve = SubResource( 2 )
+
+[node name="CrateSpawnLocations" type="PathFollow2D" parent="CrateSpawn"]
+position = Vector2( 40, 224 )
+rotation = -1.5708

@@ -1,11 +1,8 @@
+### Group members
+Sindre Eiklid, Casper Melhus, Henrik Karlsen, Rickard Loland, Niklas Menzel, Martin Araya
 
-Group members:
-	Sindre Eiklid, Casper Melhus, Henrik Karlsen, Rickard Loland, Niklas Menzel, Martin Araya
-
-https://github.com/sindre0830/YAZG
-
-### Player
-| | Sindre | Casper | Henrik | Martin | Nik | Rickard |
+### Work Distribution Matrix
+| | Sindre | Casper | Henrik | Martin | Niklas | Rickard |
 |----|----|----|----|----|----|----|
 | Player | Most | Touched | Touched | Touched | Some | Touched |
 | Zombies | Some | | Touched | | Touched | Most |
@@ -17,3 +14,11 @@ https://github.com/sindre0830/YAZG
 | Maps | | Most | | Some | Some | |
 | Audio | | Touched | Touched | All | Touched | |
 | Breakables | | | All | | Touched | |
+
+### Individual report
+- [Casper](Reports/casper.md)
+- [Henrik](Reports/henrik.md)
+- [Martin](Reports/martin.md)
+- [Niklas](Reports/niklas.md)
+- [Rickard](Reports/rickard.md)
+- [Sindre](Reports/sindre.md)

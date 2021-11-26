@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://TileMap/16xTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Breakable/IronDoor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/Scripts/MVP_Suburb/2_3.gd" type="Script" id=5]
 [ext_resource path="res://UI/Minimap/mapStatus.tscn" type="PackedScene" id=6]
+[ext_resource path="res://VendingMachine/VendingMachine.tscn" type="PackedScene" id=7]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 5 )
@@ -46,3 +47,6 @@ position = Vector2( 575.835, 27.1747 )
 [node name="StaticBody2D2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 2085.19, 1344.02 )
 rotation = 1.5708
+
+[node name="StaticBody2D3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1993, 1179 )

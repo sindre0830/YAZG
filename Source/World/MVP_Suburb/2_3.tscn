@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://TileMap/16xTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=2]
@@ -69,5 +69,8 @@ rotation = 1.55317e-05
 curve = SubResource( 2 )
 
 [node name="CrateSpawnLocations" type="PathFollow2D" parent="CrateSpawn"]
+position = Vector2( 360, 96 )
+rotation = 1.5708
+
 [node name="StaticBody2D3" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1993, 1179 )

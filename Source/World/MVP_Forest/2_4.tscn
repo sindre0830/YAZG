@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://TileMap/16xTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://World/Scripts/MVP_Forest/2_4.gd" type="Script" id=5]
 [ext_resource path="res://UI/Minimap/mapStatus.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Breakable/IronDoor.tscn" type="PackedScene" id=8]
+[ext_resource path="res://VendingMachine/VendingMachine.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -69,3 +70,5 @@ curve = SubResource( 2 )
 
 [node name="CrateSpawnLocations" type="PathFollow2D" parent="CrateSpawn"]
 position = Vector2( 376, 96 )
+[node name="StaticBody2D3" parent="." instance=ExtResource( 9 )]
+position = Vector2( 797, 1901 )

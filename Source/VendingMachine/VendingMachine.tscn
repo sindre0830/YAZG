@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Spritesheet/VendingMachine.png" type="Texture" id=1]
+[ext_resource path="res://VendingMachine/VendingMachine.gd" type="Script" id=2]
+[ext_resource path="res://VendingMachine/vendingCanvas.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 28.8307, 55.2931 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 61.3576, 80.7489 )
+
+[node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="ShoppingArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShoppingArea"]
+shape = SubResource( 2 )
+
+[node name="Position2D" type="Position2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.881465, 0.987726 )
+texture = ExtResource( 1 )
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 3 )]
+
+[connection signal="body_entered" from="ShoppingArea" to="." method="_on_ShoppingArea_body_entered"]
+[connection signal="body_exited" from="ShoppingArea" to="." method="_on_ShoppingArea_body_exited"]

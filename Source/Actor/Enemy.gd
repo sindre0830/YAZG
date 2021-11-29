@@ -14,6 +14,10 @@ enum {
 	CHASE	
 }
 
+func init(transform, pos):
+	self.transform = transform
+	self.position = pos
+
 func _set_rotation(new_trans):
 	self.transform.x = new_trans
 	self.transform = self.transform.orthonormalized()

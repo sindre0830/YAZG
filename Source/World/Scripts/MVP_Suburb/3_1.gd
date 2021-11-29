@@ -8,7 +8,7 @@ var path_from3 = "res://World/MVP_Suburb/3_2.tscn"
 func _ready():
 	# Spawn zombies/crates if not spawned yet
 	if not WorldFlags.entities_spawned_suburb_3_1:
-		spawn_zombies(4)
+		spawn_zombies(4, 2, 1, 0)
 		spawn_crates(1)
 		WorldFlags.entities_spawned_suburb_3_1 = true
 	move_to_position()

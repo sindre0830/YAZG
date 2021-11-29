@@ -99,5 +99,5 @@ func _on_spitTimer_timeout():
 func spit(target):
 	var spit = Spit.instance()
 	spit.init(self.position, target.global_position, self.rotation)
-	spit.transform = self.global_transform 
-	self.owner.add_child(spit)
+	spit.transform = self.global_transform
+	self.get_parent().add_child(spit)

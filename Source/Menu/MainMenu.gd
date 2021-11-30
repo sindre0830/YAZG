@@ -18,6 +18,7 @@ func _on_Play_pressed():
 				break
 			dir.remove(path)
 	globals.stop_sounds()
+	PlayerValues.reset()
 	assert(get_tree().change_scene("res://World/TutorialScene.tscn") == OK)
 
 func _on_ExitGame_pressed():

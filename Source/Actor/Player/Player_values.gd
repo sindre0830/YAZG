@@ -46,3 +46,13 @@ func read_savegame():
 		return save_data["highscore"] #return the value
 	else:
 		return 0
+
+func reset():
+	current_health = 100
+	current_difficulty = 1
+	current_XP = 0
+	toolbar = [MINI_GUN, PISTOL]
+	inventory = [FRAG_GRENADE, FRAG_GRENADE, FRAG_GRENADE, FRAG_GRENADE, FRAG_GRENADE, FRAG_GRENADE]
+	flagPaused = false
+	currentLevel = 1
+	score = 0

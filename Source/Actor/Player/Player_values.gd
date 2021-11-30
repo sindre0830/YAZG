@@ -19,7 +19,7 @@ var current_difficulty = 1
 var current_XP = 0
 var time_end
 var toolbar = [MINI_GUN, PISTOL]
-var inventory = [FRAG_GRENADE, FRAG_GRENADE, FRAG_GRENADE, FRAG_GRENADE, FRAG_GRENADE, FRAG_GRENADE]
+var inventory = []  # isn't relevant atm, needs to add more items
 var flagPaused = false
 var currentLevel = 1
 
@@ -52,7 +52,7 @@ func reset():
 	current_difficulty = 1
 	current_XP = 0
 	toolbar = [MINI_GUN, PISTOL]
-	inventory = [FRAG_GRENADE, FRAG_GRENADE, FRAG_GRENADE, FRAG_GRENADE, FRAG_GRENADE, FRAG_GRENADE]
+	inventory = []  # isn't relevant atm, needs to add more items
 	flagPaused = false
 	currentLevel = 1
 	score = 0

@@ -50,13 +50,13 @@ func explode():
 
 func _on_MolotovCocktail_body_entered(_body):
 	# Stop molly and explode if it hits a body
-	self.linear_velocity = Vector2(0.0, 0.0)
+	if _body.name != "Player":
+		self.linear_velocity = Vector2(0.0, 0.0)
 
 func _physics_process(_delta):
 	# Explode molly if it stops moving
 	if self.linear_velocity.length() == 0.0 and not self.exploded:
 		self.explode()
-
 
 func _on_Explosion_animation_finished():	
 	# remove the molly

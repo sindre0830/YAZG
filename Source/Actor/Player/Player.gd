@@ -88,7 +88,7 @@ func _physics_process(delta):
 			grenade = MolotovCocktail.instance()
 		elif PlayerValues.toolbar[2] == PlayerValues.FRAG_GRENADE:
 			grenade = FragGrenade.instance()
-		grenade.init(self.position, get_global_mouse_position(), self.rotation)
+		grenade.init(self.global_position, get_global_mouse_position(), self.global_rotation)
 		grenade.transform =  self.global_transform 
 		self.owner.add_child(grenade)
 		PlayerValues.toolbar.pop_back()

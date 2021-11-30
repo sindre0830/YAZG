@@ -16,4 +16,6 @@ func _on_Bullet_body_entered(body):
 	# Deal damage to body if it has "take_damage" method
 	if body.has_method("take_damage"):
 		body.take_damage(damage)
+		var globals = get_node("/root/Globals")
+		globals.play_sound("Zombie_hit", false)
 	queue_free()

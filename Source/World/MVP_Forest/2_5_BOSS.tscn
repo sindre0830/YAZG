@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://TileMap/16xTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Breakable/Box.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/Minimap/mapStatus.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Breakable/IronDoor.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Actor/Zombie/Boss.tscn" type="PackedScene" id=9]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 5 )
@@ -65,3 +66,6 @@ position = Vector2( 576.378, 2085.26 )
 
 [node name="StaticBody2D2" parent="." instance=ExtResource( 8 )]
 position = Vector2( 576.079, 26.8889 )
+
+[node name="Boss" parent="." instance=ExtResource( 9 )]
+position = Vector2( 572.891, 1686.38 )

@@ -59,7 +59,7 @@ position = Vector2( 571.233, 511.913 )
 position = Vector2( 478.152, 1905.06 )
 
 [node name="mapStatus" parent="." instance=ExtResource( 7 )]
-map = [ true, false, false, false ]
+map = [ true, false, true, false ]
 
 [node name="StaticBody2D" parent="." instance=ExtResource( 8 )]
 position = Vector2( 576.378, 2085.26 )

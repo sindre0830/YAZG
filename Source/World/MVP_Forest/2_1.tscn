@@ -39,7 +39,7 @@ position = Vector2( 522.644, 527.752 )
 collision_mask = 29
 
 [node name="mapStatus" parent="." instance=ExtResource( 3 )]
-map = [ true, false, false, false ]
+map = [ false, true, false, true ]
 
 [node name="Fence1" parent="." instance=ExtResource( 4 )]
 position = Vector2( -49.3008, 576.713 )

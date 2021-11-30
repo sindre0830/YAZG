@@ -76,3 +76,4 @@ position = Vector2( -128, 448 )
 curve = SubResource( 2 )
 
 [node name="CrateSpawnLocations" type="PathFollow2D" parent="CrateSpawn"]
+position = Vector2( -352, 360 )

@@ -54,7 +54,7 @@ rotation = -1.5708
 path = "res://World/MVP_Forest/3_1.tscn"
 
 [node name="mapStatus" parent="." instance=ExtResource( 3 )]
-map = [ true, false, false, false ]
+map = [ true, true, true, false ]
 
 [node name="StaticBody2D" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1088, 27.0068 )
@@ -77,3 +77,5 @@ rotation = 1.55316e-05
 curve = SubResource( 2 )
 
 [node name="CrateSpawnLocations" type="PathFollow2D" parent="CrateSpawn"]
+position = Vector2( 1288, 96 )
+rotation = 1.5708

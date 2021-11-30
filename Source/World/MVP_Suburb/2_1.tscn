@@ -48,7 +48,7 @@ rotation = -3.14159
 path = "res://World/MVP_Suburb/1_1.tscn"
 
 [node name="mapStatus" parent="." instance=ExtResource( 6 )]
-map = [ false, false, false, true ]
+map = [ false, true, false, true ]
 
 [node name="StaticBody2D" parent="." instance=ExtResource( 4 )]
 position = Vector2( 27.2378, 575.385 )

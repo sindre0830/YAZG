@@ -6,8 +6,15 @@ var explosion_radius
 export var max_damage = 200
 export var min_damage = 25
 
-	# not working properly
-func _on_Explosion_animation_finished():
+func _ready():
+	self.explosion_animation = $ExplosionAnimation
+	self.explosion_radius = $CollisionArea.shape.radius
+
+func _on_Explosion_animation_finished():	
+	# Remove the grenade
+	queue_free()
+	
+func deal_damage():
 	# Get all bodies hit by the explosion
 	var bodies_hit = self.get_overlapping_bodies()
 
@@ -25,11 +32,6 @@ func _on_Explosion_animation_finished():
 
 			# Deal damage to the body
 			body.take_damage(damage)
-	
-	# Remove the grenade
-	queue_free()
 
 func _on_Timer_timeout():
-	self.explosion_animation = $ExplosionAnimation
-	self.explosion_radius = $CollisionArea.shape.radius
 	$ExplosionAnimation.play()

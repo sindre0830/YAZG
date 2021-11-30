@@ -29,6 +29,10 @@ func _ready():
 func _on_Timer_timeout():
 	# Stop the grenades movement
 	self.sleeping = true
+
 	# Hide the sprite and play the explosion animation
 	self.grenade_sprite.visible = false
 	self.explosion = $Explosion
+	
+	# Deal damage to nearby entities
+	self.explosion.deal_damage()

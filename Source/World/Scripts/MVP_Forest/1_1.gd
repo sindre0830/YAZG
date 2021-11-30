@@ -1,7 +1,7 @@
 extends "../BaseWorld.gd"
 
-var path_from1 = "res://World/MVP_Forest/3_2.tscn"
-var path_from2 = "res://World/MVP_Suburb/1_2.tscn"
+var path_from1 = "res://World/MVP_Forest/2_1.tscn"
+var path_from2 = "res://World/MVP_Forest/1_2.tscn"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

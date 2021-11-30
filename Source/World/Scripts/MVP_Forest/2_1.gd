@@ -20,5 +20,5 @@ func move_to_position(path = ""):
 		get_node("Player").position = get_node("Fence2/Position2D").global_position
 		get_node("Player").velocity = Vector2.ZERO
 	if(PreviousWorld.previous_name == path_from3 || path == path_from3):
-		get_node("Player").position = get_node("Fence2/Position2D").global_position
+		get_node("Player").position = get_node("Fence3/Position2D").global_position
 		get_node("Player").velocity = Vector2.ZERO

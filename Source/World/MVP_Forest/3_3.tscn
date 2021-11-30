@@ -60,3 +60,5 @@ rotation = 1.5708
 curve = SubResource( 2 )
 
 [node name="CrateSpawnLocations" type="PathFollow2D" parent="CrateSpawn"]
+position = Vector2( 376, 96 )
+rotation = 1.5708

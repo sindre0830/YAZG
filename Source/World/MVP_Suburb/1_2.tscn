@@ -39,7 +39,7 @@ position = Vector2( 522.644, 527.752 )
 collision_mask = 29
 
 [node name="mapStatus" parent="." instance=ExtResource( 3 )]
-map = [ true, false, false, false ]
+map = [ false, false, true, true ]
 
 [node name="Fence1" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1855.69, 577.102 )
@@ -68,3 +68,5 @@ rotation = -1.57079
 curve = SubResource( 2 )
 
 [node name="CrateSpawnLocations" type="PathFollow2D" parent="CrateSpawn"]
+position = Vector2( 360, 1728 )
+rotation = -1.57079

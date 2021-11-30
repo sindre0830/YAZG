@@ -27,7 +27,7 @@ func _on_Respawn_pressed():
 			if(path == ""):
 				break
 			dir.remove(path)
-	assert(get_tree().change_scene("res://World/MVP_World/1_1.tscn") == OK)
+	assert(get_tree().change_scene("res://World/TutorialScene.tscn") == OK)
 
 
 func _on_RTMainMenu_pressed():

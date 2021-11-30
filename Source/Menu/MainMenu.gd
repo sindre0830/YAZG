@@ -18,7 +18,7 @@ func _on_Play_pressed():
 				break
 			dir.remove(path)
 	globals.stop_sounds()
-	assert(get_tree().change_scene("res://World/MVP_World/1_1.tscn") == OK)
+	assert(get_tree().change_scene("res://World/TutorialScene.tscn") == OK)
 
 func _on_ExitGame_pressed():
 	# Quit the game

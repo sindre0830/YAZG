@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Actor/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actor/Zombie/Spitter.tscn" type="PackedScene" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://Actor/Zombie/Acid.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Actor/Zombie/Bomber.tscn" type="PackedScene" id=7]
 [ext_resource path="res://VendingMachine/VendingMachine.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Collectables/MolotovCocktail.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Breakable/IronDoor.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Portals/Portal.tscn" type="PackedScene" id=11]
 
 [node name="World" type="Node2D"]
 
@@ -60,7 +63,7 @@ margin_left = 3808.08
 margin_top = 746.718
 margin_right = 4053.08
 margin_bottom = 828.718
-text = "WHEN ALL ZOMBIES HAVE BEEN KILLED, YOU CAN BREAK THE METALL DOOR AND PROGRESS."
+text = "WHEN ALL ZOMBIES HAVE BEEN KILLED, THE METALL DOOR WILL BREAK."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -95,3 +98,14 @@ position = Vector2( 2046.03, 343.892 )
 
 [node name="StaticBody2D" parent="." instance=ExtResource( 8 )]
 position = Vector2( 3136.31, 219.322 )
+
+[node name="MolotovCocktail" parent="." instance=ExtResource( 9 )]
+position = Vector2( 122.898, 246.702 )
+
+[node name="StaticBody2D2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 3871.62, 905.892 )
+
+[node name="Fence1" parent="." instance=ExtResource( 11 )]
+position = Vector2( 3870.43, 1004 )
+rotation = 1.5708
+path = "res://World/MVP_World/1_1.tscn"

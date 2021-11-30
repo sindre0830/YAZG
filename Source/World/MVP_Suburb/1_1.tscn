@@ -45,6 +45,7 @@ path = "res://World/MVP_World/2_1.tscn"
 [node name="Fence2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 653, 18 )
 rotation = 4.71239
+path = "res://World/MVP_Suburb/1_2.tscn"
 
 [node name="mapStatus" parent="." instance=ExtResource( 6 )]
 map = [ false, false, false, true ]

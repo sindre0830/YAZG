@@ -67,3 +67,9 @@ func _on_modeSwitchTimer_timeout():
 		
 func die():
 	.die()
+	if PlayerValues.currentLevel >= 3:
+		assert(get_tree().change_scene("res://Menu/VictoryScreen.tscn") == OK)
+		PlayerValues.currentLevel = 1
+	else:
+		PlayerValues.currentLevel += 1
+	print(PlayerValues.currentLevel)

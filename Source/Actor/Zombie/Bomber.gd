@@ -85,7 +85,7 @@ func explode():
 	var bomb = Bomb.instance()
 	bomb.init(self.position, self.position, self.rotation)
 	bomb.transform =  self.global_transform 
-	self.owner.add_child(bomb)
+	self.get_parent().add_child(bomb)
 	queue_free()
 	
 # Visual indicator of closeness + speed-increase when near

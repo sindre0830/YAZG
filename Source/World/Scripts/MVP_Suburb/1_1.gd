@@ -13,8 +13,8 @@ func _ready():
 
 func move_to_position(path = ""):
 	if(PreviousWorld.previous_name == path_from1 || path == path_from1):
-		get_node("Player").position = get_node("Fence1/Position2D").global_position
+		get_node("Player").position = get_node("Fence2/Position2D").global_position
 		get_node("Player").velocity = Vector2.ZERO
 	if(PreviousWorld.previous_name == path_from2 || path == path_from2):
-		get_node("Player").position = get_node("Fence2/Position2D").global_position
+		get_node("Player").position = get_node("Fence1/Position2D").global_position
 		get_node("Player").velocity = Vector2.ZERO

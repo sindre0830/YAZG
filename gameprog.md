@@ -38,6 +38,10 @@ The guns have an internal ammo system that will reload the weapon when it’s em
 
 Moving backward is slower than moving forward. This was implemented to create a tradeoff in creating distance and dealing damage to the zombies. The player can still turn around and run from the zombies at full speed but can’t shoot at them at the same time.
 
+Each zombie killed increases the difficulty, increasing health and damage of all other enemies in game.
+
+The game has a score system based on experience accumulated and time spent in game, and it records the high score that the player has got each time.
+
 ### Game engine
 We were considering which engine to use for a little while during the start of the course and ended up deciding on Godot because it seemed to be best suited for the kind of game we were making - a top-down 2D game. Compared to Unity and Unreal Engine, Godot is small and lightweight. This means that the general time from coding to result is short because of how fast it is to test, edit and open the project code. Where Unreal and Unity are both engines heavily designed around 3D, 2D game development stands more centrally for Godot. This is probably in part due to its status as a fully open-source and free engine, making it popular among people first learning how to make games. This meant that the UI and editor generally seemed cleaner and easier to use for our 2D game.
 

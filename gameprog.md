@@ -2,7 +2,9 @@
 Group members: Sindre Eiklid, Casper Melhus, Henrik Karlsen, Rickard Loland, Niklas Menzel, Martin Araya
 
 [Demo video](https://www.youtube.com/watch?v=TjqtJjdRRfI) - Showcases the game.
+
 [Code video](https://www.youtube.com/watch?v=EwH23BpF348) - Showcases the *hidden* code.
+
 [Game Design Document](https://github.com/sindre0830/YAZG/blob/main/gameprog.md) - This was a great way for us to plot down all of our ideas and define the vision of our product. However, after initially creating the document, we did not update it as much as we should have - while we went back to consult it several times, we only had one big update later on during the process. Ideally, we would have used this a bit more as a living document, and updated it as our plans and assumptions about the game changed.
 
 ### Individual report

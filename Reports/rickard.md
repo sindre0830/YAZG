@@ -1,21 +1,12 @@
-### Score weighting TBD
-|Description | min | def | max |
-|----|----|----|----|
-|Gameplay video | 5 | 10 | 20 |
-|Code video | 0 | 10 | 15 |
-|Good Code  | 10 | 20 | 30 |
-|Bad Code | 10 | 20 | 30 |
-|Development process | 10 | 20 | 30 |
-|Reflection | 10 | 20 | 30 |
-
+### Score weighting
 |Description | my weight |
 |----|----|
 |Gameplay video | 10 |
 |Code video | 0 |
-|Good Code  | 20 |
-|Bad Code | 25 |
-|Development process | 15 |
-|Reflection | 30 |
+|Good Code  | 25 |
+|Bad Code | 20 |
+|Development process | 20 |
+|Reflection | 25 |
 
 
 ### Bad code
@@ -25,7 +16,10 @@ The first is about the placement. The ideal implementation here would be for the
 
 The reason I did this was simple: when I first implemented the minimap, I wanted feedback from the group on whether it was even before going into the nitty-gritty of coding it properly. Then I started working on other features, and was in the middle of that when we did the review and the group approved the minimap implementation. I figured again that I would get back to fixing the placement code, and it just...kinda never happened. Since we did not implement multiple resolutions for our game in the end, it never even really came up again. This is definitely something I would have liked to improve about my code in the project.
 
-The second part of the minimap I want to touch on is a little more interesting - how it is built up. The basic functionality is fairly simple - the 'base' minimap has the center room and no exits. The exits are applied on top of the minimap based on an array of four bools representing the cardinal directions, which is held in a separate minimap node for each map scene we add to the game. The bad thing about this: after adding the node to the scene, we then have to manually set which directions (N/W/S/E) contains exits by flipping the respective bool in the array to true.
+The second part of the minimap I want to touch on is a little more interesting - how it is built up. The basic functionality is fairly simple - the 'base' minimap has the center room and no exits. The exits are applied on top of the minimap based on an array of four bools representing the cardinal directions, which is held in a separate minimap node for each map scene we add to the game. The bad thing about this: after adding the node to the scene, we then have to manually set which directions (N/W/S/E) contains exits by manually setting the respective variable in the array to be active:
+
+![image](https://user-images.githubusercontent.com/76155230/145729774-3090a9c4-e42f-4b72-bd22-686d58d7288b.png)
+
 
 The reason this is bad is not just because of the extra work - if we had, as initially considered, been able to implement prodecurally generated maps (which seems a natural development for our style of game) then this would straight up not work. So how would I fix this?
 
@@ -40,9 +34,32 @@ After thinking about it a bit, I figured I would use an algorithm to take care o
 In the end, this was again not a priority for the project, which is why I did not implement it.
 
 ### Good code
+To be honest, this was slightly hard to write - not because I think my code is bad or I have poor self-esteem, but because of the nature of working with Godot. For a section with this title my instinct is to pull out some kind of impressive code. But since we coded almost exclusively in its relatively simple scripting language or through working with the GUI, I somewhat feel I never had to pull out anything too impressive to do what I wanted. So I will simply post some code I am happy with for one reason or another.
+
 The first thing I want to mention is, actually, an aspect of my minimap which I already derided as bad! That is my solution to displaying exits in the minimap. This will not be a primary example of good code, but the reason I want to bring it up is because it utilizes a fairly important concept in software development: Keep It Simple. My solution does not scale well and would not work if we developed the mapping a lot further, true...but it was a quite elegant and efficient solution for our project, which allowed me to implement the minimap without much fuss. And although technically setting the exits on each scene is extra work...it just did not take much time at all with only a few dozen map scenes overall to manually set. In other words, I am defending it as a very solid and clever solution given the scope of the project! Hopefully it's not cheating to use it in both sections.
 
-*** Write more about good code here ***
+Next I will look at how I handled the coding of the 'Spitter' zombie, the most involved of the special zombies. Our basic idea for them was inspired by games like Left 4 Dead and other coop zombie games, where similar zombies which shoot projectiles at you came in. I took up the task of implementing this, and figured I would reuse the code written by Niklas for his grenade and molotov items as a start. However, this immediately presented two issues.
+
+First and smallest, the logic for where these player-thrown projectiles were thrown did not work properly when used by NPCs, so I had to figure out how to change the parameters in the algorithm to make that work. Second and more annoyingly, the way Niklas had implemented explosions and area hazards for player items was - understandably - by directly adding them as part of the items themselves:
+![image](https://user-images.githubusercontent.com/76155230/145728543-0b67420c-8995-4944-850d-7ccdf9f3dac8.png)
+
+
+Since I wanted to have a different kind of projectile and collision-animation, and also would prefer to use the explosion separately in my bomber without tying it to a projectile, the most logical approach seemed to be decoupling the explosion from the throwable itself. This was slightly annoying, as finding the best way to instantiate it as a separate object without hitting null-pointer exception took a bit of work.
+
+Thus the code was refactored to look like this:
+![image](https://user-images.githubusercontent.com/76155230/145728725-f719a1b1-e8e9-4fd9-bdca-a7ee7877d34e.png) ![image](https://user-images.githubusercontent.com/76155230/145728753-76d1449e-b378-4b90-aa3b-edc07ff499e2.png)
+
+Once this was fixed, I could finally start adding my custom Spitter zombie! It took a bit of testing to figure out a working (and reasonable) implementation of the actual spitting. My solution was to only attack the player within a certain distance to avoid projectiles flying across the map, using a bool to track whether the player is in range or not - if in range, the Spitter only turns towards the player; if not it will also move towards you:
+
+![image](https://user-images.githubusercontent.com/76155230/145729305-ab996315-8f26-4e78-8d07-973082b3c440.png)
+
+
+This did present another small issue which was how to handle the interval between projectiles. I landed on the solution above, only restarting the timer if it reached 0 to avoid potentially starting tons of timers if the Spitter is constantly getting in and out of range. I could also have messed around with the timer's pause variable to achieve something similar, but this worked quite well.
+
+
+As the final example I want to mention in this report, I will add our tweening solution which I implemented fairly early on. I will not go as in-depth for this, as I got quite a bit of help with this part from google, specifically the [documentation](https://docs.godotengine.org/en/stable/classes/class_tween.html) for the tweening class. However we kept using the same basic functionality - with some slight tweaks and cleaning up - throughout the project, and I'm quite happy with the result both visually and for performance. Our final 'Enemy' code for turning NPCs:
+![image](https://user-images.githubusercontent.com/76155230/145729091-df471c55-c636-498e-ae68-c94a740899a8.png)
+
 
 ### Reflection
 Overall, I had a lot of fun working with this project. I think I learned a lot during it - about designing games, coding games, working in a team, working with Godot, and what kind of unforeseen and unpredictable issues that can crop up during the game development process. There were things about the work that I thought would be harder before I started, like the basic usage of the IDE, or certain engine features like using layers and general hit-detection. And there were things I underestimated or even didn't consider at all, like the importance of audio and how it's implemented, or how hard it would be to design a decent game in the first place.

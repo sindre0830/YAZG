@@ -23,7 +23,7 @@ func _ready():
 	self.get_node("CanvasLayer/ProgressBar").max_value = max_health
 	self.get_node("CanvasLayer/ProgressBar").value = health
 
-func _physics_process(delta) -> void:
+func _physics_process(delta):
 	var path = player.global_position
 	match mode:
 		NORMAL:

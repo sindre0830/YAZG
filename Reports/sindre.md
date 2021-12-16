@@ -12,7 +12,7 @@
 ## Good Code
 A contribution which I consider good is the way I handle the enemy state. It is handled through a variable that keeps the enum value of either IDLE, WANDER, or CHASE.
 
-![](Images/zombie_physics_process_full.png)
+![](https://github.com/sindre0830/YAZG/blob/main/Reports/Images/zombie_physics_process_full.PNG)
 *Function from the [Zombie.gd](../Source/Actor/Zombie/Zombie.gd) script. Line 39 is cut off because of the length.*
 
 When generation a basic zombie, the state starts as IDLE. This state generates a random position within an acceptable range, then sets the state as WANDER. The WANDER state generates a path from the current position of the enemy to the target position which was generated in the IDLE state. Then it moves according to the path generated until it reaches the end or collides along the way. Then it sets the state to IDLE again to get a new position. The last state, CHASE, is only triggered when the player enters/exits the vision of the enemy.
@@ -21,7 +21,7 @@ Once a player enters the vision area of an enemy, it sends a signal to the scrip
 
 Most enemies use a variation of this system except for the boss, which I'm also quite happy with. The boss is constantly chasing, but at different levels. It has a mode variable instead, which keeps the enum value of either NORMAL, INSANE, or SPRINT. These modify the speed and are triggered by timers and health.
 
-![](Images/boss_physics_process_full.png)
+![](https://github.com/sindre0830/YAZG/blob/main/Reports/Images/boss_physics_process_full.PNG)
 *Function from the [Boss.gd](../Source/Actor/Zombie/Boss.gd) script. Line 41 is cut off because of the length.*
 
 INSANE mode is applied when the boss health is below 50%, this mimics anger and makes it a lot harder to finish the boss. SPRINT is applied at an interval every 8 seconds and lasts for 4 seconds. This makes the boss fight less repetitive.
@@ -31,7 +31,7 @@ The way I implemented both the state for the zombie and the mode for the boss ma
 ## Bad Code
 I consider the way I handled enemy navigation to be a bad implementation. First, I'll start with a bit of background then I'll discuss why this is a bad implementation and suggest some other solutions that could be better.
 
-![](Images/getNextPosition.png)
+![](https://github.com/sindre0830/YAZG/blob/main/Reports/Images/getNextPosition.PNG)
 *Function from the [Enemy.gd](../Source/Actor/Enemy.gd) script.*
 
 The navigation function, get_simple_path(), is provided by Godot through the navigation module added to each enemy. We simply marked all the tiles in the tileset with a navigation mesh then I could call on that function to get a path from A to B through those tiles. Since both A and B coordinates are a part of the list, I check if any new positions have been added with a simple if statement that checks if there are more than 2 coordinates. Then I either send an empty vector, which translates to the player positions, or the next position. While this was fairly simple, there were some problems with this solution.
@@ -40,7 +40,7 @@ First of all, the function doesn't give the most optimal route, as stated by the
 
 When we first noticed the lag spikes and low framerate, we didn't know what caused it. Luckily we had learned about game engine debugging in one of the lectures and used the debugging tool, profiler, provided by the Godot engine. This showed which function would be called during the low framerate and quickly showed us that the getNextPosition() function was the culprit. I was calling the function every tick for each enemy. This would make the game very slow and eventually unplayable the more enemies there are on a map. It was clear that the only way to fix this issue was to reduce the number of times I would call this expensive function.
 
-![](Images/zombie_physics_process.png)
+![](https://github.com/sindre0830/YAZG/blob/main/Reports/Images/zombie_physics_process.PNG)
 *Part of the _physics_process() function from the [Zombie.gd](../Source/Actor/Zombie/Zombie.gd) script. Added new lines to capture the entire code snippet.*
 
 A solution I came up with was to call it every second instead of each tick, but this would cause lag spikes when all the enemies called the function at the same time. The final solution I came up with was to only call the function when necessary. This meant that the enemy would only call the function if it collided, otherwise it would just move towards the player. This is the solution that is implemented at the moment, and while it reduced the lag spikes, it didn't fix the issue. A big problem with simple scripting languages like GDscript is that we are forced to use their solution, and not able to do many advanced implementations ourselves. This is the case with the navigation function.

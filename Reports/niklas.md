@@ -23,7 +23,9 @@
 When I think of code I wrote during this project that I consider good I first think of the levels of abstractions I created.
 When I started working on the categories *Actor* and *Breakable* I first created a list of behavior that all objects in the said category share. I then created a GD script that contained these methods for this behavior so that
 every other script in the category could just inherit it. I consider that good code because it prevents redundancies in code and also improves readability. I am especially proud of the code in the [Actor.gd](https://github.com/sindre0830/YAZG/blob/main/Source/Actor/Actor.gd) script as the abstraction was later carried on and used as the base for another layer of abstraction for the zombie classes in [Enemy.gd](https://github.com/sindre0830/YAZG/blob/main/Source/Actor/Enemy.gd).
-I also consider the code good that I've added to the [player movement](https://github.com/sindre0830/YAZG/blame/main/Source/Actor/Player/Player.gd#L60). This code is a bit special since it was the only time I had to write code I would consider
+I also consider the code good that I've added to the [player movement](https://github.com/sindre0830/YAZG/blame/main/Source/Actor/Player/Player.gd#L60). 
+![](https://github.com/sindre0830/YAZG/blob/main/Reports/Images/Movement_Direction.png)
+This code is a bit special since it was the only time I had to write code I would consider
 a bit more complicated since most of the time Godot already provided simple solutions. The code adjusts the players movement speed depending on where they are facing.
 The basic idea was that the more the direction of view and the direction of movement differ, the slower the player should run.
 Although the implementation contains some mathematical expressions the code remains understandable because of the comments.

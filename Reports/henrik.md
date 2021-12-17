@@ -5,10 +5,10 @@
 |----|----|
 |Gameplay video | 15 |
 |Code video | 0 |
-|Good Code  |10 |
+|Good Code  | 10 |
 |Bad Code | 20 |
 |Development process | 30 |
-|Reflection | 25 |
+|Reflection | 30 |
 
 ### Good Code
 I consider the handling of the experience the player gets when a zombie is killed. I find the UI very appealing. The code is created so that when you get inside a required are of the experience instance it will interpolate toward you for 0,5 seconds and disapear after that time. The reason I find this code good is because I spent some time testing and making sure that the experience would not have any logical errors on the placement, movement or the interpolating time. Making the visual effect seem appealing to the player. The code for the experience handling is below.

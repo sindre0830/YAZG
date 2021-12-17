@@ -8,7 +8,7 @@
 |Good Code  |10 |
 |Bad Code | 25 |
 |Development process | 30 |
-|Reflection | 20 |
+|Reflection | 25 |
 
 ### Good Code
 I consider the handling of the experience the player gets when a zombie is killed. I find the UI very appealing. The code is created so that when you get inside a required are of the experience instance it will interpolate toward you for 0,5 seconds and disapear after that time. The reason I find this code good is because I spent some time testing and making sure that the experience would not have any logical errors on the placement, movement or the interpolating time. Making the visual effect seem appealing to the player. The code for the experience handling is below.
@@ -53,7 +53,6 @@ When reflecting about the key concepts learned I think it’s necessary to inclu
 I learned a lot about game development, and also group development. I was kind of unexperienced on working the way we did for the project. Always working on your own branch and having to commit in a certain fashion to link the commit to the issue. I must sadly say that I had some problems with the commit style and did not always get the linking right but by using this kind of trunk-based development and make sure that the new implementations where committed quick really made the development process easier than I have experienced it from earlier projects. One lesson learned, that is applicable to many projects is the need to continiously decide what that should be prioritized in the game and both assign a priority and hardness estimate. We had prioritization which made it easy to prioritize what issues to begin with, but in highsight it would be even better if we did an estimate on the different issues and as we finished tasks, especially after the MVP it would have been a great idea to review the estimates from that epoch. By this I mean use the estimates as a framework for diciding the new estimated values on the new issues.
 
 #### Optimization
-After watching the game optimization lecture I started checking out the profiling option in the godot editor. This was very useful to know when trying to figure out where the program had issues when my code lead to poor performance. For the most times the issue was that I was calling some heavy computing algorithms in the wrong place. Meaning the places where they are run every frame. After a quick check in the profiler i could see that these functions probably should be moved or have some timer preventing them from beeing run every frame. 
+After watching the game optimization lecture I started checking out the profiling option in the godot editor. This was very useful to know when trying to figure out where the program had issues when my code lead to poor performance. For the most times the issue was that I was calling some heavy computing algorithms in the wrong place. Meaning the places where they are run every frame. After a quick check in the profiler i could see that these functions probably should be moved or have some timer preventing them from beeing run every frame. Although I have not been using optimization to optimize every feature of the game in the best way, I got to learn how I could use it to spot performance issues. Optimization is something that I have never done before and I will probably try to reuse in other aspects of programming (meaning not only game development).
 
-All together I think the project was a good experience and I am satisfied with the result and how we worked together as a group. 
-
+All together I think the project was a good experience and I am satisfied with the result and how we worked together as a group.

@@ -4,13 +4,13 @@
 |----|----|
 |Gameplay video | 10 |
 |Code video | 0 |
-|Good Code  | 25 |
-|Bad Code | 25 |
-|Development process | 30 |
-|Reflection | 10 |
+|Good Code  | 20 |
+|Bad Code | 20 |
+|Development process | 25 |
+|Reflection | 25 |
 
 ## Good Code
-A contribution which I consider good is the way I handle the enemy state. It is handled through a variable that keeps the enum value of either IDLE, WANDER, or CHASE.
+A contribution that I consider good is the way I handle the enemy state. It is handled through a variable that keeps the enum value of either IDLE, WANDER, or CHASE.
 
 ![](https://github.com/sindre0830/YAZG/blob/main/Reports/Images/zombie_physics_process_full.PNG)
 
@@ -66,10 +66,14 @@ if flagCollided && flagNotEnemy && flagOutsideRange:
 This code snippet is a lot more readable and reduces the amount of time another person has to spend trying to understand the use case of the if statement. Other than that, I don't think there is much I could have done to increase the code quality. This is one of the benefits when coding in simple scripting languages like GDscript.
 
 ## Reflection
-I've learned a lot about game development and remote teamwork in this course. While I had a general idea of most concepts presented in the lectures, I felt like I got a more in-depth and better understanding of them. Something crucial to the development process was learning about debugging tools like profiling. Without this, we would have spent way more time finding the culprit of the issue with enemy navigation. I also learned the importance of immersion for games, and how crucial audio controls are.
+I've learned a lot about game development and remote teamwork in this course.
 
-I also learned a lot about Godot during the project: navigating the IDE, working with their scripting language, signals, and much more. While we discussed if Godot was the correct choice in the group discussions, I ended up liking the engine. While the scripting language might not be translateable, concepts like debugging and visual editing are similar to how it's done in other engines. This makes learning new engines, like Unreal, easier.
+For this project, we chose Godot as our game engine. While we discuss the downside of picking this engine in the group discussion document, I think we still learned the fundamentals of game engines and can easily translate a lot of our knowledge gained from Godot to other engines. For instance, the debugging tools provided by Godot are similar to other engines and would require little to no competence acquisition. The same goes for the scripting language provided by Godot, while GDscript is unique to Godot, all engines have an API to simplify advanced graphics functions. Throughout this course, we have had to learn to read documentation, go through forums, and ask good questions to have a smooth and efficient development process.
 
-While I've had remote teamwork before, this is the largest group project (in regards to coding) I've been a part of. It was interesting to see concepts like [Trunk Based Development](https://trunkbaseddevelopment.com/) strategy and Scrum work so well in a large group. To manage this remotely was a very interesting experience for me, and while there were some issues, the positives outweigh the negatives. For instance, trying to show code to the group in person is a bit awkward, while remote work allows for screen sharing on discord or Live share on VS code where everyone can edit on the same file. This made it easier for everyone in the group to engage and allowed for more feedback.
+During the start of the development process, we had a rather large scope in mind. I expected us to be a bit over scope since we never designed a game before, but didn't expect to hit this many roadblocks and have to reduce the scope as much we ended up doing during the end of the development process. Through this course, I've learned that game development is a lot harder than I first thought it would be. My initial thought going into this course was that game development was mostly logic-based and that it would be quite easy to implement most of the features we wrote down at the start. In reality, we spent most of our time acquiring competence, reading old forums, going through the documentation, and watching old youtube tutorials to do simple things with the Godot API. This is where most of our time was spent and in hindsight, makes a lot of sense. If we were to start a new project with all of the competence acquisition we have now, regardless of engine, we could better estimate the scope within the deadline and the development process would be a lot cleaner and more efficient.
+
+When it comes to testing, most of it was done through manual testing before merging with main. At the very start of this project, I looked for workflows that could automate some linting checks and game building but found none for Godot. This is one of the issues with picking an engine with the smallest community. There are also very few linting errors that could happen with simple scripting languages like GDscipt so this wasn't a big issue. Other than that, we learned that design tests, like wireframes, aren't as useful now compared to the past. This is because of how easy and fast it is to implement GUI through the editor provided by the game engines. Since we were told that we shouldn't focus on art/design, no design tests were done, and we ended up choosing the quickest solution so that we could spend more time implementing other features. During the middle of the development process, I performed a [code review](https://github.com/NTNU-IMT3603-PLATFORMER/NTNU-IMT3606-GAME/issues/72) of another group project and learned how to be both respectful and critical to others implementation. This is an important aspect of coding and is something I will take with me in my coding career.
+
+While I've had remote teamwork before, this is the largest group project (in regards to coding) I've been a part of. It was interesting to see concepts like [Trunk Based Development](https://trunkbaseddevelopment.com/) strategy, Scrum, and GitHub/GitLab features like branching and issue tracking work so well in a large group setting. To manage this remotely was a very interesting experience for me, and while there were some issues, the positives outweigh the negatives. For instance, trying to show code to the group in person is a bit awkward, while remote work allows for screen sharing on discord. This made it easier for everyone in the group to engage and allowed for more feedback. Since we had coding sessions where we could help each other with any coding problems that might occur, I quickly learned to both give and receive criticism in a respectful, but concise matter. This is very important when working in groups, and is especially important in a business setting.
 
 Overall, I would say that this was a successful project and I found the course to be both fun and informative. 

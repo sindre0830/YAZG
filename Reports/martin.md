@@ -4,15 +4,17 @@ One part of the code that I personally developed is the audio player for the gam
 
 The code is simple enough and can generate multiple instances of audio players, that play each audio independently. And to be included and used in other pieces of code is a simple import and play (example from the gun code)
 ![](https://github.com/sindre0830/YAZG/blob/main/Reports/Images/martin_GunAudio.png?raw=true)
-. The only extra process necessary is importing the corresponding audio file, and making sure it is imported without the repeat option selected, since it can be configured in the audio player itself.
+The only extra process necessary is importing the corresponding audio file, and making sure it is imported without the repeat option selected, since it can be configured in the audio player itself.
 
 
 Another part of the code that i am proud of is the code related to the guns, since extending and adding new guns in the code is as easy of extending the base code, and selecting the bullet speed and damage, while the audio and spray patterns needs to be defined in each class.
 
 Base gun code
+
 ![](https://github.com/sindre0830/YAZG/blob/main/Reports/Images/martin_BaseGun.png?raw=true)
 
 Assault rifle code
+
 ![](https://github.com/sindre0830/YAZG/blob/main/Reports/Images/martin_AssaultRifle.png?raw=true)
 
 ### Bad Code

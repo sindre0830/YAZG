@@ -4,9 +4,9 @@
 |Gameplay video | 10 |
 |Code video | 0 |
 |Good Code  | 25 |
-|Bad Code | 20 |
-|Development process | 20 |
-|Reflection | 25 |
+|Bad Code | 25 |
+|Development process | 25 |
+|Reflection | 15 |
 
 
 ### Bad code
@@ -25,7 +25,7 @@ The reason this is bad is not just because of the extra work - if we had, as ini
 
 After thinking about it a bit, I figured I would use an algorithm to take care of the exit placements on the minimap. The basic functionality would be like this:
 
-* Get the four (x,y) coordinates defining the borders of the map. In the case of T-shaped maps and the like, this would still work since finding the most extreme y-value would be found first first, and then I would use the largest/smallest values of x for that value of y. This then defines the boundaries of my map.
+* Get the four (x,y) coordinates defining the borders of the map. In the case of T-shaped maps and the like, this would still work since the most extreme y-value would be found first, and then I would use the largest/smallest values of x for that value of y. This then defines the boundaries of my map.
 * Split the map into four quadrants like an X to determine which parts of the map are N,W,S,E
 * Find the position of all portal nodes connected to the map
 * Compare their positions with my quadrants.

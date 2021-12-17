@@ -15,12 +15,18 @@ I consider the handling of the experience the player gets when a zombie is kille
 
 ![](https://github.com/sindre0830/YAZG/blob/main/Reports/Images/henrik_XP_handling.PNG?raw=true)
 
+*Part of _physics_process(delta) function from the [XP.gd](../Source/Collectables/XP.gd) script.*
+
 Another part of my code that I consider good is the implementation of the breakable objects. I cannot take ownership over all the code in the breakable objects folder since the box.gd and the breakable.gd has been modified, but I though my general implementation and inheritance structure was easy to work with and made it easy for others to use as part of either testing or implementing the breakables in the game.
 
 
 ### Bad Code
 One part of my code which I consider very bad is the calculation of high score. This has partly to do with not spending enough time on it and the group collective idea that this aspect of the game should not be prioritized but needs to be included in the final result. We wanted players to get a score when they die, and when they win the game. The score calculation per now is the amount of experience (XP) you have gathered divided on the total playing time. The image of the code can be seen below.
 ![](https://github.com/sindre0830/YAZG/blob/main/Reports/Images/henrik_XP_bad.PNG?raw=true)
+
+
+
+*Part of _ready() function from the [VictoryScreen.gd](../Source/Menu/VictoryScreen.gd) script.*
 
 There are some problems with this code and maybe the biggest is that the calculation is similar when you die and when you win. If given more time I would probably use the difficulty also as a factor to calculate the score. To illustrate the problem I have created this scheme:
 
@@ -41,6 +47,8 @@ Another part of my code which I considered bad is also connected to the score bu
 ![](https://github.com/sindre0830/YAZG/blob/main/Reports/Images/henrik_random_init.PNG?raw=true)
 
 ![](https://github.com/sindre0830/YAZG/blob/main/Reports/Images/henrik_XP_randomness.PNG?raw=true)
+
+*All code is from the [Actor.gd](../Source/Actor/Actor.gd) script.*
 
 The fact that you could get between one to five for each time you kill the zombie is not a bad decision on its own, but as a change to this it would have been nice to include some logic behind the amount you get. For example, the experience amount could be based on the time you have been in the room, so killing zombies faster would give more XP. Or using other factors than randomness so the player can get guidance on how to become better at the game.
 

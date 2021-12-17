@@ -1,3 +1,14 @@
+# Individual Report - Martin Araya
+## Score weighting
+|Description | Weight |
+|----|----|
+|Gameplay video | 20 |
+|Code video | 0 |
+|Good Code  | 20 |
+|Bad Code | 20 |
+|Development process | 25 |
+|Reflection | 20 |
+
 ### Good Code
 One part of the code that I personally developed is the audio player for the game, which can be found here:
 ![](https://github.com/sindre0830/YAZG/blob/main/Reports/Images/martin_audioPlayer.png?raw=true)
